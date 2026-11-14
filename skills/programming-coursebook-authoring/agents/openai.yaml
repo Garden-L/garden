@@ -1,0 +1,7 @@
+interface:
+  display_name: "Programming Coursebook Authoring"
+  short_description: "Create programming coursebooks with projects and Notion chapters"
+  default_prompt: "Use $programming-coursebook-authoring to design a programming coursebook with chapter pages, hands-on project stages, assignments, checkpoints, and Notion structure."
+
+policy:
+  allow_implicit_invocation: true
