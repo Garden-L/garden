@@ -12,6 +12,7 @@ Coordinate the existing automotive document skills without replacing their autho
 - Raw or sentence-level requirements → start with [Software Requirements Specification](../software-requirements-specification/SKILL.md).
 - An existing SRS without an approved/complete STS → continue with [Software Test Documentation](../software-test-documentation/SKILL.md).
 - An existing SRS and STS → continue with [Implementation Readiness Review](../implementation-readiness-review/SKILL.md).
+- A completed readiness review → continue with [Implementation Backlog and Traceability](../implementation-backlog-traceability/SKILL.md) before production implementation.
 - If the required source document, version, scope, or context is missing, stop and report the missing input.
 
 ## Run the gated workflow
@@ -50,6 +51,14 @@ Do not write production code or automated tests as part of this pipeline. A `NOT
 
 `READY WITH CONDITIONS` authorizes planning or explicitly scoped work only; it is not blanket approval to implement beyond the listed conditions.
 
+### 4. Implementation backlog and delivery gate
+
+Invoke [Implementation Backlog and Traceability](../implementation-backlog-traceability/SKILL.md) with the approved SRS, STS, readiness report, repository revision, and delivery preferences. It must create ordered vertical-slice work packages, an implementation packet for the first eligible slice, and a bidirectional SRS → STS → work → branch/MR/commit → evidence matrix.
+
+Do not pass the entire SRS/STS to an implementer without a selected work ID and explicit in-scope/out-of-scope boundary. A `READY WITH CONDITIONS` result limits backlog eligibility to work whose conditions are satisfied.
+
+Each approved bounded work package may be committed locally and prepared for delivery. Require a separate explicit approval immediately before pushing or creating/updating its draft merge request, then require another explicit approval before merge. Record the remote, branch, commit, MR, CI, and verification evidence in the matrix. If the Git provider or remote is unavailable, report that fact instead of claiming that push or MR creation succeeded.
+
 ## Required handoff
 
 At every stage, report:
@@ -59,5 +68,6 @@ At every stage, report:
 3. Output artifacts and paths, when the user supplied or requested a location.
 4. Decisions needed before the next stage.
 5. Traceability or review gaps that remain.
+6. Branch, commit, push, MR, and CI status when implementation delivery has begun.
 
-At completion, include the final readiness verdict and the next allowed action. Do not claim the pipeline is complete if a required gate is waiting for a user decision.
+At completion, include the final readiness verdict, backlog status, delivery status, and next allowed action. Do not claim the pipeline is complete if a required gate is waiting for a user decision or if a promised push/MR action lacks evidence.
