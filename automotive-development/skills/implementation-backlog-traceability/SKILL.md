@@ -41,12 +41,13 @@ Stop and request approval if the work would expand its boundary, change a baseli
 
 ```text
 select eligible WORK-ID
-→ publish packet and create branch/draft MR
+→ publish packet and create local branch
 → run mapped behavior tests
 → make the smallest in-scope change
 → run mapped and regression checks
-→ update matrix with commit, MR, CI, and evidence
-→ review and merge only after gates pass
+→ record local commit and test evidence in matrix; review
+→ obtain push/MR approval; record MR and CI results
+→ obtain separate merge approval
 ```
 
 Code existing is not completion. Mark a work item complete only when its tests and required reviews have evidence. Keep integration, HIL, hardware, or release checks as `Pending environment` until they run.

@@ -14,4 +14,5 @@ For use on another system, install the required sub-skills in pipeline order. Th
 - For turning a readiness-reviewed SRS/STS into bounded implementation work packages and a bidirectional traceability matrix, read and follow [Implementation Backlog and Traceability](skills/implementation-backlog-traceability/SKILL.md).
 - For implementing one approved work package within its packet and preparing a local commit, read and follow [Bounded Implementation Execution](skills/bounded-implementation-execution/SKILL.md).
 - For reviewing an implementation against its requirements, tests, scope, and evidence, read and follow [Implementation Verification Review](skills/implementation-verification-review/SKILL.md).
+- For a proposed change to an approved SRS, STS, interface, or acceptance criterion discovered during implementation, read and follow [Baseline Change Control](skills/baseline-change-control/SKILL.md).
 - For other automotive workflows, use the applicable sub-skill under this directory when one exists.

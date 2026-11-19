@@ -14,8 +14,8 @@ Reuse the existing packet, matrix, test results, and CI evidence. For a low-risk
 ## Required checks
 
 1. **Baseline and scope** — compare the branch to the packet's base revision. Confirm every changed file, API/data/schema effect, and line/file limit is allowed. Treat unrelated changes as a scope failure.
-2. **Requirement and test coverage** — verify SRS IDs, STS IDs, acceptance criteria, and observable behavior match. Check both directions for missing requirement, test, work, commit, or MR links.
-3. **Verification evidence** — confirm mapped tests, relevant regression checks, and required lint/type/build/CI results. Do not treat unexecuted hardware, HIL, integration, or release checks as passed.
+2. **Requirement and test coverage** — verify SRS IDs, STS IDs, acceptance criteria, and observable behavior match. Check existing requirement, test, work, and commit links; check MR links after an MR exists.
+3. **Verification evidence** — confirm mapped tests, relevant regression checks, and applicable lint/type/build results. Check CI after push; do not treat unexecuted hardware, HIL, integration, or release checks as passed.
 4. **Risk review** — inspect only risks relevant to the change: errors/boundaries, state/recovery, interfaces, security, safety, concurrency, performance, diagnostics, and rollback.
 5. **Traceability update** — record findings, evidence, status, and any required decision in the existing matrix.
 

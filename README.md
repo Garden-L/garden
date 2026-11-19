@@ -19,4 +19,6 @@ Install these sub-skills together when using the automotive pipeline on another 
 
 The orchestration entry point is [`automotive-development-pipeline`](automotive-development/skills/automotive-development-pipeline/SKILL.md). TDD, verification, code-review, and debugging skills are optional helpers. Git credentials, repository remotes, CI, test runners, and HIL/ECU environments are external prerequisites, not installable skills.
 
+Install [`baseline-change-control`](automotive-development/skills/baseline-change-control/SKILL.md) when approved requirements, tests, or interfaces may change during implementation. It is used only when such a change is proposed.
+
 Each skill is kept in its own directory so more personal skills can be added without coupling them to a specific programming language or project.
