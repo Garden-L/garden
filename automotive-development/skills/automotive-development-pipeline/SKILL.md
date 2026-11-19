@@ -39,7 +39,7 @@ Proceed to STS only when the SRS is approved for test-documentation work, or whe
 
 Invoke the STS skill from the current SRS. Preserve all SRS requirement IDs and carry unresolved requirement decisions into `ISSUE-###` records. Create the traceability summary and run the independent STS review required by that skill.
 
-Stop for user input when an expected result, test scope, procedure, or test technique depends on an unresolved requirement decision. If a `Must Fix` review finding changes the test design, revise and review the affected STS before continuing.
+When an expected result, test scope, procedure, or technique depends on an unresolved requirement decision, use the user's delegated decision authority if given and record the interpretation in the SRS and STS. Otherwise request the decision. If a `Must Fix` review finding changes the test design, revise and review the affected STS before continuing.
 
 Treat the STS as complete for readiness review only when no unresolved issue can change the test design, or when the user explicitly authorizes continuation with those issues recorded. Do not treat unresolved `Must Fix` findings as complete.
 
