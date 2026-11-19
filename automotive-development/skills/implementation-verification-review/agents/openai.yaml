@@ -1,0 +1,4 @@
+interface:
+  display_name: "Implementation Verification Review"
+  short_description: "Review one implementation against its approved scope"
+  default_prompt: "Use $implementation-verification-review to review one implementation work package against its SRS, STS, packet, diff, tests, and traceability evidence."

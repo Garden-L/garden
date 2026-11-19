@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bounded Implementation Execution"
+  short_description: "Implement one approved work package safely"
+  default_prompt: "Use $bounded-implementation-execution to implement one approved WORK item within its packet, verify it, and prepare a local commit without pushing."
