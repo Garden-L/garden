@@ -23,12 +23,12 @@ If a defect or scope expansion is found, return it to the implementer or create 
 
 ## Verdicts
 
-- `APPROVED FOR PUSH/MR` — scope, tests, evidence, and required review checks pass.
+- `READY FOR PUSH/MR APPROVAL` — scope, tests, evidence, and required review checks pass; user approval is still needed.
 - `CONDITIONAL` — safe to continue only with listed non-blocking evidence or environment conditions.
 - `CHANGES REQUIRED` — scope, behavior, test, traceability, or risk issue blocks delivery.
 - `BLOCKED` — missing baseline, packet, decision, or required environment prevents a valid review.
 
-This review does not authorize push, MR creation, or merge. Push/MR requires the separate approval gate; merge requires another approval after review and CI.
+This review does not authorize push, PR/MR creation or update, or merge. Each requires the user's approval at its respective gate.
 
 ## Required output
 

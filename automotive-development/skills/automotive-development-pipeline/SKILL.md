@@ -65,13 +65,13 @@ Invoke [Implementation Backlog and Traceability](../implementation-backlog-trace
 
 Do not pass the entire SRS/STS to an implementer without a selected work ID and explicit in-scope/out-of-scope boundary. A `READY WITH CONDITIONS` result limits backlog eligibility to work whose conditions are satisfied.
 
-Each approved bounded work package may be committed locally and prepared for delivery. Require a separate explicit approval immediately before pushing or creating/updating its draft merge request, then require another explicit approval before merge. Record the remote, branch, commit, MR, CI, and verification evidence in the matrix. If the Git provider or remote is unavailable, report that fact instead of claiming that push or MR creation succeeded.
+Each approved bounded work package may be committed locally under the target repository's commit rules and prepared for delivery. Require the user's explicit approval for the specific push and PR/MR creation or update, then a separate explicit approval before merge. Record the remote, branch, commit, PR/MR, CI, and verification evidence in the matrix. If the Git provider or remote is unavailable, report that fact instead of claiming delivery succeeded.
 
 ### 5. Bounded implementation and verification
 
 For one eligible `WORK-###`, invoke [Bounded Implementation Execution](../bounded-implementation-execution/SKILL.md). It must implement only the packet's scope, run the smallest relevant checks, prepare a local commit, and update traceability. Then invoke [Implementation Verification Review](../implementation-verification-review/SKILL.md) before the push/MR approval gate. Keep both steps proportional to the work's risk; do not duplicate artifacts or require heavyweight review for a small low-risk change.
 
-The execution skill may prepare a local commit. The verification skill may return `APPROVED FOR PUSH/MR`, `CONDITIONAL`, `CHANGES REQUIRED`, or `BLOCKED`; only the first two can proceed to the separate push/MR approval, and `CONDITIONAL` must carry its conditions forward. Merge remains a separate approval after review, CI, and required verification.
+The execution skill may prepare a local commit. The verification skill may return `READY FOR PUSH/MR APPROVAL`, `CONDITIONAL`, `CHANGES REQUIRED`, or `BLOCKED`; only the first two can proceed to the user's push/PR/MR approval, and `CONDITIONAL` must carry its conditions forward. A skill verdict never substitutes for user approval. Merge remains a separate approval after review, CI, and required verification.
 
 After push and MR creation, check CI and review findings against the pushed commit. Return failures to the same work item and repeat the focused verification; do not treat the earlier local review as proof that CI passed. If implementation reveals a change to an approved requirement, test expectation, interface, or acceptance criterion, invoke [Baseline Change Control](../baseline-change-control/SKILL.md) for the affected work before resuming it.
 

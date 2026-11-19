@@ -63,10 +63,10 @@ Check for requirements without tests/work, tests without requirements, work with
 
 ## 5. Delivery approvals
 
-After each bounded unit, the agent may create a local branch, commit only the approved scope, and prepare the MR title/body and evidence. Treat these as separate external gates:
+After each bounded unit, the agent may create a local branch, commit only the approved scope under the target repository's commit rules, and prepare the MR title/body and evidence. Treat these as separate external gates:
 
-1. **Push/MR approval** — obtain explicit approval immediately before pushing the branch or creating/updating the draft MR. Then record branch, commit, MR, CI, and evidence in the matrix.
-2. **Merge approval** — obtain a separate explicit approval after required reviews, tests, and CI pass. Never merge on the basis of push/MR approval alone.
+1. **Push/MR approval** — obtain the user's explicit approval for the specific push and PR/MR creation or update. Then record branch, commit, PR/MR, CI, and evidence in the matrix.
+2. **Merge approval** — obtain the user's separate explicit approval after required reviews, tests, and CI pass. Never merge on the basis of push/PR/MR approval alone.
 
 Use the connected Git provider when available. If a requested push or MR action fails, report the exact failure and never claim success. Never push out-of-scope changes.
 

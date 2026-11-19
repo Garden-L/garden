@@ -27,7 +27,7 @@ If any item is missing or a readiness condition is unsatisfied, stop and report 
 4. Run mapped tests, regression tests, and applicable lint/type/build checks.
 5. Inspect the complete diff against the base revision. Confirm every changed file is allowed and the diff is within the packet limit.
 6. Update the traceability matrix with implementation status and evidence.
-7. Prepare one focused local commit containing only the approved scope. Include the work, SRS, and STS IDs in the message.
+7. Before committing, inspect the target repository's commit instructions and checks (for example `AGENTS.md`, `CONTRIBUTING.md`, commitlint or Git hooks). Follow every applicable rule; include work/SRS/STS IDs in the form those rules permit. Stage only the approved scope, inspect the staged diff, then make a focused local commit. If a required rule cannot be satisfied, report the conflict instead of bypassing it.
 
 Stop and request a revised packet if the change needs an unlisted file, public contract, schema/wire behavior, safety/security/diagnostic/timing assumption, acceptance criterion, or larger scope. Do not hide or revert unrelated user changes.
 
@@ -42,7 +42,7 @@ Never claim completion from code existence alone. Report commands, results, chan
 
 ## Delivery gates
 
-Prepare the branch and local commit only. Push and draft-MR creation require a separate explicit approval. Merge requires another separate approval after review, CI, and required verification pass.
+Prepare the branch and local commit only. Obtain the user's explicit approval for the specific push and PR/MR creation or update before performing them. Obtain a separate explicit approval for merge after review, CI, and required verification pass. A review verdict is not user approval.
 
 ## Required output
 
