@@ -29,7 +29,7 @@ For a project with no repeatable way to exercise its real target behavior, add a
 
 Invoke the SRS skill when requirements are not yet captured as an SRS. Preserve source sentences, requirement IDs, issues, decisions, and affected Mermaid flows. Run its author/reviewer workflow.
 
-Stop and ask the user to resolve any ambiguity, conflict, missing condition, or scope choice that could change the SRS. Mark affected content as `Confirmation needed` or `TBD`; never infer approval from a plausible assumption.
+Record any ambiguity, conflict, missing condition, or scope choice that could change the SRS. When the user has explicitly delegated technical choices, select a defensible interpretation and record its rationale and test consequence. Ask only when the available evidence cannot support a responsible choice; mark that content as `Confirmation needed` or `TBD`.
 
 Treat the SRS as approved only when the user explicitly confirms it in the current workflow or the document records an explicit approval status, owner, and date. Do not infer approval from a filename, formatting, or the absence of comments.
 
@@ -62,6 +62,8 @@ Do not write production code or automated tests during the readiness review. A `
 ### 4. Implementation backlog and delivery gate
 
 Invoke [Implementation Backlog and Traceability](../implementation-backlog-traceability/SKILL.md) with the approved SRS, STS, readiness report, repository revision, and delivery preferences. It must create ordered vertical-slice work packages, an implementation packet for the first eligible slice, and a bidirectional SRS → STS → work → branch/MR/commit → evidence matrix.
+
+When the user requests full coverage of a source standard, reconcile its complete requirement-ID inventory against the SRS and backlog before reporting completion. Carry unmapped or unassessed IDs as explicit gaps.
 
 Do not pass the entire SRS/STS to an implementer without a selected work ID and explicit in-scope/out-of-scope boundary. A `READY WITH CONDITIONS` result limits backlog eligibility to work whose conditions are satisfied.
 

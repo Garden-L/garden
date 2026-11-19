@@ -15,7 +15,9 @@ Record the SRS, STS, readiness-review, and repository revisions.
 - `READY WITH CONDITIONS`: plan only work whose conditions are satisfied; carry the other conditions into the affected work items and MRs.
 - `READY`: continue while preserving open decisions and coverage gaps.
 
-Never guess a requirement, interface, test oracle, safety constraint, or owner. Create an `ISSUE-###`/decision record and block affected work when the answer could change code or tests.
+For a supplied normative source, inventory every applicable source requirement ID before claiming the backlog is complete. Map each ID to an SRS item and work item, or record why it is out of scope, superseded, or impossible in the target environment. Keep unassessed IDs visible; a partial SRS is not evidence of full source coverage.
+
+Record uncertain requirements, interfaces, test oracles, and safety constraints as `ISSUE-###` decisions. If the user has delegated reasonable technical choices, select and document a defensible interpretation with its source and verification consequence. Block only decisions that cannot responsibly be made from the available evidence.
 
 ## 2. Create bounded work packages
 
@@ -32,6 +34,8 @@ out-of-scope behavior and refactors
 acceptance criteria and verification evidence
 branch, commit, MR, and rollback plan
 ```
+
+For a large specification, group related source IDs into reviewable slices while retaining the per-ID mapping. Reconcile the source inventory after each slice; do not label the whole specification implemented because one mockable core passes tests.
 
 Before implementation, publish an implementation packet with exact files, API/data/schema effects, tests, diff estimate, and stop conditions. Use project limits when supplied; otherwise treat 5–10 files and roughly 300 changed lines as review triggers. Split or explicitly justify larger work.
 

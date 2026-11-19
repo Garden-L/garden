@@ -26,6 +26,7 @@ If any item is missing or a readiness condition is unsatisfied, stop and report 
 3. Implement the smallest change that satisfies the packet.
 4. Run mapped tests, regression tests, and applicable lint/type/build checks.
 5. Inspect the complete diff against the base revision. Confirm every changed file is allowed and the diff is within the packet limit.
+   For stateful or safety-related code, inspect state transitions, time boundaries, duplicate events, and repeated calls. If one function accumulates unrelated rules or nested transitions, split by responsibility before the slice grows harder to review; keep the behavior tests as the guard.
 6. Update the traceability matrix with implementation status and evidence.
 7. Prepare one focused local commit containing only the approved scope. Include the work, SRS, and STS IDs in the message.
 
