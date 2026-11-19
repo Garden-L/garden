@@ -1,0 +1,7 @@
+interface:
+  display_name: "Automotive Software Requirements Specification"
+  short_description: "Create automotive SRS documents from requirements"
+  default_prompt: "Use $software-requirements-specification to turn these automotive requirements into a clear SRS and flag unclear or conflicting wording."
+
+policy:
+  allow_implicit_invocation: true

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Automotive Development"
+  short_description: "Automotive workflows, including SRS drafting and review"
+  default_prompt: "Use $automotive-development to draft or review a Markdown Software Requirements Specification from the automotive requirements I provide."

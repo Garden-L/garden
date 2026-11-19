@@ -1,0 +1,8 @@
+interface:
+  display_name: "Automotive Software Test Documentation"
+  short_description: "Create automotive STS documents from SRS requirements"
+  default_prompt: "Use $software-test-documentation to turn this automotive SRS into an STS with ordered test procedures, edge-case review, and traceability."
+
+policy:
+  allow_implicit_invocation: true
+
