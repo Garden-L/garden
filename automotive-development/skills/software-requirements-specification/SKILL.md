@@ -33,5 +33,6 @@ The author and reviewer are separate roles inside this skill. The reviewer retur
 - When multiple requirements have clear dependencies or a shared sequence, add one integrated Mermaid flow that connects their IDs. Do not force unrelated requirements into the same chart.
 - Label unknown steps or decisions as `TBD` instead of inventing behavior.
 - Ground the SRS in the supplied material. Leave unsupported values, standards compliance, safety levels, and architecture open. Keep implementation and test code outside the SRS.
+- For a long standard, reconcile current requirement and constraint headings against the source pages before declaring coverage. Distinguish normative headings and reproduced interface tables from cross-references and deleted-item history; inspect relevant narrative and unnumbered configuration tables as well. Record applicability decisions for referenced external documents.
 
 See the [worked example](references/example.md) for vague timing, a missing condition, and a scope conflict.
