@@ -37,7 +37,7 @@ Proceed to STS only when the SRS is approved for test-documentation work, or whe
 
 ### 2. STS gate
 
-Invoke the STS skill from the current SRS. Preserve all SRS requirement IDs and carry unresolved requirement decisions into `ISSUE-###` records. Create the traceability summary and run the independent STS review required by that skill.
+Invoke the STS skill from the current SRS. Preserve all SRS requirement IDs and carry unresolved requirement decisions into `ISSUE-###` records. Create the traceability summary and review at the scope required by that skill.
 
 Stop for user input when an expected result, test scope, procedure, or test technique depends on an unresolved requirement decision. If a `Must Fix` review finding changes the test design, revise and review the affected STS before continuing.
 
@@ -69,7 +69,7 @@ Each approved bounded work package may be committed locally under the target rep
 
 ### 5. Bounded implementation and verification
 
-For one eligible `WORK-###`, invoke [Bounded Implementation Execution](../bounded-implementation-execution/SKILL.md). It must implement only the packet's scope, run the smallest relevant checks, prepare a local commit, and update traceability. Then invoke [Implementation Verification Review](../implementation-verification-review/SKILL.md) before the push/MR approval gate. Keep both steps proportional to the work's risk; do not duplicate artifacts or require heavyweight review for a small low-risk change.
+For one eligible `WORK-###`, invoke [Bounded Implementation Execution](../bounded-implementation-execution/SKILL.md). It must implement only the packet's scope, run relevant checks, prepare a local commit, and update traceability. Then invoke [Implementation Verification Review](../implementation-verification-review/SKILL.md) before the push/MR approval gate. Keep both steps proportional to the work's risk; do not duplicate artifacts or require heavyweight review for a small low-risk change.
 
 The execution skill may prepare a local commit. The verification skill may return `READY FOR PUSH/MR APPROVAL`, `CONDITIONAL`, `CHANGES REQUIRED`, or `BLOCKED`; only the first two can proceed to the user's push/PR/MR approval, and `CONDITIONAL` must carry its conditions forward. A skill verdict never substitutes for user approval. Merge remains a separate approval after review, CI, and required verification.
 

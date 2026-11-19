@@ -5,17 +5,17 @@ description: Use when supplied automotive requirements need to be drafted or rev
 
 # Automotive Software Requirements Specification
 
-Turn the supplied requirement sentences into a readable Markdown SRS using the [output format](references/srs-output-format.md). This single skill owns authoring, independent review, user decisions, and final updates. By default, run the author and reviewer roles below as separate sub-agents when multi-agent support is available.
+Turn the supplied requirement sentences into a readable Markdown SRS using the [output format](references/srs-output-format.md). This skill owns authoring, review, user decisions, and final updates. For a new or substantially changed SRS, use separate author and reviewer roles when available. For a narrow edit, review only the affected requirements and linked flows.
 
-## Default sub-agent workflow
+## Author and review workflow
 
-1. Send the supplied requirements and context to the **author sub-agent** using [author-agent.md](references/author-agent.md). It creates the SRS draft, requirement IDs, and Mermaid flows.
-2. Send the source requirements and the draft independently to the **review sub-agent** using [review-agent.md](references/review-agent.md). It returns only actionable findings, resolution options, and recommendations; it does not edit the draft.
+1. For a new SRS, send the supplied requirements and context to the **author role** using [author-agent.md](references/author-agent.md). For a narrow edit, change the affected text and flows while preserving IDs.
+2. Have a separate **reviewer role** compare the source and affected draft using [review-agent.md](references/review-agent.md). It returns actionable findings, resolution options, and recommendations; it does not edit the draft. Review the full document for a new baseline or broad change, and only affected portions for a narrow edit.
 3. Present the review findings to the user. Ask the user to choose a recommended option, choose another option, or provide an additional requirement.
 4. Send the user's decision back to the author sub-agent. Update the affected requirement, issue status, decision record, and Mermaid flows together.
 5. Repeat review only for the changed or newly affected parts unless the user requests a full review.
 
-If sub-agent tools are unavailable, perform the same author-then-review sequence in the main agent and clearly keep the two roles separate.
+Use sub-agents when available and warranted by scope; otherwise perform the roles sequentially in the main agent.
 
 The author and reviewer are separate roles inside this skill. The reviewer returns findings only; the author applies user-approved decisions.
 

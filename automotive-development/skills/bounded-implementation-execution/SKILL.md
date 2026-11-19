@@ -14,22 +14,22 @@ Keep the process proportional: reuse existing packet, test, and matrix artifacts
 Confirm the packet contains:
 
 - work ID, SRS/STS IDs, readiness conditions, and acceptance criteria;
-- base revision, allowed files/components, and out-of-scope items;
-- API/data/schema impact, test plan, diff limit, and rollback plan.
+- base revision, affected components or files, and out-of-scope items;
+- contract impact, verification method, and any project-specific change limit.
 
 If any item is missing or a readiness condition is unsatisfied, stop and report it. Preserve unrelated working-tree changes; use an isolated worktree or branch when available.
 
 ## Execute the slice
 
 1. Reconcile the packet with the current repository and record any mismatch.
-2. Run the mapped behavior tests before changing production code; capture the baseline.
+2. For a behavior change, run an existing relevant test or establish a failing test/observable baseline where practical. For other changes, use the packet's relevant check.
 3. Implement the smallest change that satisfies the packet.
 4. Run mapped tests, regression tests, and applicable lint/type/build checks.
-5. Inspect the complete diff against the base revision. Confirm every changed file is allowed and the diff is within the packet limit.
+5. Inspect the complete diff against the base revision. Confirm it stays within the approved boundary and any project-specific limit.
 6. Update the traceability matrix with implementation status and evidence.
 7. Before committing, inspect the target repository's commit instructions and checks (for example `AGENTS.md`, `CONTRIBUTING.md`, commitlint or Git hooks). Follow every applicable rule; include work/SRS/STS IDs in the form those rules permit. Stage only the approved scope, inspect the staged diff, then make a focused local commit. If a required rule cannot be satisfied, report the conflict instead of bypassing it.
 
-Stop and request a revised packet if the change needs an unlisted file, public contract, schema/wire behavior, safety/security/diagnostic/timing assumption, acceptance criterion, or larger scope. Do not hide or revert unrelated user changes.
+Stop and request a revised packet if the change crosses the approved component or file boundary, changes a public contract, schema/wire behavior, safety/security/diagnostic/timing assumption, acceptance criterion, or exceeds an applicable limit. Do not hide or revert unrelated user changes.
 
 ## Completion states
 
@@ -46,7 +46,7 @@ Prepare the branch and local commit only. Obtain the user's explicit approval fo
 
 ## Required output
 
-Return:
+Report the following information concisely, combining sections when appropriate:
 
 1. **Work and baseline** — IDs, base revision, packet status.
 2. **Changes** — files changed and scope check.

@@ -33,7 +33,7 @@ acceptance criteria and verification evidence
 branch, commit, MR, and rollback plan
 ```
 
-Before implementation, publish an implementation packet with exact files, API/data/schema effects, tests, diff estimate, and stop conditions. Use project limits when supplied; otherwise treat 5–10 files and roughly 300 changed lines as review triggers. Split or explicitly justify larger work.
+Before implementation, identify the affected components or files, contract effects, verification method, and stop conditions. Use project limits when supplied. Otherwise size work so a reviewer can understand the change and its evidence in one pass; split work when the boundary or verification becomes unclear. Record an exact file list and diff estimate when the repository makes them knowable.
 
 Stop and request approval if the work would expand its boundary, change a baselined SRS/STS or public contract, alter schema/wire behavior, change safety/security/diagnostic/timing assumptions, or revise acceptance criteria.
 
@@ -72,13 +72,13 @@ Use the connected Git provider when available. If a requested push or MR action 
 
 ## Required output
 
-Return, in this order:
+Report the following information, combining sections when the work is small:
 
 1. **Baseline and gate** — versions, repository revision, scope, verdict.
 2. **Conditions and decisions** — blockers, owners, affected work.
 3. **Implementation backlog** — ordered packages, dependencies, boundaries.
 4. **Traceability matrix** — SRS ↔ STS ↔ work ↔ branch/MR/commit ↔ evidence.
-5. **First implementation packet** — files, tests, limits, stop conditions.
+5. **First implementation packet** — affected boundary, verification, applicable limits, stop conditions.
 6. **Delivery plan** — local commit, push/MR approval gate, CI, and separate merge approval gate.
 
 Do not pass the entire SRS/STS to an implementer without a selected work ID and explicit boundary. Do not claim tests, CI, push, or MR creation without evidence.

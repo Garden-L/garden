@@ -7,7 +7,7 @@ description: Use when an automotive SRS or requirements document needs a concise
 
 Create an English STS from the supplied automotive SRS. Use [references/sts-template.md](references/sts-template.md) for the document format and [examples/example-sts.md](examples/example-sts.md) as a completed example.
 
-When an independent agent or reviewer is available, run the STS review workflow in [references/sts-reviewer-checklist.md](references/sts-reviewer-checklist.md) after the first draft.
+For a new or substantially changed STS, run an independent review using [references/sts-reviewer-checklist.md](references/sts-reviewer-checklist.md) when a reviewer is available. For a narrow edit, review affected cases and traceability links.
 
 ## STS authoring procedure
 
@@ -22,7 +22,7 @@ When an independent agent or reviewer is available, run the STS review workflow 
 
 ## Independent STS Review
 
-After generating the first draft, ask an independent reviewer to compare the SRS and STS without relying on the author's conclusions. The reviewer must check requirement coverage, expected-result correctness, test technique selection, boundary and missing-data conditions, procedure order, duplicate cases, traceability, and unresolved decisions.
+For a new baseline or broad change, ask an independent reviewer to compare the SRS and STS without relying on the author's conclusions. Check requirement coverage, expected results, test technique, boundaries, procedure order, duplicates, traceability, and decisions. For a narrow edit, apply these checks only to affected cases and their links.
 
 The reviewer returns findings with `Must Fix`, `Clarification Needed`, or `Suggestion` status and a location in the STS. Revise the STS for valid findings, then run the review again when a Must Fix finding changes the test design. Include the final review summary and remaining open decisions in the STS handoff.
 
