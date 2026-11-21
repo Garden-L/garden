@@ -9,7 +9,7 @@ Invoke `$automotive-development-pipeline` for an end-to-end automotive workflow,
 ## Package map
 
 - `skills/automotive-development-pipeline/SKILL.md` — workflow entry point and orchestrator.
-- `playbooks/` — workflow compositions and gates.
+- `skills/automotive-development-pipeline/playbooks/` — pipeline-specific workflow compositions and gates.
 - `skills/` — automotive-specific leaf skills.
 - `agents/` — future author, reviewer, or worker briefs.
 - `docs/` — package architecture and operating notes.
