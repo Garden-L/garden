@@ -1,0 +1,11 @@
+# Local workflow output
+reports/
+artifacts/
+logs/
+tmp/
+*.local.md
+
+# Editor and OS files
+.DS_Store
+.idea/
+.vscode/

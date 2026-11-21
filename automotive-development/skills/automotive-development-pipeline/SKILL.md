@@ -5,7 +5,18 @@ description: Use when automotive requirements must be processed as a staged work
 
 # Automotive Development Pipeline
 
-Coordinate the existing automotive document skills without replacing their authoring or review rules. The pipeline is a gated workflow: do not silently resolve decisions or treat the existence of a document as approval.
+This is the workflow entry point for the `automotive-development` project package. Coordinate the automotive skills without replacing their authoring or review rules. For a staged workflow, classify the current artifact and read the matching package playbook under `../../playbooks/`; then load only the leaf skills named there. The pipeline is gated: do not silently resolve decisions or treat the existence of a document as approval.
+
+## Package workflow links
+
+- Raw requirements to SRS: [Requirements to SRS](../../playbooks/requirements-to-srs.md)
+- SRS to STS: [SRS to STS](../../playbooks/srs-to-sts.md)
+- Pre-implementation review: [Implementation Readiness Review](../../playbooks/readiness-review.md)
+- Approved work package implementation: [Bounded Implementation](../../playbooks/implementation.md)
+- Post-implementation evidence review: [Implementation Verification](../../playbooks/verification.md)
+- Proposed approved-baseline change: [Baseline Change Control](../../playbooks/change-control.md)
+
+Shared capabilities are in `../../../skills/shared/`. Read only the shared skill referenced by the selected playbook and needed by the current stage.
 
 ## Portability and dependencies
 

@@ -2,11 +2,17 @@
 
 Reusable skills for building programming coursebooks and engineering workflows.
 
+## Shared skill library
+
+- [`shared`](skills/shared/) — domain-neutral architecture, TDD, verification, and Git hygiene skills that can be composed by multiple project packages.
+
 ## Skills
 
 - [`programming-coursebook-authoring`](skills/programming-coursebook-authoring/SKILL.md) — creates a complete programming coursebook, hands-on project structure, purpose-named staged files, learner checkpoints, and Notion chapter pages.
 
 ## Automotive development skill set
+
+[`automotive-development`](automotive-development/README.md) is a project-style package. Its pipeline skill and playbooks compose the shared skills above with automotive-specific requirements, testing, readiness, implementation, verification, and baseline-change skills.
 
 Install these sub-skills together when using the automotive pipeline on another system, in this order:
 
