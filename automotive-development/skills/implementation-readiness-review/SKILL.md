@@ -5,7 +5,7 @@ description: Use when an automotive SRS and/or STS already exists and must be ch
 
 # Implementation Readiness Review
 
-Review the existing SRS and STS before code implementation. Decide whether implementation can start, identify only the issues that could change the implementation or tests, and propose the first TDD slices.
+Apply the shared `engineering-design` method, then add the automotive-specific SRS/STS, safety, target, and HIL readiness criteria below. Review the existing SRS and STS before code implementation. Decide whether implementation can start, identify only the issues that could change the implementation or tests, and propose the first TDD slices.
 
 This skill does not author or silently repair requirements, does not write production code or automated tests, and does not replace the SRS or STS skills.
 

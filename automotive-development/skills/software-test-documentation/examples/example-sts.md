@@ -18,7 +18,7 @@ This example assumes the following SRS requirements:
 | 3 | REQ-002 | Invalid: above maximum, `250.1 km/h` | Equivalence Partitioning | TC-003 | Ready |
 | 4 | REQ-003 | Timing/Timeout: no message for more than `100 ms` | Boundary Value Analysis | TC-004 | Ready |
 | 5 | REQ-004 | State Transition: three valid messages after fault | State Transition Testing | TC-005 | Ready |
-| 6 | REQ-001, REQ-003 | Additional Edge Case: shutdown during timeout | Risk-based analysis | TC-006 | Decision Needed |
+| 6 | REQ-001, REQ-003 | Shutdown during timeout; expected behavior undefined | Risk-based analysis | ISSUE-001; test gap | Decision Needed |
 
 ## 2. Test cases and procedures
 
@@ -123,14 +123,13 @@ This example assumes the following SRS requirements:
 - Pass criteria: The invalid status is cleared only after three consecutive valid messages.
 - Evidence: Three input messages and status trace after each message.
 
-## 3. Additional edge case and decision item
+## 3. Open decision and test gap
 
-### TC-006 / ISSUE-001: Vehicle shutdown during signal timeout
+### ISSUE-001: Vehicle shutdown during signal timeout
 
 - Related requirements: REQ-001, REQ-003
-- Condition type: Additional Edge Case
 - Condition: Vehicle shutdown occurs while the signal timeout is active.
-- Why this is additional: The supplied SRS defines signal timeout behavior but does not define how shutdown state interacts with it.
+- Gap: The supplied SRS defines signal timeout behavior but does not define how shutdown state interacts with it, so there is no executable `TC` yet.
 - Status: Decision Needed
 - Recommended decision: Define whether shutdown suppresses the timeout diagnostic or preserves it.
-- Testing impact: Add a dedicated test case after the shutdown interaction rule is approved.
+- Testing impact: Add a dedicated `TC` after the shutdown interaction rule is approved.

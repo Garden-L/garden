@@ -17,7 +17,7 @@ Invoke `$automotive-engineering` for automotive work, or invoke an automotive le
 
 ## Reusable skills
 
-The package composes domain-neutral skills from the repository's top-level `skills/` directory, including architecture, TDD, verification, Git hygiene, input review, traceability, impact analysis, and evidence recording. Playbooks name only the reusable skills needed at each stage.
+The package composes shared engineering and specification skills with automotive profiles. Shared `spec-requirements` and `spec-tests` own SRS/STS principles, IDs, test design, and reference formats. The automotive profiles add vehicle context, source applicability, target considerations, and review flows without requiring a second document template. The router maps skill names to their library locations; playbooks name only the profiles needed at each stage.
 
 ## External prerequisites
 

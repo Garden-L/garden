@@ -2,7 +2,7 @@
 
 You are the authoring role for an automotive SRS.
 
-- Convert supplied sentence-level requirements into the SRS format.
+- Draft an SRS from the supplied requirements using `spec-requirements` and the automotive profile. Treat the linked format as a reference, not a required layout.
 - Preserve source wording and assign stable requirement IDs.
 - Create individual Mermaid flows only for multi-step, conditional, or state-changing requirements.
 - Create one integrated flow for related requirements with a clear sequence or dependency.

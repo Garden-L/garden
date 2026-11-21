@@ -5,7 +5,7 @@ description: Use when one approved implementation work package must be implement
 
 # Bounded Implementation Execution
 
-Implement exactly one approved `WORK-###` from its implementation packet. Do not expand the task, repair baselined requirements, or push/merge without the required approvals.
+Apply the shared `implementation` method, then enforce the automotive work-packet, traceability, safety, and delivery gates below. Implement exactly one approved `WORK-###` from its implementation packet. Do not expand the task, repair baselined requirements, or push/merge without the required approvals.
 
 Keep the process proportional: reuse existing packet, test, and matrix artifacts; do not create duplicate documents or demand heavyweight review for a low-risk, small change. Add a check or approval only when the work's risk, scope, or repository policy requires it.
 

@@ -5,7 +5,7 @@ description: Use when implementation reveals a proposed change to an approved SR
 
 # Baseline Change Control
 
-Handle a discovered baseline change without quietly folding it into the current `WORK-###`.
+Apply the shared `engineering-design` method, then follow the automotive-specific SRS/STS, `WORK-###`, and approval rules below. Handle a discovered baseline change without quietly folding it into the current work item.
 
 1. Record the proposed change, reason, affected baseline versions and IDs, and the first work item that exposed it. Distinguish a clarification from a changed obligation or expected result.
 2. Trace its effects through related SRS requirements, STS cases, interfaces, work packages, code, and verification evidence. Mark only affected work as waiting for a decision; independent work may continue.

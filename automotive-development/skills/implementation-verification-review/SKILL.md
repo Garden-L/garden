@@ -5,7 +5,7 @@ description: Use when an implementation work package needs a proportional review
 
 # Implementation Verification Review
 
-Review one `WORK-###` after implementation. Decide whether it is ready for the next gate; do not rewrite the SRS/STS or silently fix the code.
+Apply the shared `verification` method, then enforce the automotive work-item, SRS/STS, evidence, and delivery criteria below. Review one `WORK-###` after implementation. Decide whether it is ready for the next gate; do not rewrite the SRS/STS or silently fix the code.
 
 ## Review proportionally
 

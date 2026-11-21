@@ -12,22 +12,22 @@ Use this checklist in a fresh review context with the source SRS and the draft S
 
 ### Requirements and traceability
 
-- Every testable requirement has at least one linked `TC-###`.
-- Every `TC-###` links to a valid requirement.
+- Every testable requirement has at least one linked `TC` or an explained coverage gap.
+- Every `TC` links to a valid requirement.
 - Requirement IDs, test case IDs, and references are consistent.
-- Unclear or conflicting requirements are recorded as `ISSUE-###`.
+- Unclear or conflicting requirements are recorded as `ISSUE` items.
 
 ### Test design
 
 - Normal behavior is covered where required.
 - Applicable boundary, empty/missing, invalid, timing, state, recovery, interface, and permission conditions are considered.
 - The selected test technique matches the requirement and input shape.
-- Additional edge cases are clearly identified as additional rather than confused with ordinary boundary tests.
+- Edge cases with defined expected behavior are executable test cases. Undefined behavior is an issue and coverage gap pending a decision.
 
 ### Test procedure
 
-- Each test case has prerequisites, input/trigger, numbered steps, expected results, pass criteria, and evidence.
-- Setup, action, verification, and cleanup are distinct.
+- Each test case has the prerequisites, input/trigger, steps, expected results, pass criteria, and evidence needed for reproduction.
+- Setup, action, verification, and cleanup are clear where applicable.
 - Steps are executable in the stated order.
 - Each meaningful step has an observable expected result.
 

@@ -2,10 +2,9 @@
 
 Use when an automotive SRS or requirements document must become a traceable English STS.
 
-1. Read `../../../../skills/input-review/SKILL.md`.
-2. Read `../../software-test-documentation/SKILL.md`.
-3. Read `../../software-requirements-specification/SKILL.md` when the source is an SRS and its decisions or open items affect test scope.
-4. Read `../../../../skills/traceability/SKILL.md` and `../../../../skills/verification/SKILL.md` before reporting coverage.
-5. Keep unsupported test environments, limits, and acceptance criteria explicit rather than guessing.
+1. Apply `engineering-design` to confirm the SRS revision, scope, and open decisions.
+2. Apply `software-test-documentation`; it invokes `spec-tests` and adds vehicle-specific test conditions and environment guidance.
+3. Apply `verification` before reporting coverage.
+4. Keep unsupported test environments, limits, and expected behavior explicit rather than guessing. Link gaps to the affected `REQ` and `ISSUE` IDs.
 
-Output: an STS with traceable test cases and ordered procedures.
+Output: an STS with traceable test cases, selected test design techniques, and executable procedures. The shared format is a reference, not a required layout.

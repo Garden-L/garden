@@ -16,11 +16,38 @@ This is the main entry point for the `automotive-development` project package. C
 - Post-implementation evidence review: [Implementation Verification](playbooks/verification.md)
 - Proposed approved-baseline change: [Baseline Change Control](playbooks/change-control.md)
 
-Reusable skills are in the repository's top-level `skills/` directory. Read only those referenced by the selected playbook and needed by the current stage.
+The installed bundle exposes reusable skills by name. Read only those named by the selected playbook and needed by the current stage.
+
+## Skill registry
+
+Resolve skill names through this registry. Playbooks use names so their instructions do not depend on the bundle's folder layout.
+
+### Shared skills
+
+- `engineering-design` — `skills/engineering-design/SKILL.md`
+- `spec-requirements` — `skills/spec-requirements/SKILL.md`
+- `spec-tests` — `skills/spec-tests/SKILL.md`
+- `why` — `skills/why/SKILL.md`
+- `how` — `skills/how/SKILL.md`
+- `implementation` — `skills/implementation/SKILL.md`
+- `specification` — `skills/specification/SKILL.md`
+- `verification` — `skills/verification/SKILL.md`
+
+### Automotive skills
+
+- `automotive-baseline-change-control` — `automotive-development/skills/baseline-change-control/SKILL.md`
+- `automotive-implementation-profile` — `automotive-development/skills/bounded-implementation-execution/SKILL.md`
+- `implementation-backlog-traceability` — `automotive-development/skills/implementation-backlog-traceability/SKILL.md`
+- `automotive-readiness-review` — `automotive-development/skills/implementation-readiness-review/SKILL.md`
+- `automotive-verification-review` — `automotive-development/skills/implementation-verification-review/SKILL.md`
+- `software-requirements-specification` — `automotive-development/skills/software-requirements-specification/SKILL.md`
+- `software-test-documentation` — `automotive-development/skills/software-test-documentation/SKILL.md`
+
+The shared `implementation` skill includes the reusable-tool principle for recurring engineering patterns.
 
 ## Package and environment
 
-Before running on another system, verify the selected playbook's required skills are available. If one is missing, report the exact skill and stage it blocks. Optional skills such as TDD or Git hygiene are loaded only when the selected playbook calls for them.
+Before running on another system, verify the selected playbook's required skills are available. If one is missing, report the exact skill and stage it blocks. Load only the shared and automotive profile skills named by the selected playbook.
 
 Do not treat a missing Git provider connection, repository remote, test runner, hardware/HIL environment, or project policy as a missing skill. Report those as environment prerequisites separately.
 

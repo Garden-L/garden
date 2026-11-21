@@ -2,11 +2,11 @@
 
 Use when one approved `WORK-###` must be implemented within its defined scope.
 
-1. Read `../../implementation-backlog-traceability/SKILL.md` to understand the work packet and traceability contract.
-2. Read `../../bounded-implementation-execution/SKILL.md` for the implementation boundary.
-3. Read `../../../../skills/input-review/SKILL.md` and `../../../../skills/traceability/SKILL.md` to confirm packet inputs and links.
-4. Read `../../../../skills/architect/SKILL.md` when the change crosses a module or interface boundary.
-5. Read `../../../../skills/tdd/SKILL.md` when a cheap focused regression path exists.
-6. Read `../../../../skills/git-hygiene/SKILL.md` before inspecting or preparing repository changes.
+1. Apply `implementation-backlog-traceability` to understand the work packet and traceability contract.
+2. Apply `bounded-implementation-execution` for the implementation boundary.
+3. Apply `engineering-design` to confirm packet inputs, boundaries, and readiness.
+4. Apply `implementation` for the shared bounded execution and TDD method.
+5. Apply `automotive-implementation-profile` for work-packet traceability and delivery gates.
+6. Preserve unrelated repository changes while inspecting or preparing the work item.
 
 Output: the bounded implementation, its checks, traceability updates, and a local commit when the leaf skill permits it.
