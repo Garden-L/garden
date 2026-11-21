@@ -3,7 +3,7 @@ name: tdd
 description: Use when a change has a cheap, focused executable test path; capture the intended behavior with a failing test before changing implementation.
 ---
 
-# Shared Test-Driven Development Skill
+# Test-Driven Development
 
 Use the narrowest practical test for the behavior being changed.
 

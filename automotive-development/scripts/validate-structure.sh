@@ -9,15 +9,15 @@ required_files=(
   "$package_dir/docs/architecture.md"
   "$package_dir/agents/README.md"
   "$package_dir/scripts/README.md"
-  "$package_dir/skills/automotive-development-pipeline/SKILL.md"
-  "$package_dir/skills/automotive-development-pipeline/playbooks/requirements-to-srs.md"
+  "$package_dir/skills/automotive-engineering/SKILL.md"
+  "$package_dir/skills/automotive-engineering/playbooks/requirements-to-srs.md"
 )
 
 for file in "${required_files[@]}"; do
   test -f "$file" || { echo "missing: ${file#$repo_dir/}" >&2; exit 1; }
 done
 
-for file in "$package_dir"/skills/automotive-development-pipeline/playbooks/*.md "$package_dir"/skills/*/SKILL.md "$repo_dir"/skills/shared/*/SKILL.md; do
+for file in "$package_dir"/skills/automotive-engineering/playbooks/*.md "$package_dir"/skills/*/SKILL.md "$repo_dir"/skills/*/SKILL.md; do
   test -f "$file" || { echo "missing skill/playbook file: ${file#$repo_dir/}" >&2; exit 1; }
   sed -n '1,8p' "$file" | rg -q '^name:|^# ' || { echo "missing readable header: ${file#$repo_dir/}" >&2; exit 1; }
 done

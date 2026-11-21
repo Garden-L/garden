@@ -3,7 +3,7 @@ name: verification
 description: Use before declaring work complete; verify the real artifact and report direct evidence rather than relying on compilation, self-report, or file presence.
 ---
 
-# Shared Verification Skill
+# Verification
 
 Verify the artifact the user will actually consume.
 
@@ -13,4 +13,4 @@ Verify the artifact the user will actually consume.
 - Check the failure path when the workflow has a gate or approval boundary.
 - Report the exact command and result, including limitations.
 
-This skill does not decide whether a domain-specific approval is valid; the calling workflow owns that decision.
+The calling project workflow owns domain-specific approval decisions.

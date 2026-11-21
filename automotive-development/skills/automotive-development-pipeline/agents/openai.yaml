@@ -1,4 +1,0 @@
-interface:
-  display_name: "Automotive Development Pipeline"
-  short_description: "Run the automotive SRS, STS, and readiness workflow in stages"
-  default_prompt: "Use $automotive-development-pipeline to process the supplied automotive requirements through SRS, STS, and implementation readiness, stopping for decisions when needed."
