@@ -14,10 +14,15 @@ Invoke `$automotive-engineering` for automotive work, or invoke an automotive le
 - `agents/` — future author, reviewer, or worker briefs.
 - `docs/` — package architecture and operating notes.
 - `scripts/` — deterministic package checks and future helpers.
+- `examples/` — a runnable module bundle with source, SRS, STS, issue, work, coverage, and verification outputs.
+
+The code-development flow starts after SRS/STS readiness. Use implementation planning to create bounded work packets, then choose feature, bug-fix, or refactoring playbooks. Integration testing, code review, implementation verification, and release readiness are separate gates with separate evidence.
 
 ## Reusable skills
 
 The package composes shared engineering and specification skills with automotive profiles. Shared `spec-requirements` and `spec-tests` own SRS/STS principles, IDs, test design, and reference formats. The automotive profiles add vehicle context, source applicability, target considerations, and review flows without requiring a second document template. The router maps skill names to their library locations; playbooks name only the profiles needed at each stage.
+
+For a module developed from initial requirements through code, use the [module delivery playbook](skills/automotive-engineering/playbooks/module-delivery.md). Its [artifact contract](docs/module-deliverables.md) specifies the consuming project's outputs and their links. A [worked speed-signal example](examples/speed-signal/README.md) shows the complete handoff. `decision` supplies the shared issue-to-outcome principle; the automotive package owns file locations and vehicle-specific fields.
 
 ## External prerequisites
 

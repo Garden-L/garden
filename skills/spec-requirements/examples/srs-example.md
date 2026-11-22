@@ -1,48 +1,52 @@
-# Example SRS: Personal Notes App
+# Software Requirements Specification: Personal Notes App
 
-## 1. Document information
+| Field | Value |
+| --- | --- |
+| Document ID | SRS-NOTES-EXAMPLE |
+| Version / status | 0.1 / example |
+| Author / reviewer / approver | Example author / not assigned / not assigned |
 
-- Version: 0.1
-- Status: Example
+## 1. Purpose and scope
 
-## 2. Purpose and scope
+This SRS defines note creation, editing, listing, and deletion for one user's local notes app. Accounts and synchronization across devices are outside scope.
 
-This SRS defines basic note creation, editing, listing, and deletion for a single-user personal notes app. Account management and synchronization across devices are out of scope.
+## 2. System context
 
-## 3. System context
+The user interacts with the app's interface. The app stores notes locally on the user's device; no external service is required.
 
-The user interacts with the app through its interface. The app stores notes locally on the user's device.
+## 3. Users and scenarios
 
-## 4. Users and scenarios
+The user creates a note (`REQ-001`), finds and edits it (`REQ-002`), removes it (`REQ-003`), or views notes ordered by recent updates (`REQ-004`).
 
-The user creates a note, later finds and edits it, or removes it when it is no longer needed.
+## 4. Requirements
 
-## 5. Functional requirements
+| ID | Category | Requirement | Source | Priority | Acceptance condition |
+| --- | --- | --- | --- | --- | --- |
+| REQ-001 | Functional | The app shall create a note with a title and body supplied by the user. | Example stakeholder need | Must | After saving, the note appears in the list with the supplied title and body. |
+| REQ-002 | Functional | The app shall allow the user to edit an existing note's title and body. | Example stakeholder need | Must | Reopening the saved note shows the updated title and body. |
+| REQ-003 | Functional | The app shall allow the user to delete an existing note. | Example stakeholder need | Must | After deletion, the note is absent from the list and cannot be reopened there. |
+| REQ-004 | Functional | The app shall list notes in most recently updated order. | Example stakeholder need | Should | Updating a note moves it to the top of the list. |
 
-| ID | Requirement | Source | Priority | Acceptance condition |
-| --- | --- | --- | --- | --- |
-| REQ-001 | The app shall create a note with a title and body supplied by the user. | Example stakeholder need | Must | After saving, the note appears in the note list with the supplied title and body. |
-| REQ-002 | The app shall allow the user to edit the title and body of an existing note. | Example stakeholder need | Must | After saving an edit, reopening the note shows the updated title and body. |
-| REQ-003 | The app shall allow the user to delete an existing note. | Example stakeholder need | Must | After deletion, the note no longer appears in the note list and cannot be reopened from that list. |
-| REQ-004 | The app shall show notes in a list ordered by most recently updated first. | Example stakeholder need | Should | Updating a note moves it to the top of the list. |
+No quality requirement was supplied for this example.
 
-## 6. Quality requirements
+## 5. Interfaces and data
 
-No quality requirements were supplied for this example.
+Each note has a title and body stored locally. Account, export, and synchronization interfaces are outside scope. `REQ-001` through `REQ-004` use this note data.
 
-## 7. Interfaces and data
+## 6. Constraints and assumptions
 
-Each note has a title and body. Account, export, and synchronization interfaces are out of scope.
+Notes are stored on the current device. The example assumes one user and one local collection.
 
-## 8. Constraints and assumptions
+## 7. Open issues and decisions
 
-- Notes are stored on the current device.
-- The example assumes one user and one local collection.
+No open issue or decision is supplied in this example.
 
-## 9. Open issues and decisions
+## 8. References and glossary
 
-No open issues in this example.
+There are no external references. A **note** is one user-authored title-and-body item. The matching [STS example](../../spec-tests/examples/sts-example.md) links its test cases to these `REQ` IDs.
 
-## 10. References and glossary
+## Revision history
 
-No external references. A **note** is one user-authored title-and-body item.
+| Version | Change |
+| --- | --- |
+| 0.1 | Initial example |

@@ -1,65 +1,95 @@
-# Example STS: Personal Notes App
+# Software Test Specification: Personal Notes App
 
-This STS verifies the companion [SRS example](../../spec-requirements/examples/srs-example.md). The test cases use its requirement IDs.
+| Field | Value |
+| --- | --- |
+| Document ID | STS-NOTES-EXAMPLE |
+| Version / status | 0.1 / example, not executed |
+| Author / reviewer / approver | Example author / not assigned / not assigned |
 
-## 1. Document information
+## 1. Purpose and scope
 
-- Version: 0.1
-- Status: Example
+Verify creation, editing, deletion, and list ordering in the companion [SRS example](../../spec-requirements/examples/srs-example.md). Accounts and synchronization are outside scope.
 
-## 2. Purpose and scope
+## 2. Test basis and traceability
 
-Verify note creation, editing, deletion, and list ordering. Multi-user behavior and synchronization are out of scope.
-
-## 3. Test basis and traceability
-
-| Requirement | Test case | Coverage |
+| Basis document | Version | Location |
 | --- | --- | --- |
-| REQ-001 | TC-001 | Create and retrieve a note |
-| REQ-002 | TC-002 | Edit and retrieve a note |
+| SRS-NOTES-EXAMPLE | 0.1 | [SRS](../../spec-requirements/examples/srs-example.md) |
+
+| Requirement ID | Test case IDs | Coverage / gap |
+| --- | --- | --- |
+| REQ-001 | TC-001 | Create and reopen a note; empty-title behavior is ISSUE-001 |
+| REQ-002 | TC-002 | Edit and reopen a note |
 | REQ-003 | TC-003 | Delete a note |
-| REQ-004 | TC-004 | Order notes after update |
+| REQ-004 | TC-004 | Reorder after an update |
 
-## 4. Test environment and data
+## 3. Test environment and data
 
-- A clean local app instance
-- Two notes with distinct titles and bodies for ordering tests
+Use a clean local app instance. For `TC-004`, prepare two notes with distinct titles and bodies. This example specifies tests only; no app instance or test run is supplied.
 
-## 5. Test strategy
+## 4. Test strategy
 
-Exercise each requirement through the user-visible application behavior. Confirm persisted results by reopening the relevant view.
+Use scenario testing for the user-visible create, edit, and delete flows; use a state transition from initial order to updated order for `REQ-004`. Confirm persisted results by reopening the relevant view. The SRS does not define empty-title behavior, so do not invent a pass criterion for it.
 
-## 6. Test cases and procedures
+## 5. Test cases and procedures
 
-### TC-001 — Create a note (REQ-001)
+### TC-001: create a note
 
-1. Create a note with title `First note` and body `Remember this item`.
-2. Save the note and open the note list.
+**Requirement:** `REQ-001`. **Technique:** scenario testing. **Precondition:** clean app. **Data:** title `First note`, body `Remember this item`.
 
-**Expected result:** The list contains `First note`; opening it shows `Remember this item`.
+| Step | Action | Expected result |
+| --- | --- | --- |
+| 1 | Create and save the note. | The note is saved. |
+| 2 | Open the list and then the note. | The list contains `First note`; the opened body is `Remember this item`. |
 
-### TC-002 — Edit a note (REQ-002)
+**Pass criterion:** both title and body persist. **Evidence plan:** list and reopened-note observations.
 
-1. Open an existing note and change its title to `Revised note` and body to `Updated text`.
-2. Save, return to the list, and reopen the note.
+### TC-002: edit a note
 
-**Expected result:** The reopened note shows `Revised note` and `Updated text`.
+**Requirement:** `REQ-002`. **Technique:** scenario testing. **Precondition:** an existing note. **Data:** title `Revised note`, body `Updated text`.
 
-### TC-003 — Delete a note (REQ-003)
+| Step | Action | Expected result |
+| --- | --- | --- |
+| 1 | Edit the title and body, then save. | The edit is saved. |
+| 2 | Return to the list and reopen the note. | `Revised note` and `Updated text` appear. |
 
-1. Delete an existing note from the app.
-2. Return to the note list and search for its title.
+**Pass criterion:** both edited values persist. **Evidence plan:** reopened-note observation.
 
-**Expected result:** The note is absent and cannot be reopened from the list.
+### TC-003: delete a note
 
-### TC-004 — Order notes by most recent update (REQ-004)
+**Requirement:** `REQ-003`. **Technique:** scenario testing. **Precondition:** an existing note.
 
-1. Create notes `Alpha` and `Beta` in that order.
-2. Edit and save `Alpha`.
-3. Return to the note list.
+| Step | Action | Expected result |
+| --- | --- | --- |
+| 1 | Delete the note. | The deletion action completes. |
+| 2 | Return to the list and search for its title. | The note is absent and cannot be reopened from the list. |
 
-**Expected result:** `Alpha` appears before `Beta`.
+**Pass criterion:** the deleted note is unavailable from the list. **Evidence plan:** list observation.
 
-## 7. Results and unresolved items
+### TC-004: order notes after an update
 
-Record each case as passed, failed, blocked, or not run, with the observed result and evidence. No unresolved items are supplied in this example.
+**Requirement:** `REQ-004`. **Technique:** state transition testing. **Precondition:** clean app. **Data:** notes `Alpha` and `Beta`.
+
+| Step | Action | Expected result |
+| --- | --- | --- |
+| 1 | Create `Alpha`, then `Beta`. | Both appear in the list. |
+| 2 | Edit and save `Alpha`; return to the list. | `Alpha` appears before `Beta`. |
+
+**Pass criterion:** the updated note moves to the top. **Evidence plan:** list order before and after update.
+
+## 6. Results and unresolved items
+
+| Test case ID | Status | Observed result | Evidence | Issue ID |
+| --- | --- | --- | --- | --- |
+| TC-001 | Not run | — | — | — |
+| TC-002 | Not run | — | — | — |
+| TC-003 | Not run | — | — | — |
+| TC-004 | Not run | — | — | — |
+
+**ISSUE-001:** The SRS does not specify what happens when the title is empty. Why it matters: a negative-input test would have no supported expected result. The requirement owner must define whether empty titles are accepted or rejected; only then can a corresponding `TC` be added. No execution or passing result is claimed.
+
+## Revision history
+
+| Version | Change | Author |
+| --- | --- | --- |
+| 0.1 | Initial example | Example author |

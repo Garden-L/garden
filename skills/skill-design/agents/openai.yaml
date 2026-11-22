@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Design"
+  short_description: "Name and place reusable skills in this library"
+  default_prompt: "Use $skill-design to design or revise this repository's skills: decide scope, naming, composition, and verification before editing."

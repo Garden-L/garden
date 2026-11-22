@@ -1,0 +1,11 @@
+$ python3 -m unittest discover -s tests -v
+test_TC_001_accepts_valid_range_boundaries (test_speed_signal.SpeedSignalTests.test_TC_001_accepts_valid_range_boundaries) ... ok
+test_TC_002_rejects_outside_range (test_speed_signal.SpeedSignalTests.test_TC_002_rejects_outside_range) ... ok
+test_TC_003_timeout_is_strictly_after_100_ms (test_speed_signal.SpeedSignalTests.test_TC_003_timeout_is_strictly_after_100_ms) ... ok
+test_TC_004_three_valid_messages_recover (test_speed_signal.SpeedSignalTests.test_TC_004_three_valid_messages_recover) ... ok
+test_TC_005_power_off_clears_and_pauses_monitoring (test_speed_signal.SpeedSignalTests.test_TC_005_power_off_clears_and_pauses_monitoring) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 0.000s
+
+OK

@@ -1,3 +1,5 @@
 skills-ko/
 automotive-development-ko/
 trash/
+__pycache__/
+*.pyc

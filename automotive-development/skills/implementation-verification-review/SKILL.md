@@ -1,42 +1,33 @@
 ---
 name: implementation-verification-review
-description: Use when an implementation work package needs a proportional review against its approved requirements, tests, scope, diff, and evidence before delivery.
+description: Use when an implementation work package needs a practical check against its approved requirements, test procedures, changed artifact, and target evidence before delivery.
 ---
 
 # Implementation Verification Review
 
-Apply the shared `verification` method, then enforce the automotive work-item, SRS/STS, evidence, and delivery criteria below. Review one `WORK-###` after implementation. Decide whether it is ready for the next gate; do not rewrite the SRS/STS or silently fix the code.
+Use the shared `verification` method to check one completed `WORK-###` against its approved SRS, STS, implementation, and actual run evidence. Decide whether the result is supported well enough for the next delivery gate. Do not silently change the requirement, test expectation, or implementation during review.
 
-## Review proportionally
+For a [module bundle](../../docs/module-deliverables.md), record the verification in `05-verification/verification.md` and regenerate `05-verification/completion-report.md` after the source records are current.
 
-Reuse the existing packet, matrix, test results, and CI evidence. For a low-risk small change, perform a focused review. Expand the review only when the diff or risk involves public contracts, schema/wire behavior, safety, security, diagnostics, timing, concurrency, or resource limits.
+## Perform the review
 
-## Required checks
+1. **Identify what changed.** Compare the implementation with the work packet and its base revision. Confirm the correct files, build, configuration, and target are under review.
+2. **Choose checks for the changed behavior.** Start with the STS procedures linked to the affected requirements. Add only relevant boundary, invalid-input, error, recovery, or regression cases. For vehicle behavior, use the required ECU/HIL/vehicle environment when available; mark unavailable target checks as pending.
+3. **Run and observe.** Confirm each precondition, follow the procedure in order, and capture actual intermediate and final behavior. Record the command, revision, environment, inputs, logs, and relevant side effects. A green summary without the underlying result is insufficient.
+4. **Compare with the expectation.** For each failure or unexpected result, check that the correct build ran, the setup and inputs match the procedure, and the expected result agrees with the approved requirement. Reproduce the mismatch under the same conditions before concluding it is an implementation defect. If the test or requirement is unclear, report that and stop short of a pass/fail claim.
+5. **Verify corrections and scope.** Rerun the corrected case and relevant regression checks. Confirm no unrelated change or unverified target behavior is included in the delivery claim.
 
-1. **Baseline and scope** — compare the branch to the packet's base revision. Confirm every changed file, API/data/schema effect, and line/file limit is allowed. Treat unrelated changes as a scope failure.
-2. **Requirement and test coverage** — verify SRS IDs, STS IDs, acceptance criteria, and observable behavior match. Check existing requirement, test, work, and commit links; check MR links after an MR exists.
-3. **Verification evidence** — confirm mapped tests, relevant regression checks, and applicable lint/type/build results. Check CI after push; do not treat unexecuted hardware, HIL, integration, or release checks as passed.
-4. **Risk review** — inspect only risks relevant to the change: errors/boundaries, state/recovery, interfaces, security, safety, concurrency, performance, diagnostics, and rollback.
-5. **Traceability update** — record findings, evidence, status, and any required decision in the existing matrix.
-
-If a defect or scope expansion is found, return it to the implementer or create a new work item. Do not modify a baselined requirement or test specification as a workaround.
+A useful finding states the expected behavior, the actual reproducible result, the evidence, and why the difference matters to the vehicle behavior or delivery decision. Recommend the correction that addresses the demonstrated cause. If the cause is still uncertain, say what needs to be checked next; do not guess or change a baselined SRS/STS to make the result pass.
 
 ## Verdicts
 
-- `APPROVED FOR PUSH/MR` — scope, tests, evidence, and required review checks pass.
-- `CONDITIONAL` — safe to continue only with listed non-blocking evidence or environment conditions.
-- `CHANGES REQUIRED` — scope, behavior, test, traceability, or risk issue blocks delivery.
-- `BLOCKED` — missing baseline, packet, decision, or required environment prevents a valid review.
+- `APPROVED FOR PUSH/MR` — required checks passed in the applicable environment and the evidence supports the stated scope.
+- `CONDITIONAL` — only named non-blocking checks or environments remain pending.
+- `CHANGES REQUIRED` — a reproducible mismatch or invalid check prevents delivery.
+- `BLOCKED` — missing expectations, setup, or required environment prevents a valid conclusion.
 
-This review does not authorize push, MR creation, or merge. Push/MR requires the separate approval gate; merge requires another approval after review and CI.
+A local or simulated pass does not establish ECU, HIL, vehicle, safety, or release behavior. This review does not authorize push, MR creation, or merge.
 
-## Required output
+## Report
 
-Return:
-
-1. **Verdict** and one-sentence reason.
-2. **Baseline and scope** — revisions and changed-file result.
-3. **Findings** — severity, evidence, affected IDs, and required action.
-4. **Verification** — tests/checks run and pending environments.
-5. **Traceability** — updated links and remaining gaps.
-6. **Next gate** — rework, push/MR approval, or merge approval.
+Give the verdict and reason, reviewed revision and environment, checks run, expected and actual results for failures, evidence, remaining unverified scope, and the next action. For module delivery, update the verification record and regenerate the completion report. Do not repeat IDs or decision rationale already maintained in the source artifacts.

@@ -1,6 +1,6 @@
 # Independent STS Reviewer Checklist
 
-Use this checklist in a fresh review context with the source SRS and the draft STS. The reviewer checks the artifacts themselves and does not assume that the author's interpretation is correct.
+Apply the shared `review` method, then use this checklist for automotive STS-specific checks. When available, review the source SRS and draft STS in a fresh context; do not assume the author's interpretation is correct.
 
 ## Review inputs
 

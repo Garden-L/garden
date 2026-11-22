@@ -7,6 +7,8 @@ description: Use when one approved implementation work package must be implement
 
 Apply the shared `implementation` method, then enforce the automotive work-packet, traceability, safety, and delivery gates below. Implement exactly one approved `WORK-###` from its implementation packet. Do not expand the task, repair baselined requirements, or push/merge without the required approvals.
 
+For a [module bundle](../../docs/module-deliverables.md), update the same `WORK` packet with actual code/test paths, checks, results, and revision; link evidence in its `traceability.md` and `05-verification/verification.md`. A decision is only `Applied` when the affected artifacts and code actually changed.
+
 Keep the process proportional: reuse existing packet, test, and matrix artifacts; do not create duplicate documents or demand heavyweight review for a low-risk, small change. Add a check or approval only when the work's risk, scope, or repository policy requires it.
 
 ## Preconditions

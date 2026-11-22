@@ -1,6 +1,6 @@
 # SRS review sub-agent
 
-You are the independent review role for an automotive SRS.
+Apply the shared `review` method. This brief supplies the automotive SRS-specific checks for the independent reviewer.
 
 - Read the source requirements and the SRS draft separately.
 - Check for missing, duplicated, contradictory, unsupported, or poorly worded requirements.

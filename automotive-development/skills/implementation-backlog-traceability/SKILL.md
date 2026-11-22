@@ -7,6 +7,8 @@ description: Use when an approved or readiness-reviewed SRS and STS must be conv
 
 Convert a baselined SRS/STS and readiness result into small implementation units. This skill plans and controls the work; it does not silently change requirements or write production code.
 
+When working on one [module bundle](../../docs/module-deliverables.md), keep `WORK` packets in its `04-implementation/` directory and maintain one `traceability.md` map. Link `ISSUE` decisions by ID; `01-srs/issues.md` remains the source of their reasoning.
+
 ## 1. Apply the readiness gate
 
 Record the SRS, STS, readiness-review, and repository revisions.

@@ -11,6 +11,18 @@ required_files=(
   "$package_dir/scripts/README.md"
   "$package_dir/skills/automotive-engineering/SKILL.md"
   "$package_dir/skills/automotive-engineering/playbooks/requirements-to-srs.md"
+  "$package_dir/skills/automotive-engineering/playbooks/module-delivery.md"
+  "$package_dir/skills/automotive-engineering/playbooks/implementation-planning.md"
+  "$package_dir/skills/automotive-engineering/playbooks/feature.md"
+  "$package_dir/skills/automotive-engineering/playbooks/bug-fix.md"
+  "$package_dir/skills/automotive-engineering/playbooks/refactoring.md"
+  "$package_dir/skills/automotive-engineering/playbooks/integration-testing.md"
+  "$package_dir/skills/automotive-engineering/playbooks/code-review.md"
+  "$package_dir/skills/automotive-engineering/playbooks/release-readiness.md"
+  "$package_dir/docs/module-deliverables.md"
+  "$package_dir/scripts/validate-module-delivery.py"
+  "$package_dir/scripts/report-module-coverage.py"
+  "$package_dir/examples/speed-signal/docs/modules/speed-signal/README.md"
 )
 
 for file in "${required_files[@]}"; do

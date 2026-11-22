@@ -5,52 +5,49 @@ description: Use as the main entry point for automotive software work; route the
 
 # Automotive Engineering
 
-This is the main entry point for the `automotive-development` project package. Classify the user's request, read the matching playbook in this skill's `playbooks/` directory, and then load only the small skills that playbook names. Do not load every skill for every task. Preserve each skill's approval gates and never infer approval from a document's existence.
+This is the main entry point for the `automotive-development` project package. It routes vehicle software work from source documents through implementation and verification. Keep this file as the mode contract; task procedures belong in playbooks, and focused methods belong in leaf skills.
 
-## Package workflow links
+## Non-negotiables
 
-- Raw requirements to SRS: [Requirements to SRS](playbooks/requirements-to-srs.md)
-- SRS to STS: [SRS to STS](playbooks/srs-to-sts.md)
-- Pre-implementation review: [Implementation Readiness Review](playbooks/readiness-review.md)
-- Approved work package implementation: [Bounded Implementation](playbooks/implementation.md)
-- Post-implementation evidence review: [Implementation Verification](playbooks/verification.md)
-- Proposed approved-baseline change: [Baseline Change Control](playbooks/change-control.md)
+1. Do not load every skill. Select one playbook, then load only the skills it names.
+2. Preserve source IDs, decisions, approval state, and evidence across handoffs.
+3. Never infer approval from a filename, document existence, or absence of comments.
+4. Do not invent safety levels, standards compliance, interfaces, limits, or expected results.
+5. Pause when a missing decision changes scope, safety, implementation, or verification.
 
-The installed bundle exposes reusable skills by name. Read only those named by the selected playbook and needed by the current stage.
+## 0. Frame the request
 
-## Skill registry
+Identify the requested outcome, available artifacts and versions, current lifecycle stage, target scope, and approval state. If the user asks for the full module result, use [Module Delivery](playbooks/module-delivery.md). For a single stage, select the matching playbook below.
 
-Resolve skill names through this registry. Playbooks use names so their instructions do not depend on the bundle's folder layout.
+## 1. Select a playbook
 
-### Shared skills
+- Full module from source to verified code → [Module Delivery](playbooks/module-delivery.md)
+- Raw requirements to SRS → [Requirements to SRS](playbooks/requirements-to-srs.md)
+- SRS to STS → [SRS to STS](playbooks/srs-to-sts.md)
+- Pre-implementation review → [Implementation Readiness Review](playbooks/readiness-review.md)
+- Convert approved specifications into implementation work → [Implementation Planning](playbooks/implementation-planning.md)
+- Add behavior within an approved work packet → [Feature Development](playbooks/feature.md)
+- Reproduce and correct a defect → [Bug Fix](playbooks/bug-fix.md)
+- Change structure while preserving behavior → [Refactoring](playbooks/refactoring.md)
+- Validate behavior across components or target environments → [Integration Testing](playbooks/integration-testing.md)
+- Review a code change before delivery → [Code Review](playbooks/code-review.md)
+- Approved work package implementation → [Bounded Implementation](playbooks/implementation.md)
+- Post-implementation evidence review → [Implementation Verification](playbooks/verification.md)
+- Assess delivery and release readiness → [Release Readiness](playbooks/release-readiness.md)
+- Proposed approved-baseline change → [Baseline Change Control](playbooks/change-control.md)
 
-- `engineering-design` — `skills/engineering-design/SKILL.md`
-- `spec-requirements` — `skills/spec-requirements/SKILL.md`
-- `spec-tests` — `skills/spec-tests/SKILL.md`
-- `why` — `skills/why/SKILL.md`
-- `how` — `skills/how/SKILL.md`
-- `implementation` — `skills/implementation/SKILL.md`
-- `specification` — `skills/specification/SKILL.md`
-- `verification` — `skills/verification/SKILL.md`
+## 2. Follow the playbook
 
-### Automotive skills
+The playbook owns the numbered steps, required inputs, outputs, and gates for that task. It calls shared and automotive skills by name. Follow their instructions without copying their full procedures into this mode.
 
-- `automotive-baseline-change-control` — `automotive-development/skills/baseline-change-control/SKILL.md`
-- `automotive-implementation-profile` — `automotive-development/skills/bounded-implementation-execution/SKILL.md`
-- `implementation-backlog-traceability` — `automotive-development/skills/implementation-backlog-traceability/SKILL.md`
-- `automotive-readiness-review` — `automotive-development/skills/implementation-readiness-review/SKILL.md`
-- `automotive-verification-review` — `automotive-development/skills/implementation-verification-review/SKILL.md`
-- `software-requirements-specification` — `automotive-development/skills/software-requirements-specification/SKILL.md`
-- `software-test-documentation` — `automotive-development/skills/software-test-documentation/SKILL.md`
+## 3. Resolve missing coverage
 
-The shared `implementation` skill includes the reusable-tool principle for recurring engineering patterns.
+If no playbook fits, choose the narrowest relevant skill, state the uncovered workflow, and do not silently extend a different playbook. If a required skill or environment prerequisite is missing, name the blocked stage and continue only where safe.
 
-## Package and environment
+## 4. Hand off clearly
 
-Before running on another system, verify the selected playbook's required skills are available. If one is missing, report the exact skill and stage it blocks. Load only the shared and automotive profile skills named by the selected playbook.
+Report the current stage, artifact/revision used, result or blocker, remaining decisions, and the next permitted action. For implementation, include changed scope, checks and evidence, traceability state, and delivery status.
 
-Do not treat a missing Git provider connection, repository remote, test runner, hardware/HIL environment, or project policy as a missing skill. Report those as environment prerequisites separately.
+## Environment limits
 
-For a project with no repeatable way to exercise its real target behavior, add a project-specific verification recipe or skill that records how to start, drive, observe, and clean up the target. Reuse an existing harness when one exists; this is not a required generic automotive skill.
-
-If no playbook fits, choose the narrowest automotive skill available and state any missing workflow coverage. Keep the response focused on current stage, decisions or blockers, produced artifact, and next step.
+Git credentials, repository remotes, CI, test runners, policy documents, and ECU/HIL environments are project prerequisites, not bundled skills. Report when their absence blocks a stage.

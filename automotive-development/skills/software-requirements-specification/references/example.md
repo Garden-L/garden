@@ -1,5 +1,7 @@
 # Infotainment media source SRS
 
+This focused example demonstrates clarification, source reconciliation, and unresolved decisions; it is not a completed module handoff. For an SRS following the shared reference format inside a full delivery, see the [speed-signal SRS](../../../examples/speed-signal/docs/modules/speed-signal/01-srs/SRS.md).
+
 ## Clarification and recommendations
 
 Before finalizing this SRS, ask:

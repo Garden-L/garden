@@ -13,4 +13,4 @@ Do not hide ambiguity with convenient wording or invent expected behavior. A dom
 
 Each stated obligation or claim needs a way to decide whether it has been met or supported. Keep that decision condition close to the statement. When the method for making the decision is maintained separately, link it clearly and avoid duplicating details that can drift apart.
 
-When identifying a problem or open issue, apply the shared `why` and `how` skills. They apply to specifications as well as other kinds of work.
+When an issue requires a choice whose effect spans artifacts, apply `decision` to assess the options and connect the authorized choice to its application and verification. Use `why` and `how` directly for explanations that do not require a continuing decision.

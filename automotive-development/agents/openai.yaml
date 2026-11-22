@@ -1,4 +1,4 @@
 interface:
   display_name: "Automotive Development"
-  short_description: "Route automotive work through staged, evidence-based workflows"
-  default_prompt: "Use $automotive-development to select the appropriate automotive development playbook for the task I provide."
+  short_description: "Guide automotive code from readiness through verified delivery"
+  default_prompt: "Use $automotive-engineering to select a requirements, implementation, testing, review, verification, or release workflow for my automotive software task."

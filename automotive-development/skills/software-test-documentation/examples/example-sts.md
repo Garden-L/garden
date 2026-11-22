@@ -1,5 +1,7 @@
 # Example STS: Vehicle Speed Signal Validation
 
+This focused example shows automotive test conditions and one unresolved decision; it is not a completed module handoff. For an STS following the shared reference format inside a full delivery, see the [speed-signal STS](../../../examples/speed-signal/docs/modules/speed-signal/02-sts/STS.md).
+
 This example assumes the following SRS requirements:
 
 | ID | Requirement |
