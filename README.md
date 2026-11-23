@@ -4,16 +4,28 @@ Reusable skills for software and systems development, organized by the kind of w
 
 ## Skills
 
-- [`engineering-design`](skills/engineering-design/SKILL.md) — frame inputs, architecture, readiness, and proposed baseline changes.
+- [`architecting`](skills/architecting/SKILL.md) — choose the simplest structure that meets the intended behavior and constraints.
 - [`specification`](skills/specification/SKILL.md) — create requirements and test specifications with traceability.
 - [`spec-requirements`](skills/spec-requirements/SKILL.md) — create an SRS with stable IDs and traceable requirements; its format and example are references.
 - [`spec-tests`](skills/spec-tests/SKILL.md) — create an STS with traceable cases and suitable test design techniques; its format and example are references.
 - [`review`](skills/review/SKILL.md) — assess changes and deliverables with evidence, prioritized findings, and a clear verdict.
-- [`implementation`](skills/implementation/SKILL.md) — implement bounded work with TDD and reusable tooling.
+- [`work-decomposition`](skills/work-decomposition/SKILL.md) — choose direct, sequential, or parallel execution based on dependencies, ownership, and checks.
 - [`verification`](skills/verification/SKILL.md) — review changes, evidence, risk, and traceability before delivery.
 - [`decision`](skills/decision/SKILL.md) — compare meaningful options, recommend a choice, and connect important decisions to follow-through.
 - [`workflow-design`](skills/workflow-design/SKILL.md) — connect stage inputs, outputs, decisions, and checks to a reviewable result.
 - [`skill-design`](skills/skill-design/SKILL.md) — name, scope, compose, and check skills added to this library.
+
+## Small engineering principles
+
+Use these focused skills when a specific judgment is needed; they complement broader workflows above.
+
+- [`minimal-change`](skills/minimal-change/SKILL.md) — keep a change limited to what the intended result requires.
+- [`change-impact-check`](skills/change-impact-check/SKILL.md) — inspect architectural fit and affected work before writing code.
+- [`domain-model-first`](skills/domain-model-first/SKILL.md) — settle the core data shape and invariants before implementing logic.
+- [`boundary-discipline`](skills/boundary-discipline/SKILL.md) — validate and translate external input at system boundaries.
+- [`root-cause-first`](skills/root-cause-first/SKILL.md) — trace a reproduced failure to its cause before adding a guard or workaround.
+- [`behavior-focused-tests`](skills/behavior-focused-tests/SKILL.md) — test observable behavior so tests survive internal refactoring.
+- [`prove-real-result`](skills/prove-real-result/SKILL.md) — inspect the actual outcome and evidence before claiming completion.
 
 ## Reasoning skills
 
@@ -29,13 +41,11 @@ These skills are retained outside the active library for now:
 
 ## Automotive development package
 
-[`automotive-development`](automotive-development/README.md) is a project-style package. Its pipeline skill and playbooks compose reusable skills above with automotive-specific requirements, testing, readiness, implementation, verification, and baseline-change skills.
+[`automotive-development`](automotive-development/SKILL.md) is the automotive domain entry skill. Its package-level playbooks compose shared principles and general engineering methods with automotive requirements, test artifacts, work packages, target evidence, and baseline gates.
 
-For source requirements through verified code on one module, use its [module delivery playbook](automotive-development/skills/automotive-engineering/playbooks/module-delivery.md), [artifact contract](automotive-development/docs/module-deliverables.md), and [completed local example](automotive-development/examples/speed-signal/README.md). The contract fixes output locations and cross-links; SRS and STS prose remains flexible.
+Automotive requirements, test documentation, feature, bug fix, refactoring, architecture change, and baseline changes are playbooks under the [automotive package](automotive-development/README.md), not nested standalone skills. The [artifact contract](automotive-development/docs/module-deliverables.md) and [speed-signal example](automotive-development/examples/speed-signal/README.md) show its output paths and links.
 
-The automotive package is included in this bundle. Its orchestration entry point is [`automotive-engineering`](automotive-development/skills/automotive-engineering/SKILL.md); domain-specific skills are selected by that router. Git credentials, repository remotes, CI, test runners, and HIL/ECU environments are external prerequisites, not installable skills.
-
-After SRS/STS readiness, the automotive code workflow plans bounded work packets and routes each one through feature development, bug fixing, or refactoring. Integration testing, code review, implementation verification, and release readiness have distinct playbooks and evidence gates.
+The automotive package's orchestration entry point is [`automotive-development`](automotive-development/SKILL.md). Its playbooks select the shared principles needed for each automotive task. Git credentials, repository remotes, CI, test runners, and HIL/ECU environments are external prerequisites, not installable skills.
 
 Each active skill has its own directory directly under `skills/`. Domain packages compose the shared skills with domain-specific context and gates.
 
@@ -47,6 +57,24 @@ English skill files are the canonical, version-controlled source. Matching Korea
 
 ## Skill placement
 
-When creating a skill, apply [`skill-design`](skills/skill-design/SKILL.md): check whether an existing skill owns the method and whether it works beyond the project that prompted it. Place reusable methods in `skills/`; keep domain-specific context, standards, and lifecycle gates inside the relevant package, such as `automotive-development/skills/`.
+### Shared principle skills
+
+A shared principle skill owns one reusable engineering judgment. Its title and instructions name that principle, say when it applies, and give only the rules needed to apply it. Keep it concise and independent of any one project's standards, artifact paths, workflow gates, or tools. Do not turn a principle skill into an implementation workflow.
+
+Dependency points downward from playbooks to principles: a shared principle must not name a domain playbook, enumerate its use cases, or choose the next workflow. It states its own judgment and result; the playbook decides when to invoke it and what to do next.
+
+For example, `minimal-change` says to identify the intended outcome, choose the smallest change that achieves it, preserve what lies outside that change, and expand scope only when needed. It does not prescribe project-specific file limits, cleanup policy, or approval steps.
+
+Write a skill’s frontmatter `description` as an instruction that says when to apply it and what to do. For example, `change-impact-check` uses: “Before writing code, locate the proposed change in the existing architecture and trace the work it affects.” Its body explains how to recognize when the work exceeds a local edit; the consuming playbook chooses the next workflow.
+
+### Domain playbooks apply principles
+
+A domain package such as `automotive-development/` composes shared principles into concrete work for that domain. The playbook supplies applicable artifacts, boundaries, sequence, evidence, and decision gates. It translates a general principle into domain-specific steps without copying the whole shared skill.
+
+For automotive code changes, the feature, bug fix, and refactoring playbooks bind `minimal-change` to an approved `WORK` package: they define how files and acceptance criteria bound the work, where unrelated cleanup belongs, how traceability is updated, and when an approved baseline change must be routed. Those are automotive workflow rules, so they live in the automotive package rather than the shared principle.
+
+When creating a skill, apply [`skill-design`](skills/skill-design/SKILL.md): check existing ownership, choose a shared principle versus a domain playbook, and ensure guidance fits its intended scope. Shared principles go in `skills/`; standards, project terms, artifact paths, and lifecycle gates go in the relevant domain package. Link a shared principle from the domain playbook at the point where it changes a decision.
 
 Do not generalize a skill based only on a possible future use. Identify at least one concrete use outside its originating project and confirm that the core guidance still works there without importing domain-specific assumptions. If that test is not met, keep the skill with its project. When a shared skill is useful to a project package, link it from that package's README and from the relevant router or playbook so agents can discover and load it at the point of use.
+
+For the repository-wide rules on entrypoint size, routing versus execution, progressive disclosure, placement, composition, discoverability, and validation, see [Skill Authoring Principles](docs/skill-authoring-principles.md).

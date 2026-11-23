@@ -1,4 +1,4 @@
 interface:
   display_name: "Automotive Development"
-  short_description: "Guide automotive code from readiness through verified delivery"
-  default_prompt: "Use $automotive-engineering to select a requirements, implementation, testing, review, verification, or release workflow for my automotive software task."
+  short_description: "Guide automotive SRS, STS, implementation, and verification"
+  default_prompt: "Use $automotive-development to choose the automotive requirements, testing, implementation, or verification workflow for my task."

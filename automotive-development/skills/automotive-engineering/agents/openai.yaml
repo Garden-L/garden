@@ -1,4 +1,0 @@
-interface:
-  display_name: "Automotive Engineering"
-  short_description: "Route automotive software work through focused lifecycle skills"
-  default_prompt: "Use $automotive-engineering to choose the appropriate automotive workflow for this task."

@@ -25,7 +25,7 @@ Keep issue lists beside the stage where they were found. Assign IDs uniquely acr
 
 ## Decision and status semantics
 
-Use `ISSUE` as the same stable identifier in all artifacts. One issue record owns the rationale. Other documents link the ID and state only. Record when the issue was discovered, the source and observed conflict or gap, why it matters, options and tradeoffs, recommendation, decision owner and decision, affected `REQ`/`TC`/`WORK`, and evidence that the decision was applied and checked. The common `decision` skill owns the selection and follow-through principles. The automotive `baseline-change-control` skill owns changes to an already approved SRS or STS.
+Use `ISSUE` as the same stable identifier in all artifacts. One issue record owns the rationale. Other documents link the ID and state only. Record when the issue was discovered, the source and observed conflict or gap, why it matters, options and tradeoffs, recommendation, decision owner and decision, affected `REQ`/`TC`/`WORK`, and evidence that the decision was applied and checked. The common `decision` skill owns the selection and follow-through principles. The automotive `change-control` playbook governs changes to an already approved SRS or STS.
 
 Use states with distinct meanings: `Open` means no accepted resolution; `Decided` means the owner chose a response; `Applied` means affected artifacts and code were changed; `Verified` means the result was checked against evidence. Do not advance a state on intent alone. If a decision requires no code, state why and point to the checked affected artifacts. Reopen or supersede a record with an explicit link rather than erasing its earlier decision.
 
@@ -42,4 +42,4 @@ The module's final verdict is `Verified`, `Verified with gaps`, or `Not verified
 | Implementation | `04-implementation/` contains bounded work packets and an implementation report |
 | Verification | `05-verification/` compares actual results to SRS/STS and decisions; regenerate completion report, then update README and traceability |
 
-The [full workflow](../skills/automotive-engineering/playbooks/module-delivery.md) selects the existing stage skills. The [worked example](../examples/speed-signal/README.md) shows the bundle in a small runnable project. `scripts/validate-module-delivery.py` checks structural links and IDs; human review still decides whether requirements, tests, and evidence mean the right thing.
+Use the automotive [SRS](../playbooks/requirements-to-srs.md) and [STS](../playbooks/srs-to-sts.md) playbooks, then select [feature](../playbooks/feature.md), [bug fix](../playbooks/bug-fix.md), or [refactoring](../playbooks/refactoring.md) for code work. The [worked example](../examples/speed-signal/README.md) shows the bundle in a small runnable project. `scripts/validate-module-delivery.py` checks structural links and IDs; human review still decides whether requirements, tests, and evidence mean the right thing.

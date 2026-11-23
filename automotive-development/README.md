@@ -1,28 +1,24 @@
 # Automotive Development
 
-`automotive-development` is a project-style Codex skill package for staged automotive software work. Automotive workflows live here, while reusable engineering skills live directly under the repository's `skills/` directory.
+`automotive-development` is the automotive domain package. Its top-level [SKILL.md](SKILL.md) is the entry point.
 
 ## Use
 
-Invoke `$automotive-engineering` for automotive work, or invoke an automotive leaf skill directly for a focused task. The engineering skill is the router; this directory is the project package containing playbooks and automotive-specific skills.
+Invoke `$automotive-development` for automotive work. Identify the requested outcome and current artifacts, then use the entry skill to select the relevant procedure in [playbooks/](playbooks/). Read only the references needed for that procedure.
 
 ## Package map
 
-- `skills/automotive-engineering/SKILL.md` — concise workflow router.
-- `skills/automotive-engineering/playbooks/` — task-specific sequences and gates.
-- `skills/` — automotive-specific leaf skills.
-- `agents/` — future author, reviewer, or worker briefs.
+- `SKILL.md` — entry point for finding the relevant playbook.
+- `playbooks/` — task procedures that select and apply shared principles.
+- `references/` — automotive context, reviewer checklists, briefs, and examples.
+- `agents/` — UI metadata and agent guidance.
 - `docs/` — package architecture and operating notes.
-- `scripts/` — deterministic package checks and future helpers.
-- `examples/` — a runnable module bundle with source, SRS, STS, issue, work, coverage, and verification outputs.
+- `scripts/` — deterministic package checks.
+- `examples/` — a runnable module bundle with source, SRS, STS, work, coverage, and verification outputs.
 
-The code-development flow starts after SRS/STS readiness. Use implementation planning to create bounded work packets, then choose feature, bug-fix, or refactoring playbooks. Integration testing, code review, implementation verification, and release readiness are separate gates with separate evidence.
+Playbooks determine which shared principles apply, how automotive sources and approved work constrain the task, and what evidence or decision is needed at each step. Keep task-specific steps in the playbooks and supporting context in `references/`.
 
-## Reusable skills
-
-The package composes shared engineering and specification skills with automotive profiles. Shared `spec-requirements` and `spec-tests` own SRS/STS principles, IDs, test design, and reference formats. The automotive profiles add vehicle context, source applicability, target considerations, and review flows without requiring a second document template. The router maps skill names to their library locations; playbooks name only the profiles needed at each stage.
-
-For a module developed from initial requirements through code, use the [module delivery playbook](skills/automotive-engineering/playbooks/module-delivery.md). Its [artifact contract](docs/module-deliverables.md) specifies the consuming project's outputs and their links. A [worked speed-signal example](examples/speed-signal/README.md) shows the complete handoff. `decision` supplies the shared issue-to-outcome principle; the automotive package owns file locations and vehicle-specific fields.
+The [artifact contract](docs/module-deliverables.md) specifies consuming-project outputs and links. A [worked speed-signal example](examples/speed-signal/README.md) shows a complete handoff.
 
 ## External prerequisites
 

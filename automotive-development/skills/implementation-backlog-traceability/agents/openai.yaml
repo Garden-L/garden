@@ -1,7 +1,0 @@
-interface:
-  display_name: "Implementation Backlog & Traceability"
-  short_description: "Create bounded implementation work packages and traceability"
-  default_prompt: "Use $implementation-backlog-traceability to create a bounded implementation backlog and bidirectional traceability matrix from the supplied SRS, STS, and readiness review."
-
-policy:
-  allow_implicit_invocation: true

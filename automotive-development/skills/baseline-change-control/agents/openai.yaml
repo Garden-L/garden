@@ -1,4 +1,0 @@
-interface:
-  display_name: "Baseline Change Control"
-  short_description: "Trace approved document changes into implementation work"
-  default_prompt: "Use $baseline-change-control to assess a proposed SRS, STS, or interface change discovered during implementation."
