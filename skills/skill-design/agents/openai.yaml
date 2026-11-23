@@ -1,4 +1,4 @@
 interface:
   display_name: "Skill Design"
-  short_description: "Name and place reusable skills in this library"
-  default_prompt: "Use $skill-design to design or revise this repository's skills: decide scope, naming, composition, and verification before editing."
+  short_description: "Give a skill one reusable judgment and a clear trigger"
+  default_prompt: "Use $skill-design to define one reusable judgment, its trigger, and its boundary from neighboring skills."

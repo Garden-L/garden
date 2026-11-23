@@ -1,6 +1,6 @@
 ---
 name: root-cause-first
-description: Use when fixing a reproduced defect, recurring symptom, or a problem that has resisted earlier patches.
+description: Trace a reproduced symptom to the earliest supported cause before choosing a correction. Use for defects, recurring failures, or fixes that have already failed once.
 ---
 
 # Root Cause First

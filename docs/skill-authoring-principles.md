@@ -83,7 +83,7 @@ For example, `automotive-development/SKILL.md` is the automotive entrypoint. Aut
 
 For every new skill, verify all of the following:
 
-- frontmatter `name` is specific, and `description` gives an imperative instruction with an application trigger and action;
+- frontmatter `name` is specific, and `description` names a concrete action and the signals that should trigger it, including nearby requests it should not attract when that distinction matters;
 - the skill is reachable from the appropriate README, router, or playbook;
 - the name follows lowercase kebab-case;
 - UI metadata, when present, matches the skill's actual purpose;

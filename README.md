@@ -5,12 +5,12 @@ Reusable skills for software and systems development, organized by the kind of w
 ## Skills
 
 - [`architecting`](skills/architecting/SKILL.md) — choose the simplest structure that meets the intended behavior and constraints.
-- [`specification`](skills/specification/SKILL.md) — create requirements and test specifications with traceability.
-- [`spec-requirements`](skills/spec-requirements/SKILL.md) — create an SRS with stable IDs and traceable requirements; its format and example are references.
-- [`spec-tests`](skills/spec-tests/SKILL.md) — create an STS with traceable cases and suitable test design techniques; its format and example are references.
-- [`review`](skills/review/SKILL.md) — assess changes and deliverables with evidence, prioritized findings, and a clear verdict.
+- [`specification`](skills/specification/SKILL.md) — keep each obligation tied to its source and judgment condition.
+- [`spec-requirements`](skills/spec-requirements/SKILL.md) — state one traceable, clear, verifiable obligation.
+- [`spec-tests`](skills/spec-tests/SKILL.md) — connect a test case to its requirement and observable expected result.
+- [`review`](skills/review/SKILL.md) — judge actual work against its intent and relevant criteria.
 - [`work-decomposition`](skills/work-decomposition/SKILL.md) — choose direct, sequential, or parallel execution based on dependencies, ownership, and checks.
-- [`verification`](skills/verification/SKILL.md) — review changes, evidence, risk, and traceability before delivery.
+- [`verification`](skills/verification/SKILL.md) — compare actual results with explicit expectations under stated conditions.
 - [`decision`](skills/decision/SKILL.md) — compare meaningful options, recommend a choice, and connect important decisions to follow-through.
 - [`workflow-design`](skills/workflow-design/SKILL.md) — connect stage inputs, outputs, decisions, and checks to a reviewable result.
 - [`skill-design`](skills/skill-design/SKILL.md) — name, scope, compose, and check skills added to this library.
@@ -43,11 +43,11 @@ These skills are retained outside the active library for now:
 
 [`automotive-development`](automotive-development/SKILL.md) is the automotive domain entry skill. Its package-level playbooks compose shared principles and general engineering methods with automotive requirements, test artifacts, work packages, target evidence, and baseline gates.
 
-Automotive requirements, test documentation, feature, bug fix, refactoring, architecture change, and baseline changes are playbooks under the [automotive package](automotive-development/README.md), not nested standalone skills. The [artifact contract](automotive-development/docs/module-deliverables.md) and [speed-signal example](automotive-development/examples/speed-signal/README.md) show its output paths and links.
+Automotive requirements, test documentation, feature, bug fix, refactoring, architecture change, and baseline changes are playbooks under the [automotive package](automotive-development/README.md), not nested standalone skills. The [module deliverables guide](automotive-development/docs/module-deliverables.md) defines shared links; the [speed-signal example](automotive-development/examples/speed-signal/README.md) shows one complete layout.
 
 The automotive package's orchestration entry point is [`automotive-development`](automotive-development/SKILL.md). Its playbooks select the shared principles needed for each automotive task. Git credentials, repository remotes, CI, test runners, and HIL/ECU environments are external prerequisites, not installable skills.
 
-Each active skill has its own directory directly under `skills/`. Domain packages compose the shared skills with domain-specific context and gates.
+Each shared principle has its own directory directly under `skills/`. Domain packages have their own entry `SKILL.md` and compose the shared principles with domain-specific context and gates.
 
 ## Install the skill bundle
 
@@ -65,7 +65,7 @@ Dependency points downward from playbooks to principles: a shared principle must
 
 For example, `minimal-change` says to identify the intended outcome, choose the smallest change that achieves it, preserve what lies outside that change, and expand scope only when needed. It does not prescribe project-specific file limits, cleanup policy, or approval steps.
 
-Write a skill’s frontmatter `description` as an instruction that says when to apply it and what to do. For example, `change-impact-check` uses: “Before writing code, locate the proposed change in the existing architecture and trace the work it affects.” Its body explains how to recognize when the work exceeds a local edit; the consuming playbook chooses the next workflow.
+Write a skill’s frontmatter `description` with a concrete action and a discriminating trigger. Name the signals that distinguish it from neighboring skills, but keep workflow steps and handoff rules in playbooks. For example, `architecting` says: “Sketch the affected modules, types, signatures, and interface boundaries before choosing the simplest structure that meets the intended behavior. Use for ‘architect this’, ‘design this’, or structural changes where coding first could lock in the wrong shape.”
 
 ### Domain playbooks apply principles
 

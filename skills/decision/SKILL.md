@@ -1,8 +1,10 @@
 ---
 name: decision
-description: Use when choosing among meaningful alternatives and the best option needs to be selected from goals, constraints, and evidence.
+description: Compare viable choices against the goal, constraints, consequences, and evidence, then recommend the best-supported option. Use when a meaningful choice remains open or uncertainty could change the answer.
 ---
 
 # Decision
 
-State the question being decided and the outcome sought. Separate evidence, assumptions, and unknowns. Compare viable options against the few criteria that matter, including their likely consequences and meaningful tradeoffs. Recommend the option that best meets the goal within the constraints, and give the evidence and reasoning that support it. If the evidence does not support a confident choice, identify what is unknown and how it could change the recommendation. Scale the depth of comparison to the impact and reversibility of the choice.
+State the choice and the outcome sought. Compare viable options against the few criteria that matter, including meaningful consequences and uncertainty. Recommend the option best supported by the evidence; if evidence cannot settle it, identify the missing condition.
+
+Scale the comparison to the impact and reversibility of the choice. The calling playbook decides who authorizes it and where the result is recorded.

@@ -1,6 +1,6 @@
 ---
 name: minimal-change
-description: Use while implementing or refactoring when deciding whether a proposed edit is necessary for the requested outcome.
+description: Choose the smallest edit that achieves the intended result while preserving unrelated behavior and structure. Use when deciding whether a proposed code change belongs in the current scope.
 ---
 
 # Minimal Change

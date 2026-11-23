@@ -18,7 +18,7 @@ Invoke `$automotive-development` for automotive work. Identify the requested out
 
 Playbooks determine which shared principles apply, how automotive sources and approved work constrain the task, and what evidence or decision is needed at each step. Keep task-specific steps in the playbooks and supporting context in `references/`.
 
-The [artifact contract](docs/module-deliverables.md) specifies consuming-project outputs and links. A [worked speed-signal example](examples/speed-signal/README.md) shows a complete handoff.
+The [module deliverables guide](docs/module-deliverables.md) defines shared links and status meanings. A [worked speed-signal example](examples/speed-signal/README.md) shows one complete layout and handoff.
 
 ## External prerequisites
 

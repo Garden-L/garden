@@ -1,6 +1,6 @@
 ---
 name: why
-description: Make the causes, consequences, and evidence behind judgments explicit.
+description: Connect a judgment to the evidence, cause, and consequence that explain it. Use when someone asks why a behavior, decision, or problem matters.
 ---
 
 # Why

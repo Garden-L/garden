@@ -1,6 +1,6 @@
 ---
 name: automotive-development
-description: For automotive software work, find the relevant procedure in playbooks and apply its needed principles and references.
+description: Match an automotive software task to the relevant playbook and apply its governing principles and evidence boundaries. Use when the work depends on traceable sources, approved baselines, or target-specific evidence.
 ---
 
 # Automotive Development

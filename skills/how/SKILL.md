@@ -1,6 +1,6 @@
 ---
 name: how
-description: Make options, tradeoffs, and paths from intent to action clear.
+description: Explain a workable path from an intended outcome to action, including important options and tradeoffs. Use when someone asks how to proceed or needs a choice translated into next steps.
 ---
 
 # How

@@ -1,12 +1,10 @@
 ---
 name: workflow-design
-description: Use when designing a multi-stage workflow whose outputs, decisions, and checks must stay connected from initial input to a reviewable outcome.
+description: Place a checkable result at each handoff that later work depends on, and connect it to its input and decision owner. Use when designing a multi-stage flow with uncertain decisions or evidence gaps.
 ---
 
 # Workflow Design
 
-Start with a result that can be checked, the input that supports it, and the boundaries of the claim. Divide the work into stages only where an output or decision can be reviewed before the next stage depends on it. For each stage, name its input, result, responsible decision, and check. Put uncertain, high-impact decisions early enough that downstream work does not silently assume their answers.
+Choose stage boundaries where an output or decision must be checked before later work can rely on it. For each boundary, identify the input, result, decision owner, and check. Carry the result and its origin into the next stage.
 
-Make the handoff between stages explicit: which result becomes the next input, which identifier or link preserves its origin, and what happens when a check fails or evidence is missing. Keep one authoritative record for each fact or decision and link other artifacts to it. Use `decision` for choices whose effects cross stages. A plan or document is not evidence that the later work happened.
-
-Choose only the rigor the result needs. A small task may combine stages in one session; a risky or irreversible task needs narrower units and stronger checks. The calling domain defines its file layout, standards, approval authority, and environment. This skill defines the reasoning for a workflow, not a universal document template.
+Keep one authoritative source for each fact or decision. The calling playbook sets artifact paths, approvals, and the amount of detail needed.

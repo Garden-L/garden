@@ -1,6 +1,6 @@
 ---
 name: prove-real-result
-description: Use before reporting that an implementation, document, or other deliverable is complete or correct.
+description: Inspect the actual artifact or running behavior against the intended result before claiming completion. Use when a command, summary, or substitute result may not prove the real outcome.
 ---
 
 # Prove the Real Result

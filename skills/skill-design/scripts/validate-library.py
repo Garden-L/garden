@@ -15,9 +15,9 @@ FIELD = re.compile(r"^(name|description):\s*(.+)$", re.MULTILINE)
 
 
 def skill_files(root: Path) -> list[Path]:
-    return sorted((root / "skills").glob("*/SKILL.md")) + sorted(
-        (root / "automotive-development" / "skills").glob("*/SKILL.md")
-    )
+    shared = sorted((root / "skills").glob("*/SKILL.md"))
+    automotive = root / "automotive-development" / "SKILL.md"
+    return shared + ([automotive] if automotive.is_file() else [])
 
 
 def main() -> int:

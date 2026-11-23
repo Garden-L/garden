@@ -1,6 +1,6 @@
 ---
 name: boundary-discipline
-description: Use when data crosses a trust or representation boundary such as configuration, files, APIs, network messages, or user input.
+description: Validate and translate external data where it enters the system, then rely on the accepted internal representation. Use for configuration, files, APIs, messages, or user input crossing a trust or representation boundary.
 ---
 
 # Boundary Discipline

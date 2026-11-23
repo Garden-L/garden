@@ -1,6 +1,6 @@
 ---
 name: domain-model-first
-description: Use before implementing logic whose behavior depends on domain entities, states, relationships, or invariants.
+description: Shape the core types, states, relationships, and invariants before writing logic that depends on them. Use when behavior is stateful, branches heavily, or repeats domain assumptions across files.
 ---
 
 # Domain Model First

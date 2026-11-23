@@ -1,6 +1,6 @@
 ---
 name: behavior-focused-tests
-description: Use when creating, changing, or assessing tests for a software behavior.
+description: Assert outputs, state changes, errors, or side effects a caller can observe. Use when writing or revising a test that should keep passing through behavior-preserving refactoring.
 ---
 
 # Behavior-Focused Tests

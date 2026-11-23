@@ -1,6 +1,6 @@
 ---
 name: change-impact-check
-description: Before writing code, locate the proposed change in the existing architecture and trace the work it affects.
+description: Locate a proposed change in the existing architecture and trace affected callers, interfaces, state, tests, and dependent work before coding. Use before code changes to determine whether the work stays local or crosses architectural boundaries.
 ---
 
 # Change Impact Check
