@@ -1,6 +1,6 @@
 # STS 예제: 차량 속도 신호 검증
 
-이 부분 예제는 자동차 시험 조건과 미결 결정을 보여주며 모듈의 최종 전달 문서는 아니다. 공통 참고 형식에 맞춘 전체 개발 예제는 [속도 신호 STS](../examples/speed-signal/docs/modules/speed-signal/02-sts/STS.md)를 참조한다.
+이 부분 예제는 속도 신호의 시험 조건과 미결 결정을 보여주며 모듈의 최종 전달 문서는 아니다. 공통 참고 형식에 맞춘 전체 개발 예제는 [속도 신호 STS](../examples/speed-signal/docs/modules/speed-signal/02-sts/STS.md)를 참조한다.
 
 다음 SRS 요구사항을 가정한 예제다.
 

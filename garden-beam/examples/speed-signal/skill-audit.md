@@ -10,11 +10,11 @@
 | --- | --- | --- | --- |
 | `workflow-design` | 원본에서 검증된 로컬 결과까지 확인 가능한 단계 전달 | [모듈 목차](docs/modules/speed-signal/README.md), [작업 패킷](docs/modules/speed-signal/04-implementation/WORK-001.md), [검증](docs/modules/speed-signal/05-verification/verification.md) | 좁은 로컬 범위에 있음 |
 | `specification` + `writing-requirements-spec` | 출처와 수용 조건이 있는 `REQ`를 범위·맥락·미결사항과 연결한 SRS | [SRS](docs/modules/speed-signal/01-srs/SRS.md), [원본](docs/modules/speed-signal/source.md) | 있음 |
-| 자동차 SRS 플레이북 + `writing-requirements-spec` | 차량·전원 맥락과 근거 없는 동작의 표시 | [REQ-005](docs/modules/speed-signal/01-srs/SRS.md), [ISSUE-001](docs/modules/speed-signal/01-srs/issues.md) | 로컬 모델에 있음 |
-| 자동차 STS 플레이북 + `writing-test-spec` | `REQ`별 합격 조건을 충분한 `TC` 또는 시험 공백에 연결하고 실행 단계·기대 결과를 정리한 STS | [STS](docs/modules/speed-signal/02-sts/STS.md), [시험](tests/test_speed_signal.py) | 있음 |
+| SRS 플레이북 + `writing-requirements-spec` | 이 예제의 차량·전원 맥락과 근거 없는 동작의 표시 | [REQ-005](docs/modules/speed-signal/01-srs/SRS.md), [ISSUE-001](docs/modules/speed-signal/01-srs/issues.md) | 로컬 모델에 있음 |
+| STS 플레이북 + `writing-test-spec` | `REQ`별 합격 조건을 충분한 `TC` 또는 시험 공백에 연결하고 실행 단계·기대 결과를 정리한 STS | [STS](docs/modules/speed-signal/02-sts/STS.md), [시험](tests/test_speed_signal.py) | 있음 |
 | `decision` | 관찰·이유·선택지·책임자 결정·반영·근거를 갖춘 단일 이슈 | [issues.md](docs/modules/speed-signal/01-srs/issues.md) | 있음. 책임자는 가상 |
-| 자동차 피처 플레이북 + 공용 원칙 | 동작 근거를 갖춘 제한된 구현 | [WORK-001](docs/modules/speed-signal/04-implementation/WORK-001.md), [추적성](docs/modules/speed-signal/traceability.md) | 있음. 커밋·MR 없음 |
-| `verification` + 자동차 검토 | 실제 실행, 환경 한계, 근거 있는 최종 판단 | [시험 출력](docs/modules/speed-signal/05-verification/evidence/unittest-2026-11-22.txt), [검증](docs/modules/speed-signal/05-verification/verification.md) | 로컬 시험 5개 통과. 대상 실행 없음 |
+| 피처 플레이북 + 공용 원칙 | 동작 근거를 갖춘 제한된 구현 | [WORK-001](docs/modules/speed-signal/04-implementation/WORK-001.md), [추적성](docs/modules/speed-signal/traceability.md) | 있음. 커밋·MR 없음 |
+| `verification` + 검토 | 실제 실행, 환경 한계, 근거 있는 최종 판단 | [시험 출력](docs/modules/speed-signal/05-verification/evidence/unittest-2026-11-22.txt), [검증](docs/modules/speed-signal/05-verification/verification.md) | 로컬 시험 5개 통과. 대상 실행 없음 |
 | 모듈 산출물 계약 | 필수 파일과 유효한 ID 연결 | 구조 검사 결과, [완료 보고서](docs/modules/speed-signal/05-verification/completion-report.md) | 구조 검사 통과. 집계값은 기록에서 도출 |
 
 ## 한계와 다음 에이전트 시험
