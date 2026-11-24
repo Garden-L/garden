@@ -1,10 +1,10 @@
 ---
 name: review
-description: Compare actual work with its stated intent and governing criteria, and verify consequential findings with evidence. Use before acceptance or handoff when a decision-ready assessment is needed.
+description: 실제 작업을 의도와 적용 기준에 비교하고 중요한 지적을 근거로 확인하세요. 수용 또는 인계 전에 판단 가능한 검토 결과가 필요할 때 사용하세요.
 ---
 
-# Review
+# 검토
 
-Set the review scope and compare the actual work with its stated intent and governing criteria. Verify consequential findings against evidence, and distinguish confirmed defects from risks or optional improvements.
+검토 범위를 정하고 실제 결과를 의도 및 적용 기준과 비교한다. 중요한 지적은 근거로 확인하며 확정된 결함과 위험·선택적 개선을 구분한다.
 
-Give a verdict with the findings that affect the next decision and the limits of what was inspected. The calling playbook supplies domain criteria, review independence, and the required output location.
+다음 결정을 좌우하는 지적과 확인하지 못한 범위를 포함해 판단을 제시한다. 도메인 기준, 검토 독립성, 산출물 위치는 호출한 플레이북이 정한다.

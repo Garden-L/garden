@@ -1,30 +1,30 @@
-# Module Delivery Implementation Plan
+# 모듈 인계 구현 계획
 
-> **For agentic workers:** Use the design in `docs/superpowers/specs/2026-11-22-module-delivery-design.md`; verify each task before starting the next. This plan is executed in the current session without a new commit.
+> **작업 에이전트:** `docs/superpowers/specs/2026-11-22-module-delivery-design.md`를 사용하고 다음 작업 전에 각 작업을 확인한다. 이 계획은 별도 커밋 없이 현재 세션에서 실행한다.
 
-**Goal:** Make automotive module work traceable from source requirements to final verified code and show a complete example.
+**목표:** 자동차 모듈 작업을 원본 요구사항부터 검증된 코드까지 추적하고 완성된 예시를 보여 준다.
 
-**Architecture:** One reusable decision principle lives in `skills/`. The automotive package owns the lifecycle playbook, output contract, deterministic structural check, and worked example. Existing SRS, STS, readiness, implementation, change, and verification skills remain the stage owners.
+**구조:** 재사용 가능한 결정 원칙 하나를 `skills/`에 둔다. 자동차 패키지는 수명주기 플레이북, 산출물 계약, 결정적 구조 검사, 완성 예시를 맡는다. 기존 SRS, STS, 준비성, 구현, 변경, 검증 스킬이 단계별 책임을 유지한다.
 
-**Tech stack:** Markdown and a Python 3 standard-library validator.
+**기술:** Markdown과 Python 3 표준 라이브러리 검사기.
 
-**Spec:** `docs/superpowers/specs/2026-11-22-module-delivery-design.md`
+**설계 문서:** `docs/superpowers/specs/2026-11-22-module-delivery-design.md`
 
-## Tasks
+## 작업
 
-- [x] Add `skills/decision-trace/SKILL.md` and its ignored Korean mirror; link it from shared specification, engineering, and README without duplicating the principle.
-- [x] Add `skills/workflow-design/SKILL.md` for reusable stage and handoff reasoning, with Korean mirror and routing from the automotive full-delivery playbook.
-- [x] Add `skills/skill-design/SKILL.md` as the agent-facing naming and placement principle for future skills, with Korean mirror and an invocation entry.
-- [x] Add the automotive module-delivery playbook and artifact contract; update router and stage playbooks to route issues and results through the contract.
-- [x] Create a complete illustrative module bundle under automotive examples, including source, SRS, STS, issues, work packet, traceability, and verification.
-- [x] Make its SRS and STS follow the shared reference formats; add a generated completion report and an honest skill-to-output audit.
-- [x] Add a deterministic structural validator and exercise it on the valid example and deliberately broken copies.
-- [x] Mirror new automotive instructional docs to the ignored Korean tree, then verify links, package structure, and Git status. Do not commit this task.
+- [x] `skills/decision-trace/SKILL.md`와 무시되는 한국어 미러를 추가하고 원칙 복제 없이 공용 명세·엔지니어링·README에서 연결한다.
+- [x] 재사용 가능한 단계·인계 판단을 위해 `skills/workflow-design/SKILL.md`를 추가하고 한국어 미러와 자동차 전체 인계 플레이북에서 연결한다.
+- [x] 미래 스킬의 이름과 배치를 위한 `skills/skill-design/SKILL.md`, 한국어 미러, 호출 경로를 추가한다.
+- [x] 자동차 모듈 인계 플레이북과 산출물 계약을 추가하고 라우터·단계별 플레이북이 이슈와 결과를 계약에 연결하게 한다.
+- [x] 원본, SRS, STS, 이슈, 작업 패킷, 추적성, 검증이 있는 완성 예제를 추가한다.
+- [x] 예제 SRS·STS를 공용 참고 형식에 맞추고 생성된 완료 보고서와 정직한 스킬·산출물 점검표를 추가한다.
+- [x] 결정적 구조 검사기를 만들고 정상 예제와 일부러 손상한 복사본에 적용한다.
+- [x] 새 자동차 지침 문서를 무시되는 한국어 트리에 복제한 뒤 링크, 패키지 구조, Git 상태를 확인한다. 이 작업은 커밋하지 않는다.
 
-## Review focus
+## 검토 초점
 
-- An unresolved issue must not appear as an approved expected result.
-- A decision must not be marked complete before its document and code effects are evidenced.
-- A simulated example must not claim real ECU or HIL execution.
-- The validator should detect broken ID links but must not claim to verify requirement meaning.
-- The full playbook must not duplicate or bypass leaf-skill approval gates.
+- 미결 이슈가 승인된 기대 결과처럼 보여서는 안 된다.
+- 문서·코드 영향이 근거로 확인되기 전에 결정을 완료로 표시하지 않는다.
+- 시뮬레이션 예제가 실제 ECU/HIL 실행을 주장하지 않는다.
+- 검사기는 끊어진 ID 연결을 찾되 요구사항의 의미까지 검증한다고 주장하지 않는다.
+- 전체 플레이북이 하위 스킬 승인 게이트를 복제하거나 우회하지 않는다.

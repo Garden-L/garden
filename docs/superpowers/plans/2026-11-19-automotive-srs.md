@@ -1,66 +1,58 @@
-# Automotive SRS Skill Implementation Plan
+# 자동차 SRS 스킬 구현 계획
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **작업 에이전트:** 이 계획을 작업별로 실행할 때 `superpowers:subagent-driven-development` 또는 `superpowers:executing-plans`를 사용한다. 확인란은 진행 상태를 나타낸다.
 
-**Goal:** Create a small skill that converts sentence-level automotive requirements into a structured SRS while identifying ambiguity, context mismatch, duplication, and unverifiable wording.
+**목표:** 문장 수준의 자동차 요구사항을 구조화된 SRS로 옮기며 모호성, 맥락 불일치, 중복, 검증 불가능한 표현을 식별하는 작은 스킬을 만든다.
 
-**Architecture:** Keep the main behavior in `SKILL.md` and place the output contract plus a concrete example in `references/`. The skill will separate source text, normalized requirement, refinement rationale, and unresolved confirmation items so it does not silently invent requirements.
+**구조:** 주요 동작은 `SKILL.md`에, 산출물 계약과 예시는 `references/`에 둔다. 원문, 정리된 요구사항, 수정 이유, 확인이 필요한 사항을 구분해 요구사항을 임의로 만들지 않는다.
 
-**Tech Stack:** Markdown, YAML metadata, Codex skill conventions.
+**기술:** Markdown, YAML 메타데이터, Codex 스킬 규칙.
 
-**Spec:** `docs/superpowers/specs/2026-11-19-automotive-srs-design.md`
+**설계 문서:** `docs/superpowers/specs/2026-11-19-automotive-srs-design.md`
 
-## Global Constraints
+## 공통 제약
 
-- Output is Markdown SRS.
-- Do not determine ISO 26262, ISO 21434, or ASPICE compliance.
-- Do not invent safety integrity levels, threat models, or detailed architecture.
-- Do not generate implementation or test code.
-- Keep original wording distinct from proposed refinement.
+- 결과는 Markdown SRS다.
+- ISO 26262, ISO 21434, ASPICE 준수 여부를 결정하지 않는다.
+- 안전 수준, 위협 모델, 상세 아키텍처를 임의로 만들지 않는다.
+- 구현 코드나 시험 코드를 생성하지 않는다.
+- 원문과 제안한 수정을 구분한다.
 
-## Review Focus
+## 검토 초점
 
-- Ambiguous actor, trigger, condition, or measurable threshold: must become a refinement proposal or confirmation item.
-- Context mismatch between related requirements: must be flagged rather than silently reconciled.
-- Duplicate or inconsistent terminology: must be consolidated with the chosen term explained.
-- Unverifiable wording such as “quickly” or “normally”: must receive a measurable acceptance proposal or remain unresolved.
-- Safety/security implications not supported by input: must remain confirmation items, not conclusions.
+- 행위자, 트리거, 조건, 측정 가능한 한계가 모호하면 수정 제안이나 확인 항목으로 둔다.
+- 관련 요구사항의 맥락이 충돌하면 조용히 합치지 말고 드러낸다.
+- 중복되거나 불일치한 용어는 선택한 용어와 이유를 밝히며 정리한다.
+- “빠르게”, “정상적으로”처럼 검증할 수 없는 표현은 측정 가능한 수용 조건을 제안하거나 미결로 둔다.
+- 입력이 뒷받침하지 않는 안전·보안 영향은 결론이 아닌 확인 항목으로 둔다.
 
-### Task 1: Define the Automotive SRS skill behavior
+### 작업 1: 자동차 SRS 스킬 동작 정의
 
-**Files:**
-- Modify: `/Users/jeong/Desktop/skills/automotive-srs/SKILL.md`
+**파일:** `/Users/jeong/Desktop/skills/automotive-srs/SKILL.md` 수정.
 
-**Interfaces:**
-- Consumes: User-provided sentence-level automotive requirements.
-- Produces: A Markdown SRS with structured requirements, quality findings, refinement proposals, and unresolved items.
+**입출력:** 사용자가 제공한 문장 수준의 자동차 요구사항을 받아 구조화된 요구사항, 품질 문제, 수정 제안, 미결 항목이 있는 Markdown SRS를 만든다.
 
-- [ ] Replace the initializer placeholder description with a discriminating description for automotive SRS generation and refinement.
-- [ ] Document the workflow: classify input, normalize requirements, inspect quality/context, preserve source wording, and produce the SRS sections.
-- [ ] Define requirement fields: ID, statement, rationale/source, priority, verification method, dependencies, and status.
-- [ ] Define the required distinction between source text, normalized text, proposed refinement, and confirmation-needed text.
-- [ ] State that unsupported assumptions must be marked `TBD`, `TBC`, or confirmation-needed.
+- [ ] 초기 설명을 자동차 SRS 작성·수정에 맞는 구별 가능한 설명으로 바꾼다.
+- [ ] 입력 분류, 요구사항 정리, 품질·맥락 검사, 원문 보존, SRS 작성 흐름을 정의한다.
+- [ ] ID, 문장, 이유·출처, 우선순위, 검증 방법, 의존성, 상태 필드를 정의한다.
+- [ ] 원문, 정리된 문장, 수정 제안, 확인이 필요한 문장을 구분한다.
+- [ ] 근거 없는 가정은 `TBD`, `TBC` 또는 확인 필요로 표시한다.
 
-### Task 2: Add the reusable output contract and example
+### 작업 2: 재사용 가능한 산출물 계약과 예시 추가
 
-**Files:**
-- Create: `/Users/jeong/Desktop/skills/automotive-srs/references/srs-output-format.md`
-- Create: `/Users/jeong/Desktop/skills/automotive-srs/references/example.md`
+**파일:** `automotive-srs/references/srs-output-format.md`, `automotive-srs/references/example.md` 생성.
 
-**Interfaces:**
-- Consumes: The workflow defined in `SKILL.md`.
-- Produces: A compact output schema and an input-to-SRS example for future use.
+**입출력:** `SKILL.md`의 흐름을 받아 간결한 출력 형식과 입력에서 SRS까지의 예시를 만든다.
 
-- [ ] Define the Markdown section order and requirement table fields in `srs-output-format.md`.
-- [ ] Add an example input containing at least one vague timing phrase, one missing condition, and one context mismatch.
-- [ ] Show the resulting SRS, findings, refinement proposals, and unresolved confirmation items in `example.md`.
-- [ ] Link both references from `SKILL.md` with routing guidance.
+- [ ] `srs-output-format.md`에 Markdown 절 순서와 요구사항 표 필드를 정의한다.
+- [ ] 모호한 시간, 누락된 조건, 맥락 충돌이 각각 하나 이상 있는 예시 입력을 만든다.
+- [ ] `example.md`에 결과 SRS, 지적, 수정 제안, 미결 확인 항목을 보여 준다.
+- [ ] 두 레퍼런스를 읽을 시점과 함께 `SKILL.md`에 연결한다.
 
-### Task 3: Configure metadata and validate
+### 작업 3: 메타데이터 설정과 검사
 
-**Files:**
-- Modify: `/Users/jeong/Desktop/skills/automotive-srs/agents/openai.yaml`
+**파일:** `automotive-srs/agents/openai.yaml` 수정.
 
-- [ ] Set the UI description and default prompt to describe SRS generation and requirement refinement.
-- [ ] Run `quick_validate.py` against the skill folder when the YAML dependency is available.
-- [ ] Inspect the generated tree and confirm all references are linked from `SKILL.md`.
+- [ ] UI 설명과 기본 프롬프트에 SRS 작성 및 요구사항 수정을 반영한다.
+- [ ] YAML 의존성이 있으면 스킬 디렉터리에 `quick_validate.py`를 실행한다.
+- [ ] 파일 구조와 `SKILL.md`의 레퍼런스 연결을 확인한다.

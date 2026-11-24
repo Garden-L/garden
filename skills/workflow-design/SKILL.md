@@ -1,10 +1,10 @@
 ---
 name: workflow-design
-description: Place a checkable result at each handoff that later work depends on, and connect it to its input and decision owner. Use when designing a multi-stage flow with uncertain decisions or evidence gaps.
+description: 다음 작업이 의존하는 인계 지점마다 확인 가능한 결과를 두고 그 입력과 결정 책임자를 연결하세요. 미결 결정이나 근거 공백이 있는 여러 단계의 흐름을 설계할 때 사용하세요.
 ---
 
-# Workflow Design
+# 흐름 설계
 
-Choose stage boundaries where an output or decision must be checked before later work can rely on it. For each boundary, identify the input, result, decision owner, and check. Carry the result and its origin into the next stage.
+다음 작업이 의존하기 전에 결과나 결정을 확인해야 하는 지점을 단계 경계로 정한다. 각 경계의 입력, 결과, 결정 책임자, 확인 방법을 식별하고 결과와 출처를 다음 단계에 전달한다.
 
-Keep one authoritative source for each fact or decision. The calling playbook sets artifact paths, approvals, and the amount of detail needed.
+사실과 결정마다 정본 하나를 유지한다. 산출물 경로, 승인, 세부 수준은 호출한 플레이북이 정한다.

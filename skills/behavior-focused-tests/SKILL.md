@@ -1,10 +1,10 @@
 ---
 name: behavior-focused-tests
-description: Assert outputs, state changes, errors, or side effects a caller can observe. Use when writing or revising a test that should keep passing through behavior-preserving refactoring.
+description: 호출자가 관찰할 수 있는 출력·상태 변화·오류·부작용을 확인하세요. 동작을 유지하는 리팩토링 뒤에도 유효해야 하는 시험을 작성하거나 수정할 때 사용하세요.
 ---
 
-# Behavior-Focused Tests
+# 동작 중심 테스트
 
-Assert what a caller or user can observe: outputs, state changes, errors, side effects, or externally visible timing. Choose inputs that distinguish correct behavior from the regression or requirement being guarded.
+호출자나 사용자가 관찰할 수 있는 출력, 상태 변화, 오류, 부수 효과, 외부에 드러나는 타이밍을 검증한다. 지키려는 요구사항이나 막으려는 회귀를 올바른 동작과 구분할 수 있는 입력을 선택한다.
 
-Avoid coupling a test to private helpers, incidental call order, or internal data layout unless that detail is itself part of the contract. A useful test fails when the behavior breaks and continues to pass through a behavior-preserving refactor.
+비공개 헬퍼, 우연한 호출 순서, 내부 데이터 배치가 계약 자체가 아니라면 테스트를 그런 세부 구현에 묶지 않는다. 유용한 테스트는 동작이 깨지면 실패하고, 동작을 보존하는 리팩터링에는 계속 통과한다.

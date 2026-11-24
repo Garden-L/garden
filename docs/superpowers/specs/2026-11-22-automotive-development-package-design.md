@@ -1,30 +1,30 @@
-# Automotive Development Package Design
+# 자동차 개발 패키지 설계
 
-## Intent
+## 의도
 
-Make `automotive-development` a project-style Codex skill package while allowing future domain packages, such as web development, to reuse domain-neutral skills.
+`garden-beam`을 프로젝트형 Codex 스킬 패키지로 만들면서 웹 개발 같은 미래 도메인 패키지가 도메인 독립적인 스킬을 재사용하게 한다.
 
-## Structure
+## 구조
 
-- `skills/shared/` contains independently usable skills for architecture, TDD, verification, and Git hygiene.
-- `automotive-development/SKILL.md` is the automotive package router.
-- `automotive-development/playbooks/` contains automotive workflow compositions.
-- `automotive-development/skills/` remains the home of automotive-specific leaf skills.
-- Package documentation, agent briefs, and validation scripts live under the automotive package.
+- `skills/shared/`에 아키텍처, TDD, 검증, Git 관리용 독립 스킬을 둔다.
+- `garden-beam/SKILL.md`는 자동차 패키지 라우터다.
+- `garden-beam/playbooks/`에 자동차 작업 흐름의 조합을 둔다.
+- `garden-beam/skills/`는 자동차 전용 하위 스킬의 위치로 유지한다.
+- 패키지 문서, 에이전트 브리프, 검사 스크립트는 자동차 패키지 아래에 둔다.
 
-## Goals
+## 목표
 
-- Keep existing automotive skill paths stable.
-- Load only the shared and automotive skills required by the selected workflow.
-- Make shared skills usable without automotive context.
-- Provide a documented extension point for future domain packages.
+- 기존 자동차 스킬 경로를 유지한다.
+- 선택한 작업에 필요한 공용·자동차 스킬만 읽는다.
+- 자동차 맥락 없이도 공용 스킬을 쓸 수 있게 한다.
+- 미래 도메인 패키지의 확장 지점을 문서화한다.
 
-## Non-goals
+## 제외 범위
 
-- Do not create a web-development package yet.
-- Do not move or rewrite existing automotive leaf skills.
-- Do not add runtime dependencies or automate external ECU/HIL environments.
+- 아직 웹 개발 패키지를 만들지 않는다.
+- 기존 자동차 하위 스킬을 옮기거나 다시 쓰지 않는다.
+- 실행 의존성을 추가하거나 외부 ECU/HIL 환경을 자동화하지 않는다.
 
-## Routing
+## 경로 선택
 
-The top-level automotive skill classifies the request, selects one playbook, and instructs the agent to read the playbook plus only its referenced skills. Direct invocation of an existing leaf skill remains valid.
+자동차 최상위 스킬이 요청을 분류하고 플레이북 하나를 선택하며, 에이전트가 그 플레이북과 그 안에서 가리킨 스킬만 읽게 한다. 기존 하위 스킬의 직접 호출도 유지한다.

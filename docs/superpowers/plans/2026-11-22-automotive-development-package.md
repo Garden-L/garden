@@ -1,86 +1,68 @@
-# Automotive Development Package Implementation Plan
+# 자동차 개발 패키지 구현 계획
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
+> **작업 에이전트:** 이 계획은 `superpowers:executing-plans`를 사용해 작업별로 실행한다.
 
-**Goal:** Expand `automotive-development` into a project-style domain package that composes reusable shared skills with automotive-specific playbooks and leaf skills.
+**목표:** `garden-beam`를 재사용 가능한 공용 스킬과 자동차 전용 플레이북·하위 스킬을 조합하는 도메인 패키지로 확장한다.
 
-**Architecture:** Keep `automotive-development/SKILL.md` as the Codex entry point, preserve the existing automotive leaf skills under `automotive-development/skills/`, and add reusable, domain-neutral skills under `skills/shared/`. Project-level playbooks compose shared skills with automotive-specific skills; the router selects one playbook and instructs the agent to read only the relevant skills.
+**구조:** `garden-beam/SKILL.md`를 Codex 진입점으로 두고 기존 하위 스킬을 `garden-beam/skills/`에 보존하며 공용 스킬을 `skills/shared/`에 추가한다. 패키지 플레이북이 공용과 자동차 스킬을 조합하고 라우터는 필요한 플레이북과 스킬만 선택한다.
 
-**Tech Stack:** Markdown skill files, YAML agent metadata, shell scripts; no runtime dependencies.
+**기술:** Markdown 스킬, YAML 에이전트 메타데이터, 셸 스크립트. 실행 시 추가 의존성 없음.
 
-**Spec:** `docs/superpowers/specs/2026-11-22-automotive-development-package-design.md` (the design is captured by the approved conversation; no separate spec was requested).
+**설계 문서:** `docs/superpowers/specs/2026-11-22-garden-beam-package-design.md`. 승인된 대화에 설계를 기록했으며 별도 문서는 요청되지 않았다.
 
-## Global Constraints
+## 공통 제약
 
-- Preserve existing automotive leaf-skill behavior and references.
-- Keep the package usable from Codex through `automotive-development/SKILL.md`.
-- Shared skills must not depend on automotive terminology, standards, or artifacts.
-- Do not introduce external runtime dependencies.
-- Do not modify unrelated untracked files under `docs/`.
+- 기존 자동차 하위 스킬의 동작과 레퍼런스를 보존한다.
+- `garden-beam/SKILL.md`를 통해 Codex에서 사용할 수 있어야 한다.
+- 공용 스킬은 자동차 용어, 표준, 산출물에 의존하지 않는다.
+- 실행 시 외부 의존성을 추가하지 않는다.
+- `docs/` 아래 관련 없는 미추적 파일은 수정하지 않는다.
 
-## Review Focus
+## 검토 초점
 
-- A request that matches one workflow must not cause every leaf skill to be loaded; verify explicit routing language.
-- Relative references from the router and playbooks must resolve from the package directory.
-- Existing leaf-skill names and paths must remain stable.
-- The package should explain that external ECU/HIL, CI, repository, and credential prerequisites are not bundled skills.
+- 한 흐름에 맞는 요청이 모든 하위 스킬을 읽게 해서는 안 된다.
+- 라우터와 플레이북의 상대 링크는 패키지 기준으로 유효해야 한다.
+- 기존 하위 스킬의 이름과 경로를 유지해야 한다.
+- ECU/HIL, CI, 저장소, 인증 정보는 포함된 스킬이 아닌 외부 준비 사항임을 설명한다.
 
-### Task 1: Add reusable shared skills
+### 작업 1: 재사용 가능한 공용 스킬 추가
 
-**Files:**
-- Create: `skills/shared/architect/SKILL.md`
-- Create: `skills/shared/tdd/SKILL.md`
-- Create: `skills/shared/verification/SKILL.md`
-- Create: `skills/shared/git-hygiene/SKILL.md`
+**파일:** `skills/shared/architect/SKILL.md`, `tdd/SKILL.md`, `verification/SKILL.md`, `git-hygiene/SKILL.md` 생성.
 
-- [ ] Define each shared skill by capability, inputs, outputs, and boundaries rather than by automotive workflow.
-- [ ] Keep each skill independently usable by future domain packages such as web development.
+- [ ] 각 스킬을 자동차 흐름이 아닌 기능, 입력, 출력, 경계로 정의한다.
+- [ ] 웹 개발 등 미래 도메인 패키지에서도 독립적으로 쓸 수 있게 한다.
 
-### Task 2: Package scaffolding and project documentation
+### 작업 2: 패키지 뼈대와 문서
 
-**Files:**
-- Create: `automotive-development/README.md`
-- Create: `automotive-development/.gitignore`
-- Create: `automotive-development/docs/architecture.md`
-- Create: `automotive-development/agents/README.md`
-- Create: `automotive-development/scripts/README.md`
+**파일:** `garden-beam/README.md`, `.gitignore`, `docs/architecture.md`, `agents/README.md`, `scripts/README.md` 생성.
 
-- [ ] Add the package purpose, installation/use model, directory map, workflow list, and external prerequisites to `README.md`.
-- [ ] Add conservative ignores for generated reports, local logs, and temporary artifacts.
-- [ ] Document the router → playbook → leaf-skill architecture in `docs/architecture.md`.
-- [ ] Document reserved locations for future author/reviewer agents and scripts without inventing executable behavior.
+- [ ] README에 목적, 설치·사용 방법, 디렉터리 지도, 흐름 목록, 외부 준비 사항을 설명한다.
+- [ ] 생성 보고서, 로컬 로그, 임시 산출물을 보수적으로 무시한다.
+- [ ] `docs/architecture.md`에 라우터 → 플레이북 → 하위 스킬 구조를 기록한다.
+- [ ] 실제 실행 동작을 꾸미지 않고 미래 에이전트·스크립트 위치를 설명한다.
 
-### Task 3: Add project-level playbooks
+### 작업 3: 패키지 플레이북 추가
 
-**Files:**
-- Create: `automotive-development/playbooks/requirements-to-srs.md`
-- Create: `automotive-development/playbooks/srs-to-sts.md`
-- Create: `automotive-development/playbooks/readiness-review.md`
-- Create: `automotive-development/playbooks/implementation.md`
-- Create: `automotive-development/playbooks/verification.md`
-- Create: `automotive-development/playbooks/change-control.md`
+**파일:** `playbooks/requirements-to-srs.md`, `srs-to-sts.md`, `readiness-review.md`, `implementation.md`, `verification.md`, `change-control.md` 생성.
 
-- [ ] Define each playbook's trigger, required inputs, leaf skills to read, gates, outputs, and stop conditions.
-- [ ] Keep the existing pipeline's approval and baseline-change boundaries intact.
-- [ ] Make each playbook independently readable and avoid duplicating the detailed rules owned by leaf skills.
+- [ ] 각 플레이북의 적용 조건, 입력, 읽을 하위 스킬, 게이트, 결과, 중단 조건을 정의한다.
+- [ ] 기존 승인과 기준선 변경 경계를 유지한다.
+- [ ] 상세 규칙을 복제하지 않고 독립적으로 읽을 수 있게 한다.
 
-### Task 4: Refactor the package entry point
+### 작업 4: 패키지 진입점 정리
 
-**Files:**
-- Modify: `automotive-development/SKILL.md`
-- Modify: `automotive-development/agents/openai.yaml`
+**파일:** `garden-beam/SKILL.md`, `agents/openai.yaml` 수정.
 
-- [ ] Turn the top-level skill into a project router that classifies the request and selects one playbook.
-- [ ] Require the selected playbook and only its referenced leaf skills to be read.
-- [ ] Preserve direct routing for SRS, STS, readiness, backlog, bounded implementation, verification, and change-control requests.
-- [ ] Update the agent-facing display text to describe the package as a staged automotive development workflow.
+- [ ] 최상위 스킬이 요청을 분류하고 플레이북 하나를 선택하는 라우터가 되게 한다.
+- [ ] 선택한 플레이북과 그 플레이북이 가리킨 하위 스킬만 읽게 한다.
+- [ ] SRS, STS, 준비성, 백로그, 제한된 구현, 검증, 변경관리 요청을 직접 연결한다.
+- [ ] UI 문구에 단계별 자동차 개발 흐름을 반영한다.
 
-### Task 5: Validate package structure and references
+### 작업 5: 패키지 구조와 레퍼런스 검사
 
-**Files:**
-- Test: shell-based structural checks run from the repository root
+**파일:** 저장소 루트에서 실행하는 셸 기반 구조 검사.
 
-- [ ] Verify all listed playbooks and referenced leaf `SKILL.md` files exist.
-- [ ] Verify every skill frontmatter has a `name` and `description`.
-- [ ] Verify no existing leaf skill or unrelated file was modified.
-- [ ] Review the final diff and run the repository's available checks, noting that no application test runner exists for this Markdown-only package.
+- [ ] 목록에 있는 플레이북과 하위 `SKILL.md`가 존재하는지 확인한다.
+- [ ] 모든 frontmatter에 `name`과 `description`이 있는지 확인한다.
+- [ ] 기존 하위 스킬이나 무관한 파일이 수정되지 않았는지 확인한다.
+- [ ] 최종 diff와 가능한 검사를 확인한다. Markdown 전용 패키지에는 애플리케이션 시험 실행기가 없음을 기록한다.

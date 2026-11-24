@@ -1,65 +1,51 @@
-# Software Test Documentation Skill Design
+# 소프트웨어 시험 문서 스킬 설계
 
-## Intent
+## 의도
 
-Create a reusable skill that reads an SRS or other requirements document and produces a consistent Software Test Specification (STS) and supporting test-design documents. The skill is intended to make the planned test scope explicit before implementation begins, including the test sequence, expected results, traceability, and requirements-level edge cases.
+SRS나 다른 요구사항 문서를 읽어 일관된 소프트웨어 시험 명세서(STS)와 보조 시험 설계 문서를 만드는 재사용 가능한 스킬을 설계한다. 구현 전에 계획된 시험 범위, 실행 순서, 기대 결과, 추적성, 요구사항 수준 경계 사례를 분명히 한다.
 
-## Goals
+## 목표
 
-- Extract testable requirements, conditions, constraints, and assumptions from an SRS.
-- Decide what should be tested and explain why each test area is in scope.
-- Derive normal, error, boundary, invalid-input, state-transition, permission, and other requirements-level edge cases when the SRS supports them.
-- Produce a fixed-format STS with a clear execution order and pass/fail criteria.
-- Maintain traceability from requirement IDs to test conditions and test cases.
-- Identify ambiguous, missing, contradictory, or non-verifiable requirements separately from the test cases.
-- Keep document identifiers, field names, severity/priority labels, and status values consistent.
+- SRS에서 시험 가능한 요구사항, 조건, 제약, 가정을 추출한다.
+- 무엇을 시험할지 결정하고 각 영역이 범위 안에 있는 이유를 설명한다.
+- SRS가 뒷받침하는 정상·오류·경계·잘못된 입력·상태 전이·권한 등의 요구사항 수준 사례를 도출한다.
+- 실행 순서와 통과·실패 기준이 분명한 일정 형식의 STS를 만든다.
+- 요구사항 ID와 시험 조건·시험 사례의 추적성을 유지한다.
+- 모호하거나 누락·충돌하거나 검증할 수 없는 요구사항을 시험 사례와 구분한다.
+- 문서 ID, 필드 이름, 심각도·우선순위, 상태 값을 일관되게 유지한다.
 
-## Non-goals
+## 제외 범위
 
-- Do not infer implementation-specific tests from source code in the initial workflow.
-- Do not design unit-test code, integration-test code, automation scripts, or fixtures.
-- Do not claim that a test is executable when the SRS does not define enough information.
-- Do not include implementation-discovered defects or code-review edge cases in the initial STS. Reserve a future regression-update mode for that work.
+- 초기 흐름에서 소스 코드로부터 구현 전용 시험을 추론하지 않는다.
+- 단위·통합 시험 코드, 자동화 스크립트, 픽스처를 설계하지 않는다.
+- SRS의 정보가 부족한 시험을 실행 가능하다고 주장하지 않는다.
+- 구현 중 발견한 결함이나 코드 검토 경계 사례는 초기 STS에 넣지 않는다. 향후 회귀 시험 갱신 모드로 남긴다.
 
-## Scope Boundary
+## 범위 경계
 
-The initial skill operates at the requirements/specification level:
+초기 스킬은 요구사항·명세 수준에서 동작한다.
 
-`SRS → requirements extraction → test scope → test conditions → edge-case review → STS/test cases → traceability and quality review`
+`SRS → 요구사항 추출 → 시험 범위 → 시험 조건 → 경계 사례 검토 → STS/시험 사례 → 추적성·품질 검토`
 
-The future extension may add:
+향후 확장에서는 `구현/코드 검토 → 발견한 동작·결함 → 회귀 시험 갱신`을 추가할 수 있다. 이때 원래 요구사항 ID를 유지하고 코드에서 도출한 사례를 SRS 파생 사례와 구분해야 한다.
 
-`implementation/code review → discovered behavior or defect → regression test update`
+## 검토한 접근 방법
 
-That extension must preserve the original requirement IDs and mark code-derived cases separately from SRS-derived cases.
+### 1. 문서 생성 중심 흐름
 
-## Approaches Considered
+최소 추적성으로 SRS에서 STS와 사례를 만든다. 사용은 빠르지만 커버리지 공백과 요구사항 연결을 찾기 어렵다.
 
-### 1. Document-generation-only workflow
+### 2. 요구사항 추적성 중심 흐름 — 선택
 
-Generate an STS and test cases from the SRS with minimal traceability.
+`REQ → TEST-CONDITION → TEST-CASE`라는 안정적인 ID 연결을 중심으로 STS를 구성한다. 이 연결에서 문서 절, 경계 사례 검토, 실행 절차를 만든다. 추출 과정은 더 엄격하지만 커버리지, 공백, 변경 영향을 가장 명확히 볼 수 있다.
 
-Trade-off: quick to use, but weak at identifying coverage gaps and keeping requirements linked to tests.
+### 3. 전체 시험 수명주기 흐름
 
-### 2. Requirements-traceability workflow — selected
+SRS 분석, STS 작성, 경계 사례 검토, 구현 검토, 회귀 유지보수 모드를 나눈다. 확장성은 높지만 당장의 필요보다 넓다. 초기 스킬은 요구사항 수준 모드에 집중하고 코드 파생 회귀 사례를 위한 확장 지점을 남긴다.
 
-Build the STS around a stable chain of identifiers:
+## 제안한 스킬 구조
 
-`REQ → TEST-CONDITION → TEST-CASE`
-
-Generate the document sections, edge-case review, and execution procedure from that chain.
-
-Trade-off: requires more disciplined extraction, but gives the clearest coverage, gap detection, and change impact analysis.
-
-### 3. Full test-lifecycle workflow
-
-Provide separate modes for SRS analysis, STS generation, edge-case review, implementation review, and regression maintenance.
-
-Trade-off: extensible, but broader than the immediate need. The initial skill will implement the requirements-level modes and leave a clear extension point for code-derived regression updates.
-
-## Proposed Skill Structure
-
-Location: `automotive-development/skills/software-test-documentation/`
+위치: `garden-beam/skills/software-test-documentation/`
 
 ```text
 software-test-documentation/
@@ -73,101 +59,92 @@ software-test-documentation/
     └── traceability-and-quality-checks.md
 ```
 
-The main `SKILL.md` will contain routing, required workflow, output contract, and document-quality rules. Detailed document fields and review heuristics will live in focused references so they can be loaded only when needed.
+주요 `SKILL.md`에는 경로 선택, 필수 흐름, 산출물 계약, 문서 품질 규칙을 둔다. 상세 필드와 검토 지침은 필요할 때만 읽는 레퍼런스에 둔다.
 
-## Required Workflow
+## 필수 흐름
 
-1. Identify the source requirements document, version, scope, and exclusions.
-2. Extract every requirement with its original ID or assign a stable ID when none exists.
-3. Classify each requirement as functional, non-functional, interface, data, security/permission, state/lifecycle, operational, or constraint.
-4. Mark each requirement as testable, partially testable, ambiguous, contradictory, or not testable from the supplied information.
-5. Define test conditions and the applicable test type or test level for each testable requirement.
-6. Derive the normal path and explicitly supported error paths.
-7. Conduct the requirements-level edge-case review using only stated or logically implied boundaries; label assumptions instead of silently inventing behavior.
-8. Group test conditions into test suites and order them by prerequisite and dependency.
-9. Write each test case with preconditions, setup/data, exact procedure steps, expected result per step or checkpoint, cleanup, priority, and traceability.
-10. Produce the STS, test-case list, edge-case review, traceability matrix, and open-issues list in the fixed formats.
-11. Run the document quality review: coverage, ordering, duplicate cases, orphan requirements, unsupported assumptions, missing expected results, and inconsistent identifiers.
+1. 원본 요구사항 문서, 버전, 범위, 제외 항목을 식별한다.
+2. 모든 요구사항을 원래 ID와 함께 추출하고 ID가 없으면 안정적인 ID를 부여한다.
+3. 기능·비기능·인터페이스·데이터·보안/권한·상태/수명주기·운영·제약으로 분류한다.
+4. 시험 가능, 부분적으로 시험 가능, 모호함, 충돌, 제공된 정보만으로 시험 불가를 구분한다.
+5. 시험 가능한 요구사항마다 시험 조건과 해당 시험 종류·수준을 정한다.
+6. 정상 경로와 명시적으로 뒷받침되는 오류 경로를 도출한다.
+7. 명시되었거나 논리적으로 함의된 경계만으로 요구사항 수준 경계 사례를 검토한다. 가정을 표시하고 동작을 임의로 만들지 않는다.
+8. 시험 조건을 묶음으로 나누고 선행 조건과 의존성에 따라 실행 순서를 정한다.
+9. 사례마다 사전 조건, 설정·데이터, 정확한 절차, 각 단계나 확인 지점의 기대 결과, 정리, 우선순위, 추적성을 쓴다.
+10. 고정 형식의 STS, 시험 사례 목록, 경계 사례 검토, 추적성 표, 미결 이슈 목록을 만든다.
+11. 커버리지, 순서, 중복, 연결되지 않은 요구사항, 근거 없는 가정, 기대 결과 누락, ID 불일치를 검토한다.
 
-## STS Output Contract
+## STS 산출물 계약
 
-Every generated STS must contain these sections in this order:
+모든 STS에는 아래 절을 순서대로 둔다.
 
-1. Document control and revision history
-2. Purpose and scope
-3. References and source requirement versions
-4. System under test and test boundaries
-5. Test assumptions, dependencies, environment, and data needs
-6. Requirement classification and testability assessment
-7. Test strategy and selected test types
-8. Test suites and execution order
-9. Detailed test cases
-10. Requirements-to-test traceability matrix
-11. Requirements-level edge-case review
-12. Ambiguous, missing, contradictory, or deferred requirements
-13. Entry criteria, exit criteria, pass/fail rules, and evidence requirements
-14. Risks, exclusions, and open decisions
+1. 문서 관리와 개정 이력
+2. 목적과 범위
+3. 참고 자료와 원본 요구사항 버전
+4. 시험 대상 시스템과 경계
+5. 시험 가정, 의존성, 환경, 데이터 요구
+6. 요구사항 분류와 시험 가능성 평가
+7. 시험 전략과 선정한 시험 종류
+8. 시험 묶음과 실행 순서
+9. 상세 시험 사례
+10. 요구사항·시험 추적성 표
+11. 요구사항 수준 경계 사례 검토
+12. 모호·누락·충돌·보류 요구사항
+13. 진입·종료 기준, 통과·실패 규칙, 근거 요구
+14. 위험, 제외 항목, 미결 결정
 
-## Test Procedure Contract
+## 시험 절차 계약
 
-Each test case must make the execution sequence unambiguous:
+각 사례에는 모호하지 않은 실행 순서를 둔다.
 
-- Test case ID and linked requirement IDs
-- Objective
-- Priority and rationale
-- Preconditions
-- Environment/configuration
-- Test data setup
-- Numbered procedure steps in execution order
-- Expected result for every meaningful step or checkpoint
-- Final pass/fail criterion
-- Cleanup or reset steps
-- Evidence to capture
-- Notes, assumptions, and unresolved questions
+- 시험 사례 ID와 연결된 요구사항 ID
+- 목적
+- 우선순위와 이유
+- 사전 조건
+- 환경·설정
+- 시험 데이터 설정
+- 실행 순서가 표시된 번호 단계
+- 의미 있는 각 단계나 확인 지점의 기대 결과
+- 최종 통과·실패 기준
+- 정리·초기화 단계
+- 확보할 근거
+- 참고, 가정, 미결 질문
 
-The skill must not collapse setup, action, and verification into a vague paragraph. If the SRS does not define an expected result, the case must be marked as blocked or require clarification rather than inventing a result.
+설정, 행동, 확인을 모호한 한 문단으로 합치지 않는다. SRS에 기대 결과가 없다면 결과를 만들지 말고 사례를 차단 또는 확인 필요로 표시한다.
 
-## Edge-Case Review Contract
+## 경계 사례 검토 계약
 
-The edge-case review must be a separate, auditable section. For each candidate case, record:
+경계 사례 검토는 별도로 감사 가능한 절에 둔다. 후보마다 아래를 기록한다.
 
-- Edge-case ID
-- Linked requirement ID
-- Trigger or boundary
-- Why the case matters
-- Expected behavior stated by the SRS, logically implied behavior, or missing behavior
-- Test disposition: include, clarify, defer, or exclude
-- Priority/risk
-- Follow-up question if the requirement is insufficient
+- 경계 사례 ID와 연결된 요구사항 ID
+- 트리거 또는 경계
+- 사례가 중요한 이유
+- SRS가 명시한 동작, 논리적으로 함의된 동작, 누락된 동작의 구분
+- 포함·확인 필요·보류·제외 중 처리 상태
+- 우선순위·위험
+- 요구사항이 부족할 때 후속 질문
 
-Review dimensions include empty/null/missing values, minimum and maximum values, just-inside and just-outside boundaries, invalid formats, duplicate inputs, ordering, state transitions, retries/timeouts, permissions, unavailable dependencies, concurrency where specified, localization/time zones where specified, and data volume limits. A dimension is only applicable when supported by the SRS or explicitly marked as a question; the skill must not turn generic checklists into unsupported product behavior.
+검토 차원에는 빈 값·누락 값, 최솟값·최댓값, 경계 바로 안팎, 잘못된 형식, 중복 입력, 순서, 상태 전이, 재시도·시간 초과, 권한, 사용할 수 없는 의존성, 명시된 동시성·지역화·시간대·데이터 크기 한계가 있다. SRS가 뒷받침하거나 질문으로 표시한 차원만 적용한다. 일반 검사 목록을 근거 없는 제품 동작으로 바꾸지 않는다.
 
-## Traceability and Identifier Rules
+## 추적성과 ID 규칙
 
-- Preserve source requirement IDs whenever present.
-- Use stable generated IDs only when the source has no usable IDs, and record the mapping.
-- Use prefixes `REQ-`, `TC-`, `SUITE-`, `EDGE-`, and `ISSUE-`.
-- Every test case must trace to at least one requirement or be explicitly labeled as a derived-risk case.
-- Every testable requirement must trace to one or more test conditions or be listed as an uncovered requirement.
-- Do not silently reuse IDs after a requirement or test case is removed.
+- 원본 요구사항 ID가 있으면 유지한다.
+- 사용할 수 있는 ID가 없을 때만 안정적인 ID를 만들고 대응표를 남긴다.
+- `REQ-`, `TC-`, `SUITE-`, `EDGE-`, `ISSUE-` 접두사를 쓴다.
+- 모든 시험 사례는 요구사항 하나 이상에 연결하거나 파생 위험 사례임을 명시한다.
+- 시험 가능한 모든 요구사항은 하나 이상의 시험 조건에 연결하거나 미커버리지로 나열한다.
+- 요구사항이나 사례가 제거되었다고 ID를 조용히 재사용하지 않는다.
 
-## Validation Plan
+## 검증 계획
 
-The skill will be created and validated using pressure scenarios based on realistic SRS inputs. Validation will check that the agent:
+현실적인 SRS를 바탕으로 한 압박 상황에서 스킬을 검사한다. 정해진 절 순서, 번호가 있는 절차와 기대 결과, 명시된 동작과 가정의 구분, 구현 동작을 꾸미지 않는 경계 사례, 모호하거나 시험 불가능한 요구사항 보고, 양방향 추적성, ID·상태 일관성을 확인한다.
 
-- follows the fixed section order;
-- writes explicit numbered procedures and expected results;
-- separates stated behavior from assumptions;
-- finds requirements-level edge cases without inventing implementation behavior;
-- reports ambiguous or untestable requirements;
-- produces complete bidirectional traceability;
-- maintains consistent IDs and statuses.
+불완전한 요구사항, 충돌, 경계가 많은 요구사항, 명시적 ID가 없는 요구사항을 포함한다. 작성 후 저장소 스킬 검사기를 실행한다.
 
-The validation will include incomplete requirements, conflicting requirements, boundary-heavy requirements, and a requirement with no explicit ID. The skill will be run through the repository's skill validator after authoring.
+## 열린 구현 선택
 
-## Open Implementation Choices
-
-- Default output format: Markdown, with tables where they improve traceability and numbered lists for procedures.
-- Default language: match the source SRS language unless the user requests another language.
-- Default test priority vocabulary: Critical, High, Medium, Low; use source terminology when one is already defined.
-- Default behavior for missing requirements: document the gap and ask for clarification; do not fabricate expected behavior.
+- 기본 출력은 Markdown이며 추적성에는 표, 절차에는 번호 목록을 쓴다.
+- 기본 언어는 사용자가 달리 요청하지 않는 한 원본 SRS를 따른다.
+- 기본 시험 우선순위는 `Critical`, `High`, `Medium`, `Low`이며 원본 용어가 있으면 그것을 쓴다.
+- 누락된 요구사항은 공백으로 기록하고 확인을 요청한다. 기대 동작을 만들지 않는다.

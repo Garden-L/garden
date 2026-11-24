@@ -1,10 +1,10 @@
 ---
 name: change-impact-check
-description: Locate a proposed change in the existing architecture and trace affected callers, interfaces, state, tests, and dependent work before coding. Use before code changes to determine whether the work stays local or crosses architectural boundaries.
+description: 코드 작성 전에 변경 위치를 기존 아키텍처에서 찾고 영향받는 호출자·인터페이스·상태·테스트·연관 작업을 추적하세요. 코드 변경이 국소적인지 아키텍처 경계를 넘는지 판단할 때 사용하세요.
 ---
 
-# Change Impact Check
+# 변경 영향 확인
 
-Before coding, locate the proposed change in the current architecture and trace the callers, interfaces, state, tests, and dependent work that the change can affect.
+코드를 작성하기 전에 변경사항이 현재 아키텍처에서 어디에 속하는지 확인하고, 영향을 받을 수 있는 호출자, 인터페이스, 상태, 테스트, 연관 작업을 추적한다.
 
-Decide whether the change remains local and its affected work is understood. Carry those impacts into the change. If the scan reveals broad changes, unclear ownership, or a redesign, flag that the work exceeds a local edit.
+변경이 국소적이고 영향받는 작업을 파악했는지 판단한다. 확인한 영향을 변경에 반영한다. 영향이 넓거나 책임 경계가 불명확하거나 재설계가 필요하다면 국소적인 수정을 넘어서는 작업임을 표시한다.

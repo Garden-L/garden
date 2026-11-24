@@ -1,108 +1,85 @@
-# Software Test Documentation Skill Implementation Plan
+# 소프트웨어 시험 문서 스킬 구현 계획
 
-> **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
+> **작업 에이전트:** 작업별 실행에는 `superpowers:subagent-driven-development` 또는 `superpowers:executing-plans`를 사용한다. 확인란으로 진행 상태를 표시한다.
 
-**Goal:** Build and validate a reusable `software-test-documentation` skill that converts SRS-level requirements into a consistently formatted STS, test cases, requirements-level edge-case review, execution procedures, and traceability artifacts.
+**목표:** SRS 수준의 요구사항을 일관된 STS, 시험 사례, 요구사항 수준 경계 사례 검토, 실행 절차, 추적성 산출물로 바꾸는 `software-test-documentation` 스킬을 작성·검사한다.
 
-**Architecture:** Keep the skill entrypoint small and route detailed document contracts to focused references. The workflow is requirements-only for the first version: `SRS → extraction → test design → edge-case review → ordered procedures → traceability → quality review`. Code-derived regression cases remain a documented future extension, not an initial input.
+**구조:** 스킬 진입점은 작게 유지하고 상세 문서 계약은 집중된 레퍼런스로 보낸다. 초기 버전은 `SRS → 추출 → 시험 설계 → 경계 사례 검토 → 순서가 있는 절차 → 추적성 → 품질 검토`처럼 요구사항만 입력으로 사용한다. 코드에서 도출한 회귀 사례는 향후 확장으로 남긴다.
 
-**Tech Stack:** Markdown skill instructions, Markdown reference templates, YAML UI metadata, repository shell validator, and isolated pressure-scenario evaluation.
+**기술:** Markdown 지침·레퍼런스 템플릿, YAML UI 메타데이터, 저장소 셸 검사기, 격리된 압박 상황 평가.
 
-**Spec:** `docs/superpowers/specs/2026-11-19-software-test-documentation-design.md`
+**설계 문서:** `docs/superpowers/specs/2026-11-19-software-test-documentation-design.md`
 
-## Global Constraints
+## 공통 제약
 
-- The initial workflow operates at the requirements/specification level only.
-- Every STS must use the fixed section order defined in the design spec.
-- Test procedures must use explicit numbered steps with expected results for meaningful checkpoints.
-- Requirements-level edge cases must be separated from implementation/code-derived cases.
-- Missing or ambiguous expected behavior must be reported, not fabricated.
-- IDs use `REQ-`, `TC-`, `SUITE-`, `EDGE-`, and `ISSUE-` prefixes.
-- Markdown is the default output format and source-language matching is the default language behavior.
+- 초기 흐름은 요구사항·명세 수준에서만 동작한다.
+- 모든 STS는 설계 문서에서 정한 절 순서를 따른다.
+- 시험 절차에는 의미 있는 확인 지점의 기대 결과와 번호가 붙은 단계를 둔다.
+- 요구사항 수준 경계 사례와 코드에서 도출한 사례를 구분한다.
+- 누락되거나 모호한 기대 동작은 보고하며 임의로 만들지 않는다.
+- ID 접두사는 `REQ-`, `TC-`, `SUITE-`, `EDGE-`, `ISSUE-`를 쓴다.
+- 기본 출력은 Markdown이며 언어는 입력 언어를 따른다.
 
-## Review Focus
+## 검토 초점
 
-- Incomplete SRS requirements: the skill should mark the case as clarification-needed instead of inventing expected behavior; test in the extraction and quality-review task.
-- Boundary and just-outside values: the skill should distinguish stated limits from unsupported assumptions; test in the edge-case guide task.
-- Requirement conflicts: the skill should preserve both source references and raise an issue; test in the requirements-analysis task.
-- Procedure ordering: setup, action, checkpoint, cleanup, and evidence should remain separate and ordered; test in the STS template task.
-- Traceability gaps: orphan requirements and orphan test cases should be visible; test in the traceability-reference task.
+- 불완전한 SRS는 기대 동작을 만들지 말고 확인 필요로 표시한다.
+- 경계값과 경계 바로 바깥의 값은 명시된 한계와 추정한 한계를 구분한다.
+- 요구사항이 충돌하면 양쪽 출처를 보존하고 이슈를 제기한다.
+- 설정, 행동, 확인, 정리, 근거는 순서대로 구분한다.
+- 연결되지 않은 요구사항이나 시험 사례를 드러낸다.
 
----
+### 작업 1: 실패하는 압박 상황 만들기
 
-### Task 1: Establish Failing Pressure Scenarios
+**파일:** `garden-beam/skills/software-test-documentation/evaluation/pressure-scenarios.md`, `baseline-results.md` 생성.
 
-**Files:**
-- Create: `automotive-development/skills/software-test-documentation/evaluation/pressure-scenarios.md`
-- Create: `automotive-development/skills/software-test-documentation/evaluation/baseline-results.md`
+**입출력:** 설계 문서와 현실적인 SRS 조각을 받아 스킬 설계에 반영할 압박 상황과 초기 실패 관찰을 만든다.
 
-**Interfaces:**
-- Consumes: the design spec and realistic SRS fragments.
-- Produces: pressure scenarios and observed baseline failures used to shape the skill.
+- [ ] **1단계:** 불완전한 요구사항, 경계가 많은 동작, 충돌하는 요구사항을 조합한 상황 세 개를 만들고 순서가 있는 STS 절차를 요구한다.
+- [ ] **2단계:** 격리된 평가에서 스킬 없이 실행해 누락, 임의 가정, ID 불일치, 절차 형식 오류를 기록한다.
+- [ ] **3단계:** `baseline-results.md`에 초기 실패의 이유와 패턴을 기록하며 구조 누락과 판단 오류를 구분한다.
+- [ ] **4단계:** 안내가 없으면 기대 결과를 임의로 만들거나 추적성을 빠뜨릴 만한 상황이 하나 이상인지 확인한다.
 
-- [ ] **Step 1: Write three combined-pressure scenarios** covering incomplete requirements, boundary-heavy behavior, and conflicting requirements while requiring an STS with ordered procedures.
-- [ ] **Step 2: Run the scenarios without the skill** using an isolated evaluator and record the exact omissions, invented assumptions, ID inconsistencies, and procedure-shape failures.
-- [ ] **Step 3: Record baseline rationalizations and failure patterns** in `baseline-results.md`, separating missing structure from incorrect judgment.
-- [ ] **Step 4: Verify the baseline artifacts** include at least one scenario where a no-guidance agent would plausibly fabricate an expected result or skip traceability.
+### 작업 2: 스킬 진입점과 UI 메타데이터 작성
 
-### Task 2: Create the Skill Entrypoint and UI Metadata
+**파일:** `garden-beam/skills/software-test-documentation/SKILL.md`, `agents/openai.yaml` 생성.
 
-**Files:**
-- Create: `automotive-development/skills/software-test-documentation/SKILL.md`
-- Create: `automotive-development/skills/software-test-documentation/agents/openai.yaml`
+**입출력:** 작업 1의 실패와 설계 문서를 받아 필요한 레퍼런스로 안내하는 발견 가능한 스킬을 만든다.
 
-**Interfaces:**
-- Consumes: baseline failures from Task 1 and the design spec.
-- Produces: a discoverable skill that routes to the relevant references and enforces the requirements-level STS workflow.
+- [ ] **1단계:** 적용 조건, 범위, 필수 흐름, 산출물 계약, 연결 경로가 있는 간결한 스킬 계약을 작성한다.
+- [ ] **2단계:** 근거 없는 동작 생성, 모호한 절차, 기대 결과 누락, 연결되지 않은 요구사항에 대한 명시적 방지 규칙을 둔다.
+- [ ] **3단계:** 표시 이름, 짧은 설명, `$software-test-documentation`을 언급하는 기본 프롬프트, 자동 선택 메타데이터를 둔다.
+- [ ] **4단계:** 진입점이 필요한 레퍼런스를 모두 연결하고 상세 스키마를 복제하지 않는지 확인한다.
 
-- [ ] **Step 1: Write the minimal skill contract** with a `Use when...` description, scope boundary, required workflow, output contract, and routing links.
-- [ ] **Step 2: Add explicit counters for baseline failures** including unsupported behavior invention, vague procedures, missing expected results, and orphan requirements.
-- [ ] **Step 3: Add the UI metadata** with a display name, short description, default prompt mentioning `$software-test-documentation`, and implicit invocation enabled.
-- [ ] **Step 4: Verify the entrypoint** links every reference it conditionally requires and does not duplicate the detailed schemas.
+### 작업 3: STS와 시험 사례 형식 정의
 
-### Task 3: Define the STS and Test-Case Format
+**파일:** `references/sts-template.md`, `references/test-case-schema.md` 생성.
 
-**Files:**
-- Create: `automotive-development/skills/software-test-documentation/references/sts-template.md`
-- Create: `automotive-development/skills/software-test-documentation/references/test-case-schema.md`
+**입출력:** 설계 문서의 ID와 STS 계약을 받아 고정 절 순서 및 개별 시험 사례를 위한 Markdown 형식을 만든다.
 
-**Interfaces:**
-- Consumes: the ID rules and STS output contract from the spec.
-- Produces: copyable Markdown structures for the fixed STS section order and individual test cases.
+- [ ] **1단계:** 필수 절 14개를 지정된 순서로 담은 STS 템플릿을 작성한다.
+- [ ] **2단계:** ID, 추적성, 사전 조건, 환경, 데이터, 번호가 붙은 절차, 기대 결과, 합격·불합격 규칙, 정리, 근거, 가정이 있는 시험 사례 스키마를 만든다.
+- [ ] **3단계:** 구현 세부사항에 의존하지 않는 요구사항 수준 입력 검증 사례를 TypeScript 중심 예제로 보여 준다.
+- [ ] **4단계:** 설정·행동·확인을 한 문단에 합친 경우, 기대 결과 누락, ID 불일치, 순서 없는 절차를 찾는 검사 목록을 둔다.
 
-- [ ] **Step 1: Write the STS template** with all fourteen required sections in the specified order.
-- [ ] **Step 2: Write the test-case schema** with IDs, traceability, preconditions, environment, data, numbered procedure, checkpoint expectations, pass/fail rule, cleanup, evidence, and assumptions.
-- [ ] **Step 3: Add one complete TypeScript-oriented example** showing a requirements-level input validation case without relying on implementation details.
-- [ ] **Step 4: Add a format checklist** that catches collapsed setup/action/verification paragraphs, missing expectations, inconsistent IDs, and unordered procedures.
+### 작업 4: 경계 사례 검토와 추적성 지침 정의
 
-### Task 4: Define Edge-Case Review and Traceability Guidance
+**파일:** `references/edge-case-review-guide.md`, `references/traceability-and-quality-checks.md` 생성.
 
-**Files:**
-- Create: `automotive-development/skills/software-test-documentation/references/edge-case-review-guide.md`
-- Create: `automotive-development/skills/software-test-documentation/references/traceability-and-quality-checks.md`
+**입출력:** 작업 3의 형식을 받아 SRS 수준 경계 사례 판단과 양방향 커버리지 검토 지침을 만든다.
 
-**Interfaces:**
-- Consumes: the STS/test-case formats from Task 3.
-- Produces: focused guidance for SRS-level edge-case decisions and bidirectional coverage review.
+- [ ] **1단계:** 후보 차원, 처리 상태, 근거 없는 동작을 가상의 기대 결과가 아닌 질문으로 남기는 규칙을 정의한다.
+- [ ] **2단계:** `REQ → TEST-CONDITION → TEST-CASE` 연결, ID 생성, 고립 항목 탐지, 초기 모드에서 제외하는 코드 파생 사례를 설명한다.
+- [ ] **3단계:** 커버리지, 중복, 근거 없는 가정, 기대 결과 누락, 절 순서, 이슈 분류를 확인할 목록을 만든다.
+- [ ] **4단계:** 흔한 SRS 신호를 경계 사례 검사와 필요한 STS 근거에 연결한 간결한 표를 둔다.
 
-- [ ] **Step 1: Write the edge-case review contract** with candidate dimensions, disposition values, and the rule that unsupported behavior becomes a question rather than a fabricated expectation.
-- [ ] **Step 2: Write the traceability model** for `REQ → TEST-CONDITION → TEST-CASE`, generated IDs, orphan detection, and code-derived cases excluded from the initial mode.
-- [ ] **Step 3: Write the quality-review checklist** for coverage, duplicates, unsupported assumptions, missing expected results, section order, and issue classification.
-- [ ] **Step 4: Add a compact review matrix** mapping common SRS signals to edge-case checks and the required evidence in the STS.
+### 작업 5: 검사·정리·패키징
 
-### Task 5: Validate, Refactor, and Package the Skill
+**파일:** 스킬과 레퍼런스 수정, `evaluation/green-results.md` 생성.
 
-**Files:**
-- Modify: `automotive-development/skills/software-test-documentation/SKILL.md`
-- Modify: `automotive-development/skills/software-test-documentation/references/*.md`
-- Create: `automotive-development/skills/software-test-documentation/evaluation/green-results.md`
+**입출력:** 작업 1~4의 자료와 상황을 받아 현실적인 SRS 압박에서도 설계 문서를 만족하는 스킬을 만든다.
 
-**Interfaces:**
-- Consumes: all skill resources from Tasks 2–4 and the pressure scenarios from Task 1.
-- Produces: a validated skill whose outputs satisfy the design spec under realistic SRS pressure.
-
-- [ ] **Step 1: Run the repository skill validator** against `automotive-development/skills/software-test-documentation` and fix frontmatter, naming, or placeholder failures.
-- [ ] **Step 2: Run the same pressure scenarios with the skill loaded** and capture the generated document shape and decisions.
-- [ ] **Step 3: Compare green results against baseline failures** and add only narrow wording or reference changes that close observed loopholes.
-- [ ] **Step 4: Re-run validation** after refactoring and confirm all required sections, ordered procedures, edge-case dispositions, and traceability links remain present.
-- [ ] **Step 5: Review the final file tree and git diff** to confirm only the design, plan, and requested skill artifacts were added.
+- [ ] **1단계:** 저장소 스킬 검사기를 실행해 frontmatter, 이름, 초기 텍스트 오류를 고친다.
+- [ ] **2단계:** 동일한 압박 상황을 스킬과 함께 실행하고 문서 구조와 판단을 기록한다.
+- [ ] **3단계:** 결과를 초기 실패와 비교하고 관찰된 문제를 닫는 좁은 지침만 추가한다.
+- [ ] **4단계:** 정리 후 다시 검사해 절, 절차 순서, 경계 사례 처리, 추적성 연결을 확인한다.
+- [ ] **5단계:** 최종 파일 구조와 diff를 검토해 요청한 설계·계획·스킬 산출물만 추가했는지 확인한다.

@@ -1,10 +1,10 @@
 ---
 name: boundary-discipline
-description: Validate and translate external data where it enters the system, then rely on the accepted internal representation. Use for configuration, files, APIs, messages, or user input crossing a trust or representation boundary.
+description: 외부 데이터가 시스템에 들어오는 지점에서 검증·변환하고, 이후에는 수용된 내부 표현을 사용하세요. 설정·파일·API·메시지·사용자 입력이 신뢰 또는 표현 경계를 넘을 때 사용하세요.
 ---
 
-# Boundary Discipline
+# 경계 규율
 
-Parse, validate, and translate external data where it enters the system. Convert accepted input into a typed internal representation, then let core logic rely on that representation's invariants instead of repeating defensive checks throughout the code.
+외부 데이터가 시스템에 들어오는 지점에서 파싱·검증·변환한다. 허용된 입력을 내부 타입 표현으로 바꾸고 나면, 핵심 로직은 그 표현의 불변조건을 신뢰하게 한다. 방어 검사를 코드 곳곳에서 반복하지 않는다.
 
-Reject malformed or unauthorized input at the boundary with an error that identifies the problem. Preserve the source value when normalization could lose meaningful information. Add internal checks only where state can become invalid after the boundary or where they protect a separate invariant.
+형식이 잘못되었거나 권한이 없는 입력은 경계에서 문제를 식별할 수 있는 오류와 함께 거부한다. 정규화가 의미 있는 정보를 잃게 할 수 있으면 원래 값을 보존한다. 경계 이후 상태가 무효가 될 수 있거나 별도의 불변조건을 지켜야 할 때만 내부 검사도 추가한다.

@@ -1,10 +1,10 @@
 ---
 name: spec-tests
-description: Derive a test case from a requirement or approved decision and define an observable pass or fail result. Use when drafting or revising a test that must trace back to expected behavior.
+description: 요구사항이나 승인된 결정에서 시험 사례를 도출하고 관찰 가능한 통과·실패 결과를 정하세요. 기대 동작까지 추적되어야 하는 시험을 작성하거나 수정할 때 사용하세요.
 ---
 
-# Test Case
+# 시험 사례
 
-Derive each case from a stated requirement or approved decision. Choose inputs and conditions that distinguish the expected behavior, and specify what observation would count as pass or fail. Mark undefined expectations as gaps.
+각 사례를 명시된 요구사항이나 승인된 결정에서 도출한다. 기대 동작을 구분할 입력과 조건을 선택하고 통과·실패를 판단할 관찰값을 정한다. 기대 결과가 정의되지 않았다면 공백으로 표시한다.
 
-Use the [STS format](formats/sts.md) and [example](examples/sts-example.md) only when a document shape is needed. The calling playbook sets the environment, IDs, evidence, and execution procedure.
+문서 형태가 필요할 때만 [STS 형식](../../skills/spec-tests/formats/sts.md)과 [예시](../../skills/spec-tests/examples/sts-example.md)를 참고한다. 환경, ID, 근거, 실행 절차는 호출한 플레이북이 정한다.

@@ -1,80 +1,72 @@
-# Development Skills Library
+# 개발 스킬 라이브러리
 
-Reusable skills for software and systems development, organized by the kind of work they support. Domain packages compose these skills into workflows for areas such as automotive development.
+소프트웨어와 시스템 개발에 재사용하는 작은 원칙 스킬을 모은 저장소다. 자동차 개발 같은 도메인 패키지는 이 원칙을 작업별 플레이북으로 조합한다.
 
-## Skills
+## 공용 스킬
 
-- [`architecting`](skills/architecting/SKILL.md) — choose the simplest structure that meets the intended behavior and constraints.
-- [`specification`](skills/specification/SKILL.md) — keep each obligation tied to its source and judgment condition.
-- [`spec-requirements`](skills/spec-requirements/SKILL.md) — state one traceable, clear, verifiable obligation.
-- [`spec-tests`](skills/spec-tests/SKILL.md) — connect a test case to its requirement and observable expected result.
-- [`review`](skills/review/SKILL.md) — judge actual work against its intent and relevant criteria.
-- [`work-decomposition`](skills/work-decomposition/SKILL.md) — choose direct, sequential, or parallel execution based on dependencies, ownership, and checks.
-- [`verification`](skills/verification/SKILL.md) — compare actual results with explicit expectations under stated conditions.
-- [`decision`](skills/decision/SKILL.md) — compare meaningful options, recommend a choice, and connect important decisions to follow-through.
-- [`workflow-design`](skills/workflow-design/SKILL.md) — connect stage inputs, outputs, decisions, and checks to a reviewable result.
-- [`skill-design`](skills/skill-design/SKILL.md) — name, scope, compose, and check skills added to this library.
+- [`architecting`](skills/architecting/SKILL.md) — 의도한 동작과 제약을 만족하는 가장 단순한 구조를 선택한다.
+- [`specification`](skills/specification/SKILL.md) — 의무를 출처와 판단 조건에 연결한다.
+- [`writing-requirements-spec`](skills/writing-requirements-spec/SKILL.md) — 소프트웨어 요구사항 명세서를 일관된 문서로 작성한다.
+- [`spec-tests`](skills/spec-tests/SKILL.md) — 시험 사례를 요구사항과 관찰 가능한 기대 결과에 연결한다.
+- [`review`](skills/review/SKILL.md) — 실제 결과를 의도와 적용 기준에 비춰 판단한다.
+- [`work-decomposition`](skills/work-decomposition/SKILL.md) — 의존성, 책임, 확인 방법에 따라 작업 분할을 결정한다.
+- [`verification`](skills/verification/SKILL.md) — 명시된 조건에서 실제 결과와 기대 결과를 비교한다.
+- [`decision`](skills/decision/SKILL.md) — 선택지를 비교하고 근거 있는 결론을 권고한다.
+- [`workflow-design`](skills/workflow-design/SKILL.md) — 단계 사이에 확인 가능한 결과와 인계를 둔다.
+- [`skill-design`](skills/skill-design/SKILL.md) — 스킬의 이름, 범위, 적용 조건을 정한다.
 
-## Small engineering principles
+## 작은 엔지니어링 원칙
 
-Use these focused skills when a specific judgment is needed; they complement broader workflows above.
+특정 판단이 필요할 때 아래 스킬을 사용한다. 작업 순서는 플레이북이 정한다.
 
-- [`minimal-change`](skills/minimal-change/SKILL.md) — keep a change limited to what the intended result requires.
-- [`change-impact-check`](skills/change-impact-check/SKILL.md) — inspect architectural fit and affected work before writing code.
-- [`domain-model-first`](skills/domain-model-first/SKILL.md) — settle the core data shape and invariants before implementing logic.
-- [`boundary-discipline`](skills/boundary-discipline/SKILL.md) — validate and translate external input at system boundaries.
-- [`root-cause-first`](skills/root-cause-first/SKILL.md) — trace a reproduced failure to its cause before adding a guard or workaround.
-- [`behavior-focused-tests`](skills/behavior-focused-tests/SKILL.md) — test observable behavior so tests survive internal refactoring.
-- [`prove-real-result`](skills/prove-real-result/SKILL.md) — inspect the actual outcome and evidence before claiming completion.
+- [`minimal-change`](skills/minimal-change/SKILL.md) — 의도한 결과에 필요한 범위로 변경을 제한한다.
+- [`change-impact-check`](skills/change-impact-check/SKILL.md) — 코드 작성 전 구조와 영향받는 작업을 살핀다.
+- [`domain-model-first`](skills/domain-model-first/SKILL.md) — 로직 전에 핵심 데이터와 불변식을 정한다.
+- [`boundary-discipline`](skills/boundary-discipline/SKILL.md) — 외부 입력을 시스템 경계에서 검증하고 변환한다.
+- [`root-cause-first`](skills/root-cause-first/SKILL.md) — 결함의 원인을 추적한 뒤 수정한다.
+- [`behavior-focused-tests`](skills/behavior-focused-tests/SKILL.md) — 내부 구조보다 관찰 가능한 동작을 시험한다.
+- [`prove-real-result`](skills/prove-real-result/SKILL.md) — 완료를 주장하기 전에 실제 결과를 확인한다.
 
-## Reasoning skills
+## 설명 원칙
 
-- [`why`](skills/why/SKILL.md) — explain causes, consequences, and the evidence behind a judgment.
-- [`how`](skills/how/SKILL.md) — show actionable options, tradeoffs, and a checkable path forward.
+- [`why`](skills/why/SKILL.md) — 근거, 원인, 결과를 연결해 이유를 설명한다.
+- [`how`](skills/how/SKILL.md) — 선택지, 절충점, 실행 경로를 설명한다.
 
-## Parked skills
+## 보류한 스킬
 
-These skills are retained outside the active library for now:
+현재 활성 라이브러리 밖에 보관한다.
 
 - `programming-coursebook-authoring`
 - `git-hygiene`
 
-## Automotive development package
+## 자동차 개발 패키지
 
-[`automotive-development`](automotive-development/SKILL.md) is the automotive domain entry skill. Its package-level playbooks compose shared principles and general engineering methods with automotive requirements, test artifacts, work packages, target evidence, and baseline gates.
+[`garden-beam`](garden-beam/SKILL.md)가 자동차 도메인의 진입 스킬이다. 패키지의 [플레이북](garden-beam/README.md)은 공용 원칙을 자동차 요구사항, 시험, 작업 패키지, 타깃 근거, 승인 기준선과 조합한다.
 
-Automotive requirements, test documentation, feature, bug fix, refactoring, architecture change, and baseline changes are playbooks under the [automotive package](automotive-development/README.md), not nested standalone skills. The [module deliverables guide](automotive-development/docs/module-deliverables.md) defines shared links; the [speed-signal example](automotive-development/examples/speed-signal/README.md) shows one complete layout.
+[모듈 산출물 연결 기준](garden-beam/docs/module-deliverables.md)은 공통 연결을 설명하고, [속도 신호 예제](garden-beam/examples/speed-signal/README.md)는 한 가지 전체 배치를 보여 준다. Git 인증, 저장소 원격, CI, 시험 실행기, ECU/HIL 환경은 설치 가능한 스킬이 아니라 외부 준비 사항이다.
 
-The automotive package's orchestration entry point is [`automotive-development`](automotive-development/SKILL.md). Its playbooks select the shared principles needed for each automotive task. Git credentials, repository remotes, CI, test runners, and HIL/ECU environments are external prerequisites, not installable skills.
+공용 원칙은 `skills/` 바로 아래의 각 디렉터리에 둔다. 도메인 패키지는 자체 `SKILL.md`를 진입점으로 사용한다.
 
-Each shared principle has its own directory directly under `skills/`. Domain packages have their own entry `SKILL.md` and compose the shared principles with domain-specific context and gates.
+## 스킬 묶음 설치
 
-## Install the skill bundle
+이 저장소에는 공용 스킬과 자동차 개발 패키지가 함께 있다. 사용하는 에이전트의 스킬 묶음 등록 방법으로 저장소를 등록한 뒤 이름으로 호출한다. 플레이북은 저장소 배치에 의존하지 않도록 공용 스킬을 이름으로 가리킨다.
 
-This repository is organized as one skill bundle: shared skills and domain packages such as automotive development live together. Register the repository using the bundle mechanism supported by your agent. Once registered, invoke skills by name; workflow documents refer to shared skills by name rather than depending on this repository's directory layout.
+한국어 파일이 이 저장소의 원본이다. 영어 번역은 이후 별도로 작성한다.
 
-English skill files are the canonical, version-controlled source. Matching Korean translations are kept locally under `skills-ko/` and `automotive-development-ko/` with the same instructional layout; both Korean directories and `trash/` are ignored by Git and are not committed.
+## 스킬 배치
 
-## Skill placement
+### 공용 원칙 스킬
 
-### Shared principle skills
+공용 스킬 하나는 재사용 가능한 판단 하나를 맡는다. 제목과 본문에는 그 원칙의 적용 조건과 필요한 판단 규칙만 둔다. 프로젝트 표준, 산출물 경로, 작업 게이트, 도구를 끌어오지 않는다.
 
-A shared principle skill owns one reusable engineering judgment. Its title and instructions name that principle, say when it applies, and give only the rules needed to apply it. Keep it concise and independent of any one project's standards, artifact paths, workflow gates, or tools. Do not turn a principle skill into an implementation workflow.
+플레이북이 원칙을 선택한다. 공용 원칙은 도메인 플레이북을 이름으로 지시하거나 다음 작업 흐름을 결정하지 않는다. 예를 들어 `minimal-change`는 의도한 결과에 필요한 변경을 고르는 원칙만 다루고, 자동차 작업의 파일 범위나 기준선 변경 절차는 다루지 않는다.
 
-Dependency points downward from playbooks to principles: a shared principle must not name a domain playbook, enumerate its use cases, or choose the next workflow. It states its own judgment and result; the playbook decides when to invoke it and what to do next.
+설명란에는 **구체적인 행동과 구별되는 적용 조건**을 적는다. 비슷한 스킬과 구분할 단서는 포함하되 작업 단계와 인계 규칙은 플레이북에 둔다. 예를 들어 `architecting`은 구조 변경 전에 모듈·타입·시그니처·인터페이스 경계를 스케치하라고 안내하고, 코딩부터 하면 잘못된 구조가 굳어질 수 있는 작업에서 사용하도록 설명한다.
 
-For example, `minimal-change` says to identify the intended outcome, choose the smallest change that achieves it, preserve what lies outside that change, and expand scope only when needed. It does not prescribe project-specific file limits, cleanup policy, or approval steps.
+### 도메인 플레이북
 
-Write a skill’s frontmatter `description` with a concrete action and a discriminating trigger. Name the signals that distinguish it from neighboring skills, but keep workflow steps and handoff rules in playbooks. For example, `architecting` says: “Sketch the affected modules, types, signatures, and interface boundaries before choosing the simplest structure that meets the intended behavior. Use for ‘architect this’, ‘design this’, or structural changes where coding first could lock in the wrong shape.”
+`garden-beam/` 같은 도메인 패키지는 공용 원칙을 구체적인 작업에 적용한다. 플레이북은 산출물, 경계, 순서, 근거, 결정 게이트를 정한다. 공용 원칙의 본문을 복사하지 않고 필요한 지점에서 호출한다.
 
-### Domain playbooks apply principles
+자동차 코드 변경에서는 피처·버그 수정·리팩토링 플레이북이 `minimal-change`를 승인된 `WORK` 패키지에 연결한다. 파일과 수용 기준으로 범위를 정하고 추적성 및 기준선 변경을 다루는 규칙은 자동차 플레이북에 둔다.
 
-A domain package such as `automotive-development/` composes shared principles into concrete work for that domain. The playbook supplies applicable artifacts, boundaries, sequence, evidence, and decision gates. It translates a general principle into domain-specific steps without copying the whole shared skill.
-
-For automotive code changes, the feature, bug fix, and refactoring playbooks bind `minimal-change` to an approved `WORK` package: they define how files and acceptance criteria bound the work, where unrelated cleanup belongs, how traceability is updated, and when an approved baseline change must be routed. Those are automotive workflow rules, so they live in the automotive package rather than the shared principle.
-
-When creating a skill, apply [`skill-design`](skills/skill-design/SKILL.md): check existing ownership, choose a shared principle versus a domain playbook, and ensure guidance fits its intended scope. Shared principles go in `skills/`; standards, project terms, artifact paths, and lifecycle gates go in the relevant domain package. Link a shared principle from the domain playbook at the point where it changes a decision.
-
-Do not generalize a skill based only on a possible future use. Identify at least one concrete use outside its originating project and confirm that the core guidance still works there without importing domain-specific assumptions. If that test is not met, keep the skill with its project. When a shared skill is useful to a project package, link it from that package's README and from the relevant router or playbook so agents can discover and load it at the point of use.
-
-For the repository-wide rules on entrypoint size, routing versus execution, progressive disclosure, placement, composition, discoverability, and validation, see [Skill Authoring Principles](docs/skill-authoring-principles.md).
+스킬을 만들 때는 [`skill-design`](skills/skill-design/SKILL.md)으로 기존 책임과 배치 범위를 확인한다. 다른 프로젝트에서 실제로 재사용된 근거 없이 일반화하지 않는다. 저장소 공통 규칙은 [스킬 작성 원칙](docs/skill-authoring-principles.md)을 따른다.

@@ -1,11 +1,11 @@
 ---
 name: minimal-change
-description: Choose the smallest edit that achieves the intended result while preserving unrelated behavior and structure. Use when deciding whether a proposed code change belongs in the current scope.
+description: 무관한 동작과 구조를 보존하면서 의도한 결과를 달성하는 가장 작은 수정을 선택하세요. 제안된 코드 변경이 현재 범위에 속하는지 판단할 때 사용하세요.
 ---
 
-# Minimal Change
+# 최소 변경
 
-1. Identify the intended outcome.
-2. Choose the smallest change that achieves it.
-3. Preserve behavior and structure outside that change.
-4. Expand the scope only when the outcome depends on it, and make that reason clear.
+1. 의도한 결과를 식별한다.
+2. 그 결과를 달성하는 가장 작은 변경을 선택한다.
+3. 그 변경 범위 밖의 동작과 구조를 보존한다.
+4. 결과가 추가 변경에 의존할 때만 범위를 넓히고, 그 이유를 분명히 한다.

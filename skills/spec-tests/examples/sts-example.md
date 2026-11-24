@@ -1,95 +1,95 @@
-# Software Test Specification: Personal Notes App
+# 소프트웨어 시험 명세서: 개인 메모 앱
 
-| Field | Value |
+| 항목 | 값 |
 | --- | --- |
-| Document ID | STS-NOTES-EXAMPLE |
-| Version / status | 0.1 / example, not executed |
-| Author / reviewer / approver | Example author / not assigned / not assigned |
+| 문서 ID | STS-NOTES-EXAMPLE |
+| 버전 / 상태 | 0.1 / 예제, 미실행 |
+| 작성 / 검토 / 승인 | 예시 작성자 / 미지정 / 미지정 |
 
-## 1. Purpose and scope
+## 1. 목적과 범위
 
-Verify creation, editing, deletion, and list ordering in the companion [SRS example](../../spec-requirements/examples/srs-example.md). Accounts and synchronization are outside scope.
+짝이 되는 [SRS 예제](../../writing-requirements-spec/examples/srs-example.md)의 생성, 편집, 삭제, 목록 정렬을 검증한다. 계정과 동기화는 범위 밖이다.
 
-## 2. Test basis and traceability
+## 2. 시험 근거와 추적성
 
-| Basis document | Version | Location |
+| 근거 문서 | 버전 | 위치 |
 | --- | --- | --- |
-| SRS-NOTES-EXAMPLE | 0.1 | [SRS](../../spec-requirements/examples/srs-example.md) |
+| SRS-NOTES-EXAMPLE | 0.1 | [SRS](../../writing-requirements-spec/examples/srs-example.md) |
 
-| Requirement ID | Test case IDs | Coverage / gap |
+| 요구사항 ID | 시험 사례 ID | 검증 범위 / 공백 |
 | --- | --- | --- |
-| REQ-001 | TC-001 | Create and reopen a note; empty-title behavior is ISSUE-001 |
-| REQ-002 | TC-002 | Edit and reopen a note |
-| REQ-003 | TC-003 | Delete a note |
-| REQ-004 | TC-004 | Reorder after an update |
+| REQ-001 | TC-001 | 메모 생성·재조회. 빈 제목 동작은 ISSUE-001 |
+| REQ-002 | TC-002 | 편집·재조회 |
+| REQ-003 | TC-003 | 메모 삭제 |
+| REQ-004 | TC-004 | 수정 뒤 순서 변화 |
 
-## 3. Test environment and data
+## 3. 시험 환경과 데이터
 
-Use a clean local app instance. For `TC-004`, prepare two notes with distinct titles and bodies. This example specifies tests only; no app instance or test run is supplied.
+초기화된 로컬 앱을 사용한다. `TC-004`에서는 제목과 본문이 서로 다른 메모 두 개를 준비한다. 이 예제는 시험을 명세할 뿐 앱이나 실제 실행 결과를 제공하지 않는다.
 
-## 4. Test strategy
+## 4. 시험 전략
 
-Use scenario testing for the user-visible create, edit, and delete flows; use a state transition from initial order to updated order for `REQ-004`. Confirm persisted results by reopening the relevant view. The SRS does not define empty-title behavior, so do not invent a pass criterion for it.
+사용자가 볼 수 있는 생성·편집·삭제 흐름은 시나리오 테스트로, 초기 순서에서 수정 후 순서로 바뀌는 `REQ-004`는 상태 전이 테스트로 다룬다. 관련 화면을 다시 열어 저장 상태를 확인한다. SRS가 빈 제목의 동작을 정의하지 않으므로 임의의 합격 기준을 만들지 않는다.
 
-## 5. Test cases and procedures
+## 5. 시험 사례와 절차
 
-### TC-001: create a note
+### TC-001: 메모 생성
 
-**Requirement:** `REQ-001`. **Technique:** scenario testing. **Precondition:** clean app. **Data:** title `First note`, body `Remember this item`.
+**요구사항:** `REQ-001`. **기법:** 시나리오 테스트. **사전 조건:** 초기화된 앱. **데이터:** 제목 `첫 메모`, 본문 `기억할 내용`.
 
-| Step | Action | Expected result |
+| 단계 | 수행 내용 | 기대 결과 |
 | --- | --- | --- |
-| 1 | Create and save the note. | The note is saved. |
-| 2 | Open the list and then the note. | The list contains `First note`; the opened body is `Remember this item`. |
+| 1 | 메모를 만들고 저장한다. | 메모가 저장된다. |
+| 2 | 목록을 열고 해당 메모를 연다. | 목록에 `첫 메모`가 있고 본문은 `기억할 내용`이다. |
 
-**Pass criterion:** both title and body persist. **Evidence plan:** list and reopened-note observations.
+**합격 기준:** 제목과 본문이 유지된다. **근거 계획:** 목록과 다시 연 메모의 관찰.
 
-### TC-002: edit a note
+### TC-002: 메모 편집
 
-**Requirement:** `REQ-002`. **Technique:** scenario testing. **Precondition:** an existing note. **Data:** title `Revised note`, body `Updated text`.
+**요구사항:** `REQ-002`. **기법:** 시나리오 테스트. **사전 조건:** 기존 메모. **데이터:** 제목 `수정된 메모`, 본문 `변경된 내용`.
 
-| Step | Action | Expected result |
+| 단계 | 수행 내용 | 기대 결과 |
 | --- | --- | --- |
-| 1 | Edit the title and body, then save. | The edit is saved. |
-| 2 | Return to the list and reopen the note. | `Revised note` and `Updated text` appear. |
+| 1 | 제목과 본문을 바꾸고 저장한다. | 수정값이 저장된다. |
+| 2 | 목록으로 돌아와 메모를 다시 연다. | `수정된 메모`와 `변경된 내용`이 보인다. |
 
-**Pass criterion:** both edited values persist. **Evidence plan:** reopened-note observation.
+**합격 기준:** 두 수정값이 유지된다. **근거 계획:** 다시 연 메모의 관찰.
 
-### TC-003: delete a note
+### TC-003: 메모 삭제
 
-**Requirement:** `REQ-003`. **Technique:** scenario testing. **Precondition:** an existing note.
+**요구사항:** `REQ-003`. **기법:** 시나리오 테스트. **사전 조건:** 기존 메모.
 
-| Step | Action | Expected result |
+| 단계 | 수행 내용 | 기대 결과 |
 | --- | --- | --- |
-| 1 | Delete the note. | The deletion action completes. |
-| 2 | Return to the list and search for its title. | The note is absent and cannot be reopened from the list. |
+| 1 | 메모를 삭제한다. | 삭제 동작이 완료된다. |
+| 2 | 목록으로 돌아가 제목을 찾는다. | 메모가 없고 목록에서 다시 열 수 없다. |
 
-**Pass criterion:** the deleted note is unavailable from the list. **Evidence plan:** list observation.
+**합격 기준:** 삭제한 메모를 목록에서 사용할 수 없다. **근거 계획:** 목록 관찰.
 
-### TC-004: order notes after an update
+### TC-004: 수정 뒤 메모 순서
 
-**Requirement:** `REQ-004`. **Technique:** state transition testing. **Precondition:** clean app. **Data:** notes `Alpha` and `Beta`.
+**요구사항:** `REQ-004`. **기법:** 상태 전이 테스트. **사전 조건:** 초기화된 앱. **데이터:** 메모 `가`, `나`.
 
-| Step | Action | Expected result |
+| 단계 | 수행 내용 | 기대 결과 |
 | --- | --- | --- |
-| 1 | Create `Alpha`, then `Beta`. | Both appear in the list. |
-| 2 | Edit and save `Alpha`; return to the list. | `Alpha` appears before `Beta`. |
+| 1 | `가`, `나`를 순서대로 만든다. | 두 메모가 목록에 나타난다. |
+| 2 | `가`를 수정·저장하고 목록으로 돌아간다. | `가`가 `나`보다 먼저 보인다. |
 
-**Pass criterion:** the updated note moves to the top. **Evidence plan:** list order before and after update.
+**합격 기준:** 수정한 메모가 맨 위로 이동한다. **근거 계획:** 수정 전후 목록 순서.
 
-## 6. Results and unresolved items
+## 6. 결과와 미결사항
 
-| Test case ID | Status | Observed result | Evidence | Issue ID |
+| 시험 사례 ID | 상태 | 관찰 결과 | 근거 | 이슈 ID |
 | --- | --- | --- | --- | --- |
-| TC-001 | Not run | — | — | — |
-| TC-002 | Not run | — | — | — |
-| TC-003 | Not run | — | — | — |
-| TC-004 | Not run | — | — | — |
+| TC-001 | 미실행 | — | — | — |
+| TC-002 | 미실행 | — | — | — |
+| TC-003 | 미실행 | — | — | — |
+| TC-004 | 미실행 | — | — | — |
 
-**ISSUE-001:** The SRS does not specify what happens when the title is empty. Why it matters: a negative-input test would have no supported expected result. The requirement owner must define whether empty titles are accepted or rejected; only then can a corresponding `TC` be added. No execution or passing result is claimed.
+**ISSUE-001:** SRS는 빈 제목의 동작을 정의하지 않는다. 이 상태에서는 잘못된 입력 시험의 기대 결과가 없다. 요구사항 책임자가 빈 제목을 허용할지 거부할지 결정한 뒤 해당 `TC`를 추가한다. 실행이나 통과를 주장하지 않는다.
 
-## Revision history
+## 개정 이력
 
-| Version | Change | Author |
+| 버전 | 변경 내용 | 작성자 |
 | --- | --- | --- |
-| 0.1 | Initial example | Example author |
+| 0.1 | 초기 예제 | 예시 작성자 |

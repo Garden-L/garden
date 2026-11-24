@@ -1,114 +1,73 @@
-# Skill Authoring Principles
+# 스킬 작성 원칙
 
-This document defines the repository-wide rules for creating and organizing skills. It complements [`skills/skill-design/SKILL.md`](../skills/skill-design/SKILL.md), which describes the decision process for designing an individual skill.
+이 문서는 저장소 전체의 스킬 작성·배치 규칙을 정한다. 개별 스킬의 판단 범위는 [`skill-design`](../skills/skill-design/SKILL.md)을 참고한다.
 
-## 1. Keep the top-level skill entrypoint small
+## 1. 진입 파일은 작게 유지한다
 
-The top-level `SKILL.md` is the entrypoint, not the entire manual. It should contain only:
+최상위 `SKILL.md`에는 이름, 적용 조건, 책임 경계, 최소한의 판단, 필요한 하위 자료로 가는 경로만 둔다. 긴 절차, 도메인 배경, 반복 규칙, 방대한 예시를 모두 넣지 않는다.
 
-- the skill name and trigger description;
-- the skill's purpose and responsibility boundary;
-- the minimum decisions the agent must make;
-- routing to a child skill or reference when more detail is needed.
+## 2. 스킬 하나에 작은 개념 하나만 둔다
 
-Do not put long procedures, domain background, repeated rules, large examples, or every possible edge case in the top-level file.
+스킬 하나는 이름으로 설명할 수 있는 개념·판단·행동 하나만 맡는다. `how`는 의도에서 행동으로 이어지는 경로를 설명할 뿐 요구사항, 구현, 시험, 검토를 함께 정의하지 않는다.
 
-## 2. Keep one small concept per skill
+새 스킬을 만들기 전에 확인한다.
 
-A skill must focus on one small, named concept, judgment, or action. It should explain the purpose and use of that one thing—not become a collection of related advice.
+- 목적을 서로 다른 일을 연결하지 않고 짧은 문장 하나로 말할 수 있는가?
+- 이름이 그 개념 하나를 드러내는가?
+- 한 문단을 빼면 핵심 개념이 약해지는가, 아니면 이웃 주제만 빠지는가?
+- 이웃 주제는 다른 스킬로 연결할 수 있는가?
 
-`skills/how/SKILL.md` is the model: it explains how to choose and describe a path from intent to action. It does not also define requirements, implementation, testing, review, or project management. A new skill named `why` should similarly focus on the purpose of explaining causes and evidence, not become a general reasoning manual.
+독립적인 개념이 여러 개라면 나누고 플레이북에서 조합한다. 기존 스킬이 이미 같은 판단을 맡는지도 먼저 확인한다.
 
-Use this test before creating a skill:
+## 3. 경로 선택과 실행을 분리한다
 
-- Can its purpose be stated in one short sentence without an “and” joining separate jobs?
-- Does the name identify the one concept the skill owns?
-- Would removing one paragraph change that concept, or only remove an adjacent topic?
-- Can a nearby topic be linked as another skill instead of being added here?
+진입 스킬은 요청에 맞는 플레이북을 찾고 입력·출력·인계 조건을 연결한다. 집중된 스킬이나 플레이북은 맡은 작업의 방법과 결과만 정의한다. 진입 파일에 상세 절차를 복사하지 않는다.
 
-If the answer reveals multiple independent concepts, split them into separate skills and compose them through a router or workflow. Do not create a broad “everything for X” skill just because the topics are used in the same project.
+## 4. 필요할 때만 세부 자료를 읽는다
 
-Before creating a skill, check whether an existing skill already owns the method. Extend that skill when the new rule changes the same decision. Create a separate skill only when the trigger, responsibility, and outcome are materially different.
+자주 쓰는 판단은 `SKILL.md`에 두고 조건부 세부 사항은 가장 좁은 자료에 둔다.
 
-## 3. Separate routing from execution
+- `references/` — 정책, 형식, 스키마, 상세 지침
+- `examples/` — 완성된 대표 예시
+- `scripts/` — 결정적인 검사나 반복 변환
+- 템플릿·에셋 — 실제 산출물에 들어가는 파일
 
-Routers and workers have different responsibilities:
+현재 작업에 필요한 자료만 읽는다. 디렉터리를 채우기 위해 불필요한 파일을 만들지 않는다.
 
-- A router classifies the request, selects the next skill, defines stage order, carries inputs and outputs, and enforces gates.
-- A focused skill or playbook performs the work assigned to it and owns only the method and output needed for that work.
+## 5. 경계를 드러낸다
 
-Do not duplicate detailed instructions in a router. Link to the focused skill or playbook and state only the handoff conditions that the router owns.
+작업 흐름에는 필요한 입력, 결과, 미결 결정, 멈춰야 할 조건, 완료 주장의 근거를 분명히 둔다. 누락된 요구사항, 승인, 안전 주장, 인터페이스, 한계, 수용 기준을 임의로 만들지 않는다.
 
-## 4. Use progressive disclosure
+## 6. 재사용 범위에 맞게 배치한다
 
-Keep the common path in `SKILL.md` and move conditional detail to the narrowest useful resource:
+도메인 독립적인 작은 판단은 `skills/`에 둔다. 프로젝트, 제품, 표준, 수명주기, 산출물에 특화된 내용은 `garden-beam/` 같은 패키지에 둔다. 실제로 다른 곳에서 재사용된 근거 없이 공용 라이브러리로 옮기지 않는다.
 
-- `references/` for substantial guidance, policies, schemas, and format details;
-- `examples/` for representative completed outputs;
-- `scripts/` for deterministic checks or repeatable transformations;
-- templates or assets for files that belong in generated output.
+패키지가 공용 스킬을 사용하면 관련 플레이북에서 이름과 적용 지점을 밝힌다.
 
-Read or invoke supporting resources only when the current task needs them. Do not add a reference file merely to make the directory look complete.
+## 7. 복제보다 조합을 택한다
 
-## 5. Make boundaries explicit
+공용 스킬은 원칙 하나에 집중한다. 엔지니어링 흐름이나 도메인 플레이북이 원칙을 명시적인 연결과 인계로 조합한다. 패키지 진입점은 플레이북을 찾으며 플레이북의 상세 절차를 가져오지 않는다.
 
-Every workflow skill should make its boundaries visible:
+예를 들어 `garden-beam/SKILL.md`는 진입점이다. SRS, STS, 피처, 버그 수정, 리팩토링, 기준선 변경 절차는 `garden-beam/playbooks/`에 두고, 문맥·예시·체크리스트는 `references/`에 둔다. 패키지 안에 별도의 `skills/` 디렉터리는 필요하지 않다.
 
-- required inputs and context;
-- produced artifacts or decisions;
-- unresolved decisions and how they are recorded;
-- conditions that require a stop or user decision;
-- work the skill does not perform;
-- evidence required before claiming completion.
+## 8. 발견성과 호출 조건을 확인한다
 
-Do not silently invent missing requirements, approvals, safety claims, interfaces, limits, or acceptance criteria.
+- frontmatter의 `name`은 구체적이고 `description`은 행동과 구별되는 적용 신호를 담는다.
+- 적절한 README나 플레이북에서 찾을 수 있다.
+- 이름은 소문자 케밥 표기법을 따른다.
+- UI 메타데이터와 실제 역할이 일치한다.
+- 링크가 파일 위치를 기준으로 유효하다.
 
-## 6. Place skills by reuse scope
+파일만 존재한다고 에이전트가 알아서 찾을 것이라고 가정하지 않는다.
 
-- Put domain-independent methods in `skills/`.
-- Put project, product, domain, standard, lifecycle, or artifact-specific guidance in the relevant package, such as `automotive-development/`.
-- Keep a skill in its originating package unless at least one concrete use outside that package demonstrates that the core guidance survives without importing domain assumptions.
+## 9. 형식과 동작을 확인한다
 
-When a shared skill is used by a package, link it from the package README and from the relevant router or playbook.
+frontmatter, 링크, 이름, 구조를 기계적으로 검사한다. 필요하면 실제 요청, 가까운 다른 요청, 모호한 요청에 적용해 선택과 산출물이 의도대로 나오는지 살핀다. 제목이나 키워드의 존재만으로 성공을 판단하지 않는다.
 
-## 7. Prefer composition over duplication
+## 10. 원본은 하나만 둔다
 
-Keep shared skills small and principle-focused. Compose multiple principles into an engineering workflow or a domain playbook through explicit links and handoffs. A domain package entrypoint routes to its playbooks; it does not absorb the playbooks' detailed procedures.
+한국어 스킬 파일이 버전 관리되는 원본이다. 영어 번역이 필요하면 원본의 의미와 연결을 보존해 별도로 관리한다. 원칙이 바뀌면 한국어 원본을 먼저 수정한다.
 
-Do not copy shared principles into domain playbooks or repeat a playbook in its parent entrypoint. If a domain workflow needs to specialize a shared principle, keep the principle general and put only the domain-specific artifacts, constraints, gates, and fields in the package playbook.
+## 11. 일반화를 서두르지 않는다
 
-For example, `automotive-development/SKILL.md` is the automotive entrypoint. Automotive requirements-to-SRS, SRS-to-STS, feature, bug fix, refactoring, and baseline change procedures live in `automotive-development/playbooks/`; automotive document context, examples, and checklists live in `automotive-development/references/`. The package does not need a nested `skills/` directory.
-
-## 8. Define discoverability and invocation
-
-For every new skill, verify all of the following:
-
-- frontmatter `name` is specific, and `description` names a concrete action and the signals that should trigger it, including nearby requests it should not attract when that distinction matters;
-- the skill is reachable from the appropriate README, router, or playbook;
-- the name follows lowercase kebab-case;
-- UI metadata, when present, matches the skill's actual purpose;
-- links resolve from the file that contains them.
-
-Do not rely on a skill existing in the filesystem without providing a discoverable path to it when it is part of a package workflow.
-
-## 9. Validate behavior, not just structure
-
-Run the repository's mechanical checks for frontmatter, links, naming, and structure. Then test the skill with at least:
-
-1. one realistic request it should attract;
-2. one nearby request it should not attract;
-3. one incomplete or ambiguous request that verifies its stop conditions.
-
-The checks should confirm the output shape, handoff behavior, and refusal to guess—not merely the presence of headings or keywords.
-
-## 10. Keep one canonical source
-
-English skill files are the canonical, version-controlled source. Matching translations may be maintained in the ignored local translation trees, but they must preserve the same instructional structure and links as the canonical files.
-
-When a principle changes, update the canonical document first and then reconcile translations or generated copies.
-
-## 11. Avoid premature generalization
-
-Do not promote a rule to the shared library because it might be useful someday. First identify a concrete second use, remove originating-project assumptions, and confirm that the generalized skill still has a clear trigger and output.
-
-If the rule is only a repository convention, put it here or in the relevant package documentation. If it is a reusable agent method, put it in a skill.
+언젠가 쓸 수 있다는 이유만으로 공용 스킬로 승격하지 않는다. 실제 두 번째 적용 사례와 도메인 가정을 제거할 수 있는지 확인한다. 저장소 운영 규칙은 이 문서에, 재사용 가능한 판단은 스킬에 둔다.

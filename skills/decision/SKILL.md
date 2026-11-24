@@ -1,10 +1,10 @@
 ---
 name: decision
-description: Compare viable choices against the goal, constraints, consequences, and evidence, then recommend the best-supported option. Use when a meaningful choice remains open or uncertainty could change the answer.
+description: 가능한 선택지를 목표·제약·결과·근거에 비춰 비교하고 가장 뒷받침되는 안을 권고하세요. 중요한 선택이 열려 있거나 불확실성에 따라 결론이 달라질 수 있을 때 사용하세요.
 ---
 
-# Decision
+# 결정
 
-State the choice and the outcome sought. Compare viable options against the few criteria that matter, including meaningful consequences and uncertainty. Recommend the option best supported by the evidence; if evidence cannot settle it, identify the missing condition.
+선택할 문제와 원하는 결과를 밝힌다. 중요한 기준을 기준으로 가능한 선택지, 결과, 불확실성을 비교한다. 근거가 뒷받침하는 선택지를 권고하고, 결론을 낼 수 없다면 빠진 조건을 밝힌다.
 
-Scale the comparison to the impact and reversibility of the choice. The calling playbook decides who authorizes it and where the result is recorded.
+선택의 영향과 되돌릴 수 있는 정도에 맞게 비교한다. 승인 책임자와 기록 위치는 호출한 플레이북이 정한다.

@@ -1,4 +1,0 @@
-interface:
-  display_name: "Automotive Development"
-  short_description: "Find the automotive playbook and apply its governing principles"
-  default_prompt: "Use $automotive-development to find the relevant playbook for this automotive task and follow its governing principles."

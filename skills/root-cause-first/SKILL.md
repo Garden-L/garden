@@ -1,10 +1,10 @@
 ---
 name: root-cause-first
-description: Trace a reproduced symptom to the earliest supported cause before choosing a correction. Use for defects, recurring failures, or fixes that have already failed once.
+description: 수정 방법을 고르기 전에 재현된 증상을 근거로 뒷받침되는 최초 원인까지 추적하세요. 결함·반복되는 실패·앞선 수정이 실패한 문제에 사용하세요.
 ---
 
-# Root Cause First
+# 근본 원인 우선
 
-Trace the failure to the earliest incorrect state or decision that explains the observed symptom. Reproduce it, inspect the relevant flow, and test a concrete cause before choosing a fix.
+관찰된 증상을 설명하는 가장 이른 잘못된 상태나 판단까지 원인을 추적한다. 문제를 재현하고 관련 흐름을 살핀 뒤, 구체적인 원인을 세우고 검증한다.
 
-Correct that cause when it is within scope. Add a guard at the symptom only when the state is legitimately possible and the guard defines the intended behavior. After the change, repeat the original reproduction and check the behavior that depends on the corrected state. Do not stack another workaround on an untested explanation.
+범위 안에 있다면 원인을 바로잡는다. 해당 상태가 정상적으로 발생할 수 있고 가드 자체가 의도된 동작을 정의할 때만 증상 지점에 가드를 추가한다. 수정 뒤에는 원래 재현을 다시 실행하고 고친 상태에 의존하는 동작도 확인한다. 검증되지 않은 설명 위에 임시 처리를 또 쌓지 않는다.

@@ -1,23 +1,23 @@
-# Skill Library Taxonomy Design
+# 스킬 라이브러리 분류 설계
 
-## Intent
+## 의도
 
-Group the skill library by both the kind of thinking a skill supports and the practical work area where it is used. This should make the collection easier to browse without making domain packages depend on repeated file paths.
+스킬이 지원하는 사고 종류와 실제 작업 영역을 기준으로 라이브러리를 묶는다. 도메인 패키지가 반복되는 파일 경로에 의존하지 않으면서 목록을 탐색하기 쉽게 한다.
 
-## Goals
+## 목표
 
-- Use purpose-led categories: frame, build, prove, communicate, and sustain.
-- Keep domain workflows such as automotive development as composed packages.
-- Preserve skill names and contents while moving files.
-- Update indexes and the automotive skill registry to the new locations.
+- 프레임, 빌드, 증명, 전달, 유지라는 목적 중심 범주를 사용한다.
+- 자동차 개발 같은 도메인 흐름은 조합된 패키지로 유지한다.
+- 파일을 옮기되 스킬 이름과 내용을 보존한다.
+- 목차와 자동차 스킬 등록부를 새 위치로 갱신한다.
 
-## Non-goals
+## 제외 범위
 
-- Rewriting skill guidance or changing invocation semantics.
-- Creating adapters for specific agent products.
-- Adding new skills or deleting existing ones.
+- 스킬 지침을 다시 쓰거나 호출 의미를 바꾸지 않는다.
+- 에이전트 제품별 어댑터를 만들지 않는다.
+- 새 스킬을 추가하거나 기존 스킬을 삭제하지 않는다.
 
-## Proposed structure
+## 제안 구조
 
 ```text
 skills/
@@ -26,22 +26,22 @@ skills/
   prove/       # verification, verification-evidence, traceability
   communicate/ # requirements, testing, learning/coursebook authoring
   sustain/     # git-hygiene
-automotive-development/ # domain workflow package
+garden-beam/ # 도메인 작업 패키지
 ```
 
-Automotive-specific lifecycle skills stay in `automotive-development/skills/`. Shared skills move into purpose-based subdirectories under `skills/`. The automotive router owns the name-to-file registry; playbooks refer to skill names only.
+자동차 수명주기 스킬은 `garden-beam/skills/`에 두고 공용 스킬은 `skills/`의 목적별 하위 디렉터리로 옮긴다. 자동차 라우터가 이름·파일 등록부를 관리하며 플레이북은 스킬 이름만 사용한다.
 
-## Mapping
+## 대응표
 
 - `frame`: architect, input-review, change-impact
 - `build/software`: tdd
 - `build/automation`: pattern-to-tool
 - `prove`: verification, verification-evidence, traceability
-- `communicate/requirements`: input-review remains in frame; automotive SRS stays domain-specific
-- `communicate/testing`: automotive STS stays domain-specific
+- `communicate/requirements`: input-review는 frame에 유지하고 자동차 SRS는 도메인 전용으로 둔다.
+- `communicate/testing`: 자동차 STS는 도메인 전용으로 둔다.
 - `communicate/learning`: programming-coursebook-authoring
 - `sustain`: git-hygiene
 
-## Open implementation detail
+## 열린 구현 사항
 
-The automotive-specific requirements and test-documentation skills remain within their domain package because their content carries automotive assumptions. Their contribution is indexed under communicate in the automotive package documentation rather than moved into the domain-neutral collection.
+자동차 전용 요구사항·시험 문서 스킬은 자동차 가정을 포함하므로 도메인 패키지에 남긴다. 중립적인 공용 목록으로 옮기지 않고 자동차 패키지 문서의 communicate 항목에서 안내한다.

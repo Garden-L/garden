@@ -1,10 +1,10 @@
 ---
 name: work-decomposition
-description: Separate work only where each part has a clear boundary, owner, dependency, and check. Use when a change spans components or workers and the smallest safe division is uncertain.
+description: 각 부분의 경계·책임자·의존성·확인 방법이 분명할 때만 작업을 나누세요. 변경이 여러 구성요소나 작업자에 걸쳐 있고 안전한 분할이 불분명할 때 사용하세요.
 ---
 
-# Work Decomposition
+# 작업 분할
 
-Identify blocking decisions, independent results, shared mutable state, and the integration point. Keep tightly coupled work with one owner. Split only where each part has a clear boundary, owner, dependency, and way to check its result.
+선행 결정, 독립적인 결과, 공유 가변 상태, 통합 지점을 확인한다. 밀접하게 결합된 작업은 한 책임자에게 둔다. 각 부분의 경계, 책임자, 의존성, 확인 방법이 분명할 때만 나눈다.
 
-Reconsider the split when interfaces or dependencies change. The calling playbook decides the work record and execution sequence.
+인터페이스나 의존성이 달라지면 분할을 다시 판단한다. 작업 기록과 실행 순서는 호출한 플레이북이 정한다.

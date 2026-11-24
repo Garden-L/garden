@@ -1,10 +1,10 @@
 ---
 name: verification
-description: Compare an actual result with an explicit expectation under a known revision, setup, and environment. Use when checking behavior or evidence and deciding whether the result passes, fails, or remains inconclusive.
+description: 알려진 리비전·설정·환경에서 실제 결과를 명시된 기대 결과와 비교하세요. 동작이나 근거를 확인하고 통과·실패·판정 불가를 판단할 때 사용하세요.
 ---
 
-# Verification
+# 검증
 
-Identify the expected result, artifact revision, environment, setup, and input. Run or inspect the relevant case, compare expected with observed behavior, and retain evidence sufficient to support the conclusion.
+기대 결과, 산출물 리비전, 환경, 준비 상태, 입력을 확인한다. 관련 사례를 실행하거나 실제 결과를 조사하고 기대와 관찰을 비교해 결론을 뒷받침하는 근거를 확인한다.
 
-Call the result pass, fail, or inconclusive only for the conditions actually checked. An unavailable target remains unverified even if a substitute passes. The calling playbook chooses the cases, evidence location, and handoff gate.
+실제로 확인한 조건에 대해서만 통과·실패·판정 불가를 말한다. 대체 환경에서 통과해도 필요한 타깃을 확인하지 못했다면 미검증이다. 사례, 근거 위치, 인계 조건은 호출한 플레이북이 정한다.

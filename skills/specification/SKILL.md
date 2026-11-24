@@ -1,10 +1,10 @@
 ---
 name: specification
-description: Keep each stated obligation tied to its source, meaning, and judgment condition while exposing assumptions and gaps. Use when defining or revising a specification from incomplete or conflicting material.
+description: 각 의무를 출처·의미·판단 조건에 연결하고 가정과 공백을 드러내세요. 불완전하거나 충돌하는 자료에서 명세를 정의하거나 수정할 때 사용하세요.
 ---
 
-# Specification
+# 명세
 
-Preserve the source and intended meaning of each obligation. Separate known facts, assumptions, decisions, and open questions. Express the obligation so different readers can interpret it consistently and judge whether it is met.
+각 의무의 출처와 의도한 의미를 보존한다. 확인된 사실, 가정, 결정, 미결 질문을 구분한다. 독자가 일관되게 해석하고 충족 여부를 판단할 수 있게 의무를 표현한다.
 
-Do not fill an unknown behavior with a convenient guess. The calling playbook determines the document, trace links, and approval process.
+모르는 동작을 편의상 추정하지 않는다. 문서, 추적성 연결, 승인 절차는 호출한 플레이북이 정한다.

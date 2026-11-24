@@ -1,10 +1,10 @@
 ---
 name: architecting
-description: Sketch the affected modules, types, signatures, and interface boundaries before choosing the simplest structure that meets the intended behavior. Use for “architect this”, “design this”, or structural changes where coding first could lock in the wrong shape.
+description: 코드를 작성하기 전에 영향받는 모듈·타입·시그니처·인터페이스 경계를 스케치하고 의도한 동작에 맞는 가장 단순한 구조를 선택하세요. “아키텍처를 설계해줘”, “이걸 설계해줘” 또는 코딩부터 하면 잘못된 구조가 굳어질 수 있는 작업에 사용하세요.
 ---
 
-# Architecting
+# 아키텍처링
 
-Use the affected components and boundaries to judge whether the change fits the existing structure or requires a structural change.
+영향받는 구성요소와 경계를 보고 변경이 기존 구조에 들어맞는지, 구조 변경이 필요한지 판단한다.
 
-For a local change, preserve the surrounding structure. For a broad change, sketch the target modules, types, signatures, and interface relationships before implementation. Choose the simplest structure that satisfies the intended behavior and constraints; keep any choice that depends on an unknown condition open.
+국소적인 변경은 주변 구조를 유지한다. 큰 변경은 구현 전에 목표 모듈·타입·시그니처·인터페이스 관계를 스케치한다. 의도한 동작과 제약을 충족하는 가장 단순한 구조를 선택하고, 미확정 조건에 의존하는 선택은 열린 상태로 둔다.

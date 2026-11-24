@@ -1,75 +1,75 @@
-# Software Test Specification: <system name>
+# 소프트웨어 시험 명세서: <시스템 이름>
 
-| Field | Value |
+| 항목 | 값 |
 | --- | --- |
-| Document ID | <document ID> |
-| Version | <version> |
-| Date | <date> |
-| Author / reviewer / approver | <names> |
-| Status | <draft / reviewed / approved> |
+| 문서 ID | <문서 ID> |
+| 버전 | <버전> |
+| 날짜 | <날짜> |
+| 작성 / 검토 / 승인 | <이름> |
+| 상태 | <초안 / 검토 / 승인> |
 
-## 1. Purpose and scope
+## 1. 목적과 범위
 
-| Field | Content |
+| 항목 | 내용 |
 | --- | --- |
-| Purpose | <purpose> |
-| In scope | <included verification> |
-| Out of scope | <excluded verification> |
+| 목적 | <목적> |
+| 포함 범위 | <포함하는 검증> |
+| 제외 범위 | <제외하는 검증> |
 
-## 2. Test basis and traceability
+## 2. 시험 근거와 추적성
 
-| Basis document | Version | Location |
+| 근거 문서 | 버전 | 위치 |
 | --- | --- | --- |
-| <SRS document ID> | <version> | <link> |
+| <SRS 문서 ID> | <버전> | <링크> |
 
-| Requirement ID | Test case IDs | Coverage / gap |
+| 요구사항 ID | 시험 사례 ID | 검증 범위 / 공백 |
 | --- | --- | --- |
-| REQ-<id> | TC-<id> | <coverage or gap> |
+| REQ-<ID> | TC-<ID> | <검증 범위 또는 공백> |
 
-## 3. Test environment and data
+## 3. 시험 환경과 데이터
 
-| Item | Configuration / value | Source / location |
+| 항목 | 설정 / 값 | 출처 / 위치 |
 | --- | --- | --- |
-| <environment component or test data> | <configuration or value> | <source> |
+| <환경 구성요소 또는 시험 데이터> | <설정 또는 값> | <출처> |
 
-## 4. Test strategy
+## 4. 시험 전략
 
-| Field | Content |
+| 항목 | 내용 |
 | --- | --- |
-| Test level / method | <level and method> |
-| Entry conditions | <conditions> |
-| Exit conditions | <conditions> |
-| Evidence to retain | <evidence type and location> |
+| 시험 수준 / 방법 | <수준과 방법> |
+| 시작 조건 | <조건> |
+| 종료 조건 | <조건> |
+| 보관할 근거 | <근거 유형과 위치> |
 
-## 5. Test cases and procedures
+## 5. 시험 사례와 절차
 
-### TC-<id>: <test title>
+### TC-<ID>: <시험 제목>
 
-| Field | Content |
+| 항목 | 내용 |
 | --- | --- |
-| Requirement IDs | REQ-<id> |
-| Test objective | <objective> |
-| Preconditions | <preconditions> |
-| Test data | <data> |
-| Pass criteria | <pass criteria> |
-| Evidence | <record or artifact> |
+| 요구사항 ID | REQ-<ID> |
+| 시험 목적 | <목적> |
+| 사전 조건 | <사전 조건> |
+| 시험 데이터 | <데이터> |
+| 합격 기준 | <합격 기준> |
+| 근거 | <기록 또는 산출물> |
 
-| Step | Action | Expected result |
+| 단계 | 수행 내용 | 기대 결과 |
 | --- | --- | --- |
-| 1 | <action> | <observable result> |
+| 1 | <수행 내용> | <관찰 가능한 결과> |
 
-## 6. Results and unresolved items
+## 6. 결과와 미결사항
 
-| Test case ID | Status | Observed result | Evidence | Issue ID |
+| 시험 사례 ID | 상태 | 관찰 결과 | 근거 | 이슈 ID |
 | --- | --- | --- | --- | --- |
-| TC-<id> | <pass / fail / blocked / not run> | <observation> | <link or record ID> | ISSUE-<id> |
+| TC-<ID> | <통과 / 실패 / 차단 / 미실행> | <관찰 내용> | <링크 또는 기록 ID> | ISSUE-<ID> |
 
-| ID | Related test / requirement IDs | Issue | Next action | Owner | Status |
+| ID | 관련 시험 / 요구사항 ID | 이슈 | 다음 조치 | 담당자 | 상태 |
 | --- | --- | --- | --- | --- | --- |
-| ISSUE-<id> | TC-<id>, REQ-<id> | <issue> | <action> | <owner> | <status> |
+| ISSUE-<ID> | TC-<ID>, REQ-<ID> | <이슈> | <조치> | <담당자> | <상태> |
 
-## Revision history
+## 개정 이력
 
-| Version | Date | Change | Author |
+| 버전 | 날짜 | 변경 내용 | 작성자 |
 | --- | --- | --- | --- |
-| <version> | <date> | <change> | <author> |
+| <버전> | <날짜> | <변경 내용> | <작성자> |

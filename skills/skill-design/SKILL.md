@@ -1,10 +1,10 @@
 ---
 name: skill-design
-description: Give a skill one reusable judgment, a clear trigger, and a boundary distinct from neighboring skills. Use when creating or revising a skill whose scope or placement is unclear.
+description: 스킬에 재사용 가능한 판단 하나와 명확한 적용 조건, 이웃 스킬과 구분되는 경계를 부여하세요. 스킬을 만들거나 수정할 때 범위나 배치가 불분명하면 사용하세요.
 ---
 
-# Skill Design
+# 스킬 설계
 
-Name the one judgment the skill owns. Check whether an existing skill already owns it, and separate domain-specific steps from the reusable principle. Keep the trigger and instructions focused on that judgment.
+스킬이 맡을 판단 하나를 이름으로 나타낸다. 기존 스킬이 이미 맡고 있는지 확인하고 도메인 절차를 재사용 가능한 원칙과 분리한다. 적용 조건과 지침을 그 판단에 집중한다.
 
-See the repository [authoring principles](../../docs/skill-authoring-principles.md) for placement and maintenance rules.
+배치와 유지 규칙은 저장소의 [작성 원칙](../../docs/skill-authoring-principles.md)을 따른다.

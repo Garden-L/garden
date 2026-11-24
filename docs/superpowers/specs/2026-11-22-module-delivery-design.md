@@ -1,55 +1,55 @@
-# Module Delivery Design
+# 모듈 인계 설계
 
-## Goal
+## 목표
 
-Give an automotive module a reviewable path from supplied source material through SRS, STS, decisions, bounded implementation, and verified delivery. A completed example must show the actual shape of every output and its links. The skill package defines the method and artifact contract; generated module artifacts live in the consuming project.
+제공된 원본 자료에서 SRS, STS, 결정, 범위가 정해진 구현, 검증된 인계까지 자동차 모듈의 검토 가능한 경로를 만든다. 완성 예제는 산출물과 연결의 실제 모양을 보여 준다. 스킬 패키지는 방법과 산출물 계약을 정의하고 생성되는 모듈 파일은 대상 프로젝트에 둔다.
 
-## Responsibility split
+## 책임 분리
 
-- Shared `decision`: reusable principle for recording an issue's evidence, why it matters, options, decision authority, affected artifacts, and proof of application. It does not prescribe software IDs or filenames. It composes `why` and `how`.
-- Shared `workflow-design`: reusable principle for defining a checkable outcome, stage inputs/outputs, decisions, and checks without owning a domain's artifact paths.
-- Shared `skill-design`: repository-specific principles for naming, scope, generalization, composition, and checking a new skill. It guides future skill-writing agents without replacing the host's skill-authoring tool or fixing a document template.
-- Existing shared `specification`, `spec-requirements`, `spec-tests`, `engineering-design`, `implementation`, `verification`: retain their current roles. Do not copy their rules into the new skill.
-- Automotive `automotive-engineering` full-delivery playbook: apply `workflow-design`, select existing leaf skills in sequence, and define stage outputs and stop conditions.
-- Automotive deliverable contract: concrete paths, required information, lifecycle states, and validation for a module. SRS and STS formats remain references; this contract does not force their section layouts.
-- Worked example: one invented speed-signal module with complete cross-links and clearly labeled illustrative code and evidence, never claimed as a real ECU/HIL run.
+- 공용 `decision`: 이슈의 근거, 중요성, 선택지, 결정 권한, 영향받는 산출물, 반영 근거를 연결하는 원칙이다. 소프트웨어 ID나 파일 이름을 정하지 않는다. `why`와 `how`를 조합한다.
+- 공용 `workflow-design`: 도메인 산출물 경로를 정하지 않으면서 확인 가능한 결과, 단계 입력·출력, 결정, 검사를 정의한다.
+- 공용 `skill-design`: 미래 스킬의 이름, 범위, 일반화, 조합, 검사를 위한 저장소 원칙이다. 호스트의 스킬 작성 도구나 문서 템플릿을 대체하지 않는다.
+- 기존 공용 `specification`, `writing-requirements-spec`, `spec-tests`, `engineering-design`, `implementation`, `verification`은 당시 역할을 유지한다. 새 스킬에 규칙을 복사하지 않는다.
+- 자동차 `automotive-engineering` 전체 인계 플레이북은 `workflow-design`을 적용하고 기존 하위 스킬을 순서대로 선택하며 단계 결과와 중단 조건을 정한다.
+- 자동차 산출물 계약은 모듈의 경로, 필수 정보, 수명주기 상태, 검사를 정한다. SRS·STS 형식은 참고 자료로 유지하고 절 배치를 강제하지 않는다.
+- 완성 예제는 상상한 속도 신호 모듈 하나다. 연결과 예제 코드·근거를 명시하며 실제 ECU/HIL 실행이라고 주장하지 않는다.
 
-## Module output contract
+## 모듈 산출물 계약
 
-In a consuming project, use `docs/modules/<module>/` by default, or an existing equivalent location:
+대상 프로젝트에서 기본적으로 `docs/modules/<module>/` 또는 기존에 동등한 위치를 사용한다.
 
 ```text
-README.md                 source versions, scope, stage, artifact index, final verdict
-srs.md                    REQ requirements and acceptance conditions
-sts.md                    TC cases, chosen techniques, procedures, expected results
-issues.md                 canonical ISSUE record, including decision and application evidence
-traceability.md           source → REQ → TC → ISSUE when relevant → WORK → code → evidence
-completion-report.md      generated per-REQ coverage, recorded status, and gaps
-work/WORK-001.md          bounded packet and implementation result per work item
-verification.md           commands/runs, observed results, environment gaps, conclusion
+README.md                 원본 버전, 범위, 단계, 산출물 목차, 최종 판단
+srs.md                    REQ 요구사항과 수용 조건
+sts.md                    TC 사례, 선정 기법, 절차, 기대 결과
+issues.md                 결정과 반영 근거를 포함한 ISSUE 정본
+traceability.md           원본 → REQ → TC → 관련 ISSUE → WORK → 코드 → 근거
+completion-report.md      REQ별 커버리지, 기록된 상태, 공백의 생성 보고서
+work/WORK-001.md          작업별 범위가 정해진 패킷과 구현 결과
+verification.md           명령·실행, 관찰 결과, 환경 공백, 결론
 ```
 
-Code and automated tests remain in the consuming project's normal source tree. A path, revision, and evidence pointer in the module record connect them. The document bundle does not copy code.
+코드와 자동화 시험은 대상 프로젝트의 일반 소스 트리에 둔다. 모듈 기록의 경로, 리비전, 근거 연결로 코드와 연결하며 문서 묶음에 코드를 복사하지 않는다.
 
-## Lifecycle
+## 수명주기
 
-1. Frame the module and index source versions. Identify unknowns before treating an interpretation as approved.
-2. Draft/review SRS. A requirement's source and acceptance condition stay close to it.
-3. Draft/review STS. Derive cases and techniques from approved or explicitly provisional requirements. Undefined expected behavior becomes an ISSUE and a coverage gap.
-4. Record decisions in one canonical issue record. SRS and STS link to it. Distinguish `Open`, `Decided`, `Applied`, and `Verified`; a decision alone is not completion. Approved baseline changes use the existing change-control skill.
-5. Readiness review and bounded WORK packet. Only eligible work proceeds; each unit ends with a checkable state.
-6. Implement in the code repository, run relevant checks, preserve evidence, and update traceability. Environment-dependent verification remains pending until executed.
-7. Compare the result with the source, SRS, STS, decision record, and actual evidence. Generate a completion report from the recorded links and test statuses; do not treat its counts as independent proof. The module README reports a final verdict and open gaps; it never infers passing from a document's existence.
+1. 모듈의 범위를 정하고 원본 버전을 목차에 넣는다. 해석을 승인으로 취급하기 전에 미지의 부분을 식별한다.
+2. SRS를 작성·검토한다. 요구사항의 출처와 수용 조건을 가까이 둔다.
+3. STS를 작성·검토한다. 승인되었거나 임시라고 명시한 요구사항에서 사례와 기법을 도출한다. 정의되지 않은 기대 결과는 ISSUE와 커버리지 공백으로 둔다.
+4. 결정을 정본 이슈 기록 하나에 기록하고 SRS·STS에서 연결한다. `Open`, `Decided`, `Applied`, `Verified`를 구분하며 결정만으로 완료로 취급하지 않는다. 승인된 기준선 변경은 기존 변경관리 스킬을 따른다.
+5. 준비성을 검토하고 범위가 정해진 WORK 패킷을 만든다. 적격 작업만 진행하며 각 단위는 확인 가능한 상태로 끝낸다.
+6. 코드 저장소에 구현하고 관련 검사를 실행해 근거를 보존하며 추적성을 갱신한다. 환경에 의존하는 검증은 실행할 때까지 대기로 둔다.
+7. 결과를 원본, SRS, STS, 결정 기록, 실제 근거와 비교한다. 기록된 연결과 시험 상태에서 완료 보고서를 만들되 집계값을 독립 증거로 취급하지 않는다. 모듈 README에는 최종 판단과 공백을 보고하고 문서가 존재한다는 이유만으로 통과를 추정하지 않는다.
 
-## Verification of this skill package
+## 스킬 패키지 검사
 
-- Structural check finds every linked skill, playbook, contract, and example file.
-- A deterministic module check validates the example's required files, IDs, references, and evidence pointers without claiming semantic correctness.
-- The example's prose and declared results are reviewed against its own requirements and tests.
-- The completed SRS/STS example follows the shared reference formats while the skills keep those formats optional for other documents.
-- A skill-to-output audit maps the applied skills to example artifacts and names the gates this local example did not exercise.
-- Korean read-only mirror adds the same new instructional material under ignored `skills-ko/` and `automotive-development-ko/` paths. The English source stays canonical.
+- 구조 검사는 연결된 스킬, 플레이북, 계약, 예제 파일을 찾는다.
+- 결정적 모듈 검사는 예제의 파일, ID, 참조, 근거 연결을 확인하되 의미상의 정확성을 주장하지 않는다.
+- 예제의 문장과 결과를 자체 요구사항·시험에 비춰 검토한다.
+- 완성 예제의 SRS·STS는 공용 참고 형식을 따르되 다른 문서에 그 형식을 강제하지 않는다.
+- 스킬·산출물 점검표가 예제 결과와 적용 스킬, 이 로컬 예제에서 실행하지 못한 게이트를 연결한다.
+- 무시되는 `skills-ko/`, `garden-beam-ko/`에 같은 한국어 지침을 두고 영어를 원본으로 유지한다는 당시 계획을 기록한다.
 
-## Potato influence
+## Potato에서 받은 영향
 
-[Potato PStack](https://github.com/sub4biz/potato-pstack)'s `show-me-your-work` keeps one decision trail; `figure-it-out` sequences auditable phases; `principle-sequence-verifiable-units` and `principle-prove-it-works` require a check per unit and evidence from the real artifact. This design adopts those ideas while keeping this repository's existing `why`, `how`, and `verification` semantics and authorization rules. It does not copy Potato's agent prompts or approval policy.
+[Potato PStack](https://github.com/sub4biz/potato-pstack)의 `show-me-your-work`는 하나의 결정 경로를 유지하고, `figure-it-out`은 감사 가능한 단계를 배열한다. `principle-sequence-verifiable-units`와 `principle-prove-it-works`는 단위별 검사와 실제 산출물의 근거를 요구한다. 이 설계는 그런 생각을 참고하되 저장소의 `why`, `how`, `verification` 의미와 권한 경계를 유지한다. Potato의 에이전트 프롬프트나 승인 정책은 복사하지 않는다.

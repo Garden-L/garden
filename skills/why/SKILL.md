@@ -1,8 +1,8 @@
 ---
 name: why
-description: Connect a judgment to the evidence, cause, and consequence that explain it. Use when someone asks why a behavior, decision, or problem matters.
+description: 판단을 설명하는 근거·원인·결과를 연결하세요. 동작이나 결정이 왜 나왔는지 또는 문제가 왜 중요한지 묻는 경우에 사용하세요.
 ---
 
-# Why
+# Why — 왜
 
-Explain why a problem matters by connecting its evidence to its cause and impact. Separate what is observed from what is inferred; state uncertainty when it affects the conclusion.
+문제가 왜 중요한지 근거를 원인과 영향에 연결해 설명한다. 관찰한 사실과 추론을 구분하고, 결론에 영향을 주는 불확실성을 밝힌다.

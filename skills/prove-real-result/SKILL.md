@@ -1,10 +1,10 @@
 ---
 name: prove-real-result
-description: Inspect the actual artifact or running behavior against the intended result before claiming completion. Use when a command, summary, or substitute result may not prove the real outcome.
+description: 완료를 주장하기 전에 실제 산출물이나 실행 동작을 의도한 결과에 대조하세요. 명령의 성공, 요약, 대체 환경의 결과만으로 실제 결과를 증명하기 어려울 때 사용하세요.
 ---
 
-# Prove the Real Result
+# 실제 결과 입증
 
-Check the actual artifact or running behavior against the stated acceptance conditions. Inspect the relevant output, state, diff, or evidence directly; a successful command or an agent's summary is sufficient only when it proves the claim being made.
+실제 산출물이나 실행 동작을 명시된 수용 조건과 대조한다. 관련 출력, 상태, diff 또는 증거를 직접 확인한다. 명령 성공이나 에이전트 요약은 해당 주장을 입증할 때만 충분한 근거다.
 
-Report what was checked, the observed result, and any important condition that remains unverified. If the real target cannot be exercised, label the target result unverified and describe the evidence available from substitutes.
+무엇을 확인했고 어떤 결과를 관찰했는지, 중요한 미검증 조건은 무엇인지 보고한다. 실제 타깃을 실행할 수 없다면 타깃 결과를 미검증으로 표시하고 대체 환경에서 얻은 근거를 설명한다.

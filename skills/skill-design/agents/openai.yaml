@@ -1,4 +1,4 @@
 interface:
-  display_name: "Skill Design"
-  short_description: "Give a skill one reusable judgment and a clear trigger"
-  default_prompt: "Use $skill-design to define one reusable judgment, its trigger, and its boundary from neighboring skills."
+  display_name: "스킬 설계"
+  short_description: "스킬의 판단 하나와 적용 조건을 정함"
+  default_prompt: "재사용 가능한 판단 하나와 적용 조건, 이웃 스킬과의 경계를 정하도록 $skill-design을 사용해 줘."

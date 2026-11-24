@@ -1,8 +1,8 @@
 ---
 name: how
-description: Explain a workable path from an intended outcome to action, including important options and tradeoffs. Use when someone asks how to proceed or needs a choice translated into next steps.
+description: 원하는 결과에서 실행까지 이어지는 경로와 중요한 선택지·절충점을 설명하세요. 진행 방법을 묻거나 결정을 구체적인 다음 행동으로 바꿔야 할 때 사용하세요.
 ---
 
-# How
+# How — 어떻게
 
-Choose the solution that best addresses the cause within the real goals and constraints. State why it is the best fit, its important tradeoffs, and how to implement and verify it. If evidence is insufficient to choose, identify the specific decision or information needed.
+실제 목표와 제약 안에서 원인을 가장 잘 해결하는 방안을 선택한다. 왜 가장 적합한지, 중요한 절충점은 무엇인지, 어떻게 구현하고 확인할지 밝힌다. 근거가 선택하기에 부족하면 필요한 정보나 결정을 구체적으로 짚는다.

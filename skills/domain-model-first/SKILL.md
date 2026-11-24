@@ -1,12 +1,12 @@
 ---
 name: domain-model-first
-description: Shape the core types, states, relationships, and invariants before writing logic that depends on them. Use when behavior is stateful, branches heavily, or repeats domain assumptions across files.
+description: 로직을 작성하기 전에 핵심 타입·상태·관계·불변식을 모델로 표현하세요. 동작이 상태에 의존하거나 분기가 많거나 도메인 가정이 여러 파일에 반복될 때 사용하세요.
 ---
 
-# Domain Model First
+# 도메인 모델 먼저
 
-Make the central data shape reflect the domain before distributing behavior across conditionals.
+조건문 곳곳에 동작을 흩뜨리기 전에 중심 데이터 형태가 도메인을 표현하게 한다.
 
-Identify the relevant entities, states, relationships, allowed transitions, and invariants. Choose types and ownership that make those rules visible and make invalid states difficult to represent. Then implement behavior against that model. Use a simpler representation when the problem is genuinely simple; do not add layers or abstractions without a domain need.
+관련 개체, 상태, 관계, 허용 전이, 불변조건을 식별한다. 규칙을 드러내고 잘못된 상태를 표현하기 어렵게 하는 타입과 소유권을 선택한다. 그런 다음 그 모델을 기준으로 동작을 구현한다. 문제가 단순하면 단순한 표현을 쓰고, 도메인상 필요하지 않은 계층이나 추상화는 추가하지 않는다.
 
-Check the model against representative valid, invalid, and boundary cases before expanding the implementation.
+구현을 확장하기 전에 대표적인 유효·무효·경계 사례로 모델을 점검한다.
