@@ -7,7 +7,7 @@
 - [`architecting`](skills/architecting/SKILL.md) — 의도한 동작과 제약을 만족하는 가장 단순한 구조를 선택한다.
 - [`specification`](skills/specification/SKILL.md) — 의무를 출처와 판단 조건에 연결한다.
 - [`writing-requirements-spec`](skills/writing-requirements-spec/SKILL.md) — 소프트웨어 요구사항 명세서를 일관된 문서로 작성한다.
-- [`spec-tests`](skills/spec-tests/SKILL.md) — 시험 사례를 요구사항과 관찰 가능한 기대 결과에 연결한다.
+- [`writing-test-spec`](skills/writing-test-spec/SKILL.md) — 요구사항과 시험 사례, 기대 결과, 시험 공백을 연결한 STS를 작성한다.
 - [`review`](skills/review/SKILL.md) — 실제 결과를 의도와 적용 기준에 비춰 판단한다.
 - [`work-decomposition`](skills/work-decomposition/SKILL.md) — 의존성, 책임, 확인 방법에 따라 작업 분할을 결정한다.
 - [`verification`](skills/verification/SKILL.md) — 명시된 조건에서 실제 결과와 기대 결과를 비교한다.

@@ -43,7 +43,7 @@
 
 ## 8. 참조와 용어
 
-외부 참조는 없다. **메모**는 사용자가 작성한 제목과 본문 항목 하나다. 짝이 되는 [STS 예제](../../spec-tests/examples/sts-example.md)는 이 `REQ`에 사례를 연결한다.
+외부 참조는 없다. **메모**는 사용자가 작성한 제목과 본문 항목 하나다. 짝이 되는 [STS 예제](../../writing-test-spec/examples/sts-example.md)는 이 `REQ`에 사례를 연결한다.
 
 ## 개정 이력
 

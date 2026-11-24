@@ -9,7 +9,7 @@
 - 공용 `decision`: 이슈의 근거, 중요성, 선택지, 결정 권한, 영향받는 산출물, 반영 근거를 연결하는 원칙이다. 소프트웨어 ID나 파일 이름을 정하지 않는다. `why`와 `how`를 조합한다.
 - 공용 `workflow-design`: 도메인 산출물 경로를 정하지 않으면서 확인 가능한 결과, 단계 입력·출력, 결정, 검사를 정의한다.
 - 공용 `skill-design`: 미래 스킬의 이름, 범위, 일반화, 조합, 검사를 위한 저장소 원칙이다. 호스트의 스킬 작성 도구나 문서 템플릿을 대체하지 않는다.
-- 기존 공용 `specification`, `writing-requirements-spec`, `spec-tests`, `engineering-design`, `implementation`, `verification`은 당시 역할을 유지한다. 새 스킬에 규칙을 복사하지 않는다.
+- 기존 공용 `specification`, `writing-requirements-spec`, `writing-test-spec`, `engineering-design`, `implementation`, `verification`은 당시 역할을 유지한다. 새 스킬에 규칙을 복사하지 않는다.
 - 자동차 `automotive-engineering` 전체 인계 플레이북은 `workflow-design`을 적용하고 기존 하위 스킬을 순서대로 선택하며 단계 결과와 중단 조건을 정한다.
 - 자동차 산출물 계약은 모듈의 경로, 필수 정보, 수명주기 상태, 검사를 정한다. SRS·STS 형식은 참고 자료로 유지하고 절 배치를 강제하지 않는다.
 - 완성 예제는 상상한 속도 신호 모듈 하나다. 연결과 예제 코드·근거를 명시하며 실제 ECU/HIL 실행이라고 주장하지 않는다.
