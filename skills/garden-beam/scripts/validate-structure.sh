@@ -16,16 +16,12 @@ required_files=(
   "$package_dir/agents/openai.yaml"
   "$package_dir/docs/architecture.md"
   "$package_dir/docs/module-deliverables.md"
-  "$package_dir/playbooks/requirements-to-srs.md"
-  "$package_dir/playbooks/srs-to-sts.md"
+  "$package_dir/playbooks/specification-artifacts.md"
   "$package_dir/playbooks/feature.md"
   "$package_dir/playbooks/bug-fix.md"
   "$package_dir/playbooks/refactoring.md"
   "$package_dir/playbooks/change-control.md"
   "$package_dir/playbooks/architecture-change.md"
-  "$package_dir/references/srs-context.md"
-  "$package_dir/references/sts-context.md"
-  "$package_dir/references/sts-reviewer-checklist.md"
   "$package_dir/scripts/README.md"
   "$package_dir/scripts/validate-module-delivery.py"
   "$package_dir/scripts/report-module-coverage.py"
@@ -41,7 +37,7 @@ done
 for playbook in "$package_dir"/playbooks/*.md; do
   playbook_name="${playbook##*/}"
   case "$playbook_name" in
-    requirements-to-srs.md|srs-to-sts.md|feature.md|bug-fix.md|refactoring.md|change-control.md|architecture-change.md) ;;
+    specification-artifacts.md|feature.md|bug-fix.md|refactoring.md|change-control.md|architecture-change.md) ;;
     *) echo "예상하지 못한 플레이북: $playbook_name" >&2; exit 1 ;;
   esac
 done
