@@ -2,7 +2,7 @@
 set -euo pipefail
 
 package_dir="$(cd "$(dirname "$0")/.." && pwd -P)"
-repo_dir="$(cd "$package_dir/.." && pwd -P)"
+repo_dir="$(cd "$package_dir/../.." && pwd -P)"
 
 if [[ -d "$package_dir/skills" ]]; then
   echo "패키지 안에 skills/ 디렉터리를 두지 않는다" >&2
@@ -20,8 +20,6 @@ required_files=(
   "$package_dir/playbooks/feature.md"
   "$package_dir/playbooks/bug-fix.md"
   "$package_dir/playbooks/refactoring.md"
-  "$package_dir/playbooks/change-control.md"
-  "$package_dir/playbooks/architecture-change.md"
   "$package_dir/scripts/README.md"
   "$package_dir/scripts/validate-module-delivery.py"
   "$package_dir/scripts/report-module-coverage.py"
@@ -37,7 +35,7 @@ done
 for playbook in "$package_dir"/playbooks/*.md; do
   playbook_name="${playbook##*/}"
   case "$playbook_name" in
-    specification-artifacts.md|feature.md|bug-fix.md|refactoring.md|change-control.md|architecture-change.md) ;;
+    specification-artifacts.md|feature.md|bug-fix.md|refactoring.md) ;;
     *) echo "예상하지 못한 플레이북: $playbook_name" >&2; exit 1 ;;
   esac
 done
